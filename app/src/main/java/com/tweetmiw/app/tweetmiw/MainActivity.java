@@ -1,19 +1,37 @@
 package com.tweetmiw.app.tweetmiw;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Configurando que el Toolbar como ActionBar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_my_toolbar);
+        //En este ejemplo, ocultamos el titulo de la aplicación, esto es opcional
+        setSupportActionBar(toolbar);
+
+        //setToolbar();
     }
 
+   /* public void setToolbar(){
+
+        //Configurando que el Toolbar como ActionBar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_my_toolbar);
+        //En este ejemplo, ocultamos el titulo de la aplicación, esto es opcional
+        //toolbar.setTitle("I am Pusheen");
+        setSupportActionBar(toolbar);
+
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
