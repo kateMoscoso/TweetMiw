@@ -3,9 +3,7 @@
 <resources>
     <color name="primary_color">#4CAF50</color>
     <color name="primary_dark_color">#1B5E20</color>
-    <color name="accent_color">#FF3D00</color>
-    <color name="blue">#ff0720cc</color>
-    <color name="orange">#ffff8a02</color>
+    <color name="accent_color">#ffff8a02</color>
     <color name="tabsScrollColor">#004D40</color>
 
 </resources>

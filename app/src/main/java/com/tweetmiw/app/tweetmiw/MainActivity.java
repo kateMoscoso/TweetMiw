@@ -1,10 +1,13 @@
 package com.tweetmiw.app.tweetmiw;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 
@@ -16,9 +19,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Configurando que el Toolbar como ActionBar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_my_toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.activity_my_toolbar);
         //En este ejemplo, ocultamos el titulo de la aplicación, esto es opcional
-        setSupportActionBar(toolbar);
+       // setSupportActionBar(toolbar);
 
         //setToolbar();
     }
@@ -56,5 +59,23 @@ public class MainActivity extends AppCompatActivity {
     }
     public void login(){
         Toast.makeText(this, "Login", Toast.LENGTH_SHORT).show();
+    }
+
+
+
+
+    public void alertDialog(View view) {
+        AlertDialog.Builder aviso = new AlertDialog.Builder(this);
+        aviso.setMessage("Esta aplicación es un cliente de Twitter, por lo que se necesita estar registrado en Twitter para poder utilizarla. Esta aplicación no guarda ni tu usuario ni tu contraseña,\n" +
+                "simplemente se autentica a través del prpio Twitter. Si todavía no tienes una cuenta de Twitter, haz click en el botón 'Regístrate en Twitter' y create una.");
+        aviso.setTitle("¡Bienvenido!");
+        aviso.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        aviso.create();
+        aviso.show();
     }
 }

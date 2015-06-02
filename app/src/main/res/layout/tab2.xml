@@ -10,7 +10,7 @@ android:layout_height="match_parent">
     android:textAppearance="?android:attr/textAppearanceMedium"
     android:text="Tab 2 says Hello :D"
     android:id="@+id/textView"
-    android:textColor="@color/orange"
+    android:textColor="@color/tabsScrollColor"
     android:layout_centerVertical="true"
     android:layout_centerHorizontal="true" />
 

@@ -7,5 +7,6 @@
     <string name="title_activity_initial">InitialActivity</string>
     <string name="tweets_pendientes">Tweets Pendientes</string>
     <string name="cerrar_sesion">Cerrar Sesión</string>
-
+    <string name="registrar">Regístrate en Twitter</string>
+    <string name="ayuda">¿Necesitas ayuda?</string>
 </resources>

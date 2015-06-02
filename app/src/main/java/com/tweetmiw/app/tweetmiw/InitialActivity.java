@@ -15,8 +15,8 @@ public class InitialActivity extends AppCompatActivity {
     ViewPager pager;
     ViewPagerAdapter adapter;
     SlidingTabLayout tabs;
-    CharSequence Titles[]={"Home","Events","Tweets"};
-    int Numboftabs =3;
+    CharSequence Titles[]={"Home","Events","Tweets","Confi"};
+    int Numboftabs =4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class InitialActivity extends AppCompatActivity {
         tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
             @Override
             public int getIndicatorColor(int position) {
-                return getResources().getColor(R.color.tabsScrollColor);
+                return getResources().getColor(R.color.accent_color);
             }
         });
 
