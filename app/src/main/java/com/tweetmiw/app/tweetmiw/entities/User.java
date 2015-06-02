@@ -4,28 +4,27 @@ package com.tweetmiw.app.tweetmiw.entities;
  * Created by katherin on 02/06/2015.
  */
 public class User {
-    private String id_user;
-    private String screen_name;
+    private ProfileUser profile;
+    private boolean seguido;
 
-    public User(String id_user, String screen_name){
-        this.id_user = id_user;
-        this.screen_name = screen_name;
 
+
+    public User(){
     }
 
-    public String getId_user() {
-        return id_user;
+    public ProfileUser getProfile() {
+        return profile;
     }
 
-    public void setId_user(String id_user) {
-        this.id_user = id_user;
+    public void setProfile(ProfileUser profile) {
+        this.profile = profile;
     }
 
-    public String getScreen_name() {
-        return screen_name;
+    public boolean isSeguido() {
+        return seguido;
     }
 
-    public void setScreen_name(String screen_name) {
-        this.screen_name = screen_name;
+    public void setSeguido(boolean seguido) {
+        this.seguido = seguido;
     }
 }
