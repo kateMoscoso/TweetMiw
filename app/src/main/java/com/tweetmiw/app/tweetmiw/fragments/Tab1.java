@@ -1,4 +1,4 @@
-package com.tweetmiw.app.tweetmiw;
+package com.tweetmiw.app.tweetmiw.fragments;
 
         import android.os.Bundle;
         import android.support.annotation.Nullable;
@@ -7,11 +7,13 @@ package com.tweetmiw.app.tweetmiw;
         import android.view.View;
         import android.view.ViewGroup;
 
-public class Tab2 extends Fragment {
+        import com.tweetmiw.app.tweetmiw.R;
+
+public class Tab1 extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v =inflater.inflate(R.layout.tab2,container,false);
+        View v =inflater.inflate(R.layout.tab1,container,false);
         return v;
     }
 }

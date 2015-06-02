@@ -1,8 +1,11 @@
-package com.tweetmiw.app.tweetmiw;
+package com.tweetmiw.app.tweetmiw.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import com.tweetmiw.app.tweetmiw.fragments.Tab1;
+import com.tweetmiw.app.tweetmiw.fragments.Tab2;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
