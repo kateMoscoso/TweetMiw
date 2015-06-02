@@ -8,8 +8,8 @@
         android:layout_margin="10dp"
         android:id="@+id/card_view"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        card_view:cardCornerRadius="2dp">
+        android:layout_height="wrap_content">
+      <!--  card_view:cardCornerRadius="2dp">-->
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Large Text"
-                android:id="@+id/nombre_amigo"
+                android:id="@+id/screenName"
                 android:layout_alignParentTop="true"/>
                 <!--android:layout_toEndOf="@+id/avatar" />-->
 
@@ -37,8 +37,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Small Text"
-                android:id="@+id/twitter_amigo"
-                android:layout_below="@+id/nombre_amigo"/>
+                android:id="@+id/nombreUsuario"
+                android:layout_below="@+id/screenName"/>
             <!--android:layout_toEndOf="@+id/avatar" />-->
 
             <TextView
@@ -46,8 +46,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
-                android:id="@+id/ultimacancion_amigo"
-                android:layout_below="@+id/twitter_amigo"/>
+                android:id="@+id/mensajeTweet"
+                android:layout_below="@+id/nombreUsuario"/>
             <!--android:layout_toEndOf="@+id/avatar" />-->
 
 
