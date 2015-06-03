@@ -6,17 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import com.tweetmiw.app.tweetmiw.adapters.ViewPagerAdapter;
-
 
 public class InitialActivity extends AppCompatActivity {
 
     ViewPager pager;
     ViewPagerAdapter adapter;
     SlidingTabLayout tabs;
-    CharSequence Titles[]={"Home","Events","Tweets","Confi"};
-    int Numboftabs =4;
+    CharSequence Titles[]={"Home","Listas","Tweets"};
+    int Numboftabs =3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

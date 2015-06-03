@@ -8,6 +8,7 @@
     tools:context=".InitialActivity">
 
     <include
+        android:id="@+id/activity_my_toolbar"
         layout="@layout/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -16,12 +17,14 @@
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_my_toolbar"
         android:background="@color/primary_color"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
         android:layout_height="match_parent"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        android:layout_below="@+id/tabs" >
     </android.support.v4.view.ViewPager>
 
 </RelativeLayout>
