@@ -3,7 +3,7 @@
 <resources>
     <color name="primary_color">#4CAF50</color>
     <color name="primary_dark_color">#1B5E20</color>
-    <color name="accent_color">#ffff8a02</color>
+    <color name="accent_color">#FF8A02</color>
     <color name="tabsScrollColor">#004D40</color>
     <color name="accent">#18ffff</color>
 
