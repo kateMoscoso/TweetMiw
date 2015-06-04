@@ -2,6 +2,7 @@ package com.tweetmiw.app.tweetmiw;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -57,8 +58,9 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void login(){
-        Toast.makeText(this, "Login", Toast.LENGTH_SHORT).show();
+    public void login(View view) {
+        Intent i = new Intent(this, InitialActivity.class );
+        startActivity(i);
     }
 
 
