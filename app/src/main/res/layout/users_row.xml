@@ -24,7 +24,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="ScreenName"
             android:id="@+id/screenName"
             android:layout_alignParentTop="true"
@@ -38,19 +38,17 @@
             android:text="Name"
             android:id="@+id/name"
             android:layout_toRightOf="@+id/avatar_usuario"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/hora"
-            android:layout_alignParentEnd="true" />
+            android:layout_below="@+id/screenName"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Tweets"
-            android:id="@+id/tweets"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Descripcion"
+            android:id="@+id/descripcion"
             android:layout_toRightOf="@+id/avatar_usuario"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/hora"
+            android:layout_below="@+id/name"
             android:layout_alignParentEnd="true" />
 
 

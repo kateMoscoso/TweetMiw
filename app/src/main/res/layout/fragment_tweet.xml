@@ -4,10 +4,13 @@
     android:layout_height="match_parent"
     tools:context="com.tweetmiw.app.tweetmiw.fragments.Tweet_Fragments">
 
+
     <android.support.v7.widget.RecyclerView
         android:scrollbars="vertical"
-        android:id="@+id/my_recycler_view"
+        android:id="@+id/my_recycler_view_tweet"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/nombre"
+        />
 
 </FrameLayout>

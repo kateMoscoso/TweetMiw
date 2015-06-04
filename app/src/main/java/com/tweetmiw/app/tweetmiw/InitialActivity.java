@@ -1,11 +1,14 @@
 package com.tweetmiw.app.tweetmiw;
 
+import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
 import com.tweetmiw.app.tweetmiw.adapters.ViewPagerAdapter;
 
 public class InitialActivity extends AppCompatActivity {
@@ -13,7 +16,7 @@ public class InitialActivity extends AppCompatActivity {
     ViewPager pager;
     ViewPagerAdapter adapter;
     SlidingTabLayout tabs;
-    CharSequence Titles[]={"Home","Listas","Tweets"};
+    CharSequence Titles[]={"Timeline","Followers","Mi Perfil"};
     int Numboftabs =3;
 
     @Override
@@ -68,7 +71,15 @@ public class InitialActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+        if(id == R.id.action_cerrar_sesion){
+            Intent i = new Intent(this, MainActivity.class );
+            startActivity(i);
+        }
 
         return super.onOptionsItemSelected(item);
+    }
+    public void login(View view) {
+        Intent i = new Intent(this, MainActivity.class );
+        startActivity(i);
     }
 }

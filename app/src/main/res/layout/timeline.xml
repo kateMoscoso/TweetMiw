@@ -3,18 +3,44 @@
     android:id="@+id/main_music"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.tweetmiw.app.tweetmiw.Timeline">
+    tools:context=".Timeline">
+    <include
+        android:id="@+id/activity_my_toolbar"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-    <ImageButton
-        android:id="@+id/fab_1"
-        android:layout_width="@dimen/fab_size"
-        android:layout_height="@dimen/fab_size"
-        android:background="@drawable/ripple"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="15dp"
-        android:elevation="4dp"
-        android:src="@drawable/avatar2"
-        android:layout_alignParentBottom="true"/>
-        <!--android:layout_alignParentEnd="true" />-->
-
+    <!--<fragment
+        android:name="com.tweetmiw.app.tweetmiw.fragments.Tab1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragment21"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        />
+    <fragment
+        android:name="com.tweetmiw.app.tweetmiw.fragments.Tab2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragment22"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        />
+    <fragment
+        android:name="com.tweetmiw.app.tweetmiw.fragments.Tab2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragment23"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/textView3"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />-->
 </RelativeLayout>
