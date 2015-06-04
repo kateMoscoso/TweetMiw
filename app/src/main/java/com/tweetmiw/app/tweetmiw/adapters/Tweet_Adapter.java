@@ -1,5 +1,6 @@
 package com.tweetmiw.app.tweetmiw.adapters;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,9 +17,8 @@ import java.util.ArrayList;
  */
 public class Tweet_Adapter  extends RecyclerView.Adapter<Tweet_Adapter.ViewHolder>{
 
-    private ArrayList<Tweet> tweets;
-    private  int itemLayout;
-
+    private ArrayList<Tweet> tweets;// dataset
+    private  int itemLayout; // la vista, los row
 
     public  Tweet_Adapter( ArrayList<Tweet>  tweets, int itemLayout){
         this.tweets = tweets;
@@ -28,7 +28,8 @@ public class Tweet_Adapter  extends RecyclerView.Adapter<Tweet_Adapter.ViewHolde
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(itemLayout, viewGroup, false);
+        View v = LayoutInflater.from(viewGroup.getContext()).
+                inflate(itemLayout, viewGroup, false); // flase no heredo
         return new ViewHolder(v);
     }
 
@@ -49,7 +50,9 @@ public class Tweet_Adapter  extends RecyclerView.Adapter<Tweet_Adapter.ViewHolde
         return tweets.size();
     }
 
-
+    /**
+     * Clase que define cada elemento
+     */
     public  class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView nombreUsuario;
@@ -60,8 +63,8 @@ public class Tweet_Adapter  extends RecyclerView.Adapter<Tweet_Adapter.ViewHolde
             super(itemView);
 
             screenName = (TextView) itemView.findViewById(R.id.screenName);
-            nombreUsuario = (TextView) itemView.findViewById(R.id.nombreUsuario);
-            mensajeTweet = (TextView) itemView.findViewById(R.id.mensajeTweet);
+            nombreUsuario = (TextView) itemView.findViewById(R.id.hora);
+            mensajeTweet = (TextView) itemView.findViewById(R.id.tweets);
 
 
         }

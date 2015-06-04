@@ -63,6 +63,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void lista(View view) {
+        Intent i = new Intent(this, Timeline.class );
+        startActivity(i);
+    }
+
 
 
 

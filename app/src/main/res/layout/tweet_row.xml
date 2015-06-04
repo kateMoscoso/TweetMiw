@@ -1,6 +1,4 @@
-
-
-    <android.support.v7.widget.CardView
+<android.support.v7.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:foreground="?android:attr/selectableItemBackground"
@@ -8,47 +6,54 @@
         android:layout_margin="10dp"
         android:id="@+id/card_view"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-      <!--  card_view:cardCornerRadius="2dp">-->
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="2dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/avatar_amigo"
+                android:id="@+id/avatar_usuario"
                 android:src="@drawable/avatar"
                 android:scaleType="centerCrop"
                 android:layout_marginRight="10dp"
-                android:layout_width="150dp"
-                android:layout_height="150dp" />
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Large Text"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="ScreenName Nombre"
                 android:id="@+id/screenName"
-                android:layout_alignParentTop="true"/>
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/avatar_usuario"/>
                 <!--android:layout_toEndOf="@+id/avatar" />-->
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Small Text"
-                android:id="@+id/nombreUsuario"
-                android:layout_below="@+id/screenName"/>
-            <!--android:layout_toEndOf="@+id/avatar" />-->
+                android:text="Hora"
+                android:id="@+id/hora"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/screenName"
+                />
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
-                android:id="@+id/mensajeTweet"
-                android:layout_below="@+id/nombreUsuario"/>
-            <!--android:layout_toEndOf="@+id/avatar" />-->
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Tweets"
+                android:id="@+id/tweets"
+                android:layout_toRightOf="@+id/avatar_usuario"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/hora"
+                android:layout_alignParentEnd="true" />
+
 
 
         </RelativeLayout>

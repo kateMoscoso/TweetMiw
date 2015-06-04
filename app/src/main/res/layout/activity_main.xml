@@ -12,9 +12,18 @@
         android:layout_height="wrap_content"
         android:text="@string/login"
         android:id="@+id/button2"
+        android:onClick="login"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="login"/>
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lista"
+        android:id="@+id/button21"
+        android:onClick="lista"
+        android:layout_below="@+id/button2"
+        android:layout_alignLeft="@+id/button2" />
 
     <ImageView
         android:layout_width="wrap_content"

@@ -24,7 +24,7 @@ public class InitialActivity extends AppCompatActivity {
         // Creating The Toolbar and setting it as the Toolbar for the activity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.activity_my_toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);//modifico el action Bar pordefecto de l
 
         // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
         adapter =  new ViewPagerAdapter(getSupportFragmentManager(),Titles,Numboftabs);
