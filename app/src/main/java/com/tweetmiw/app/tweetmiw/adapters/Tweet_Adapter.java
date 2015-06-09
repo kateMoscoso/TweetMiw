@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tweetmiw.app.tweetmiw.R;
 import com.tweetmiw.app.tweetmiw.entities.Tweet;
@@ -29,7 +30,7 @@ public class Tweet_Adapter  extends RecyclerView.Adapter<Tweet_Adapter.ViewHolde
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).
-                inflate(itemLayout, viewGroup, false); // flase no heredo
+                inflate(itemLayout, viewGroup, false); // flase no heredo obtengo el contexto del fragment
         return new ViewHolder(v);
     }
 
@@ -42,6 +43,22 @@ public class Tweet_Adapter  extends RecyclerView.Adapter<Tweet_Adapter.ViewHolde
         viewHolder.screenName.setText(tweet.getUser().getProfile().getScreen_name());
         viewHolder.nombreUsuario.setText(tweet.getUser().getProfile().getName());
         viewHolder.mensajeTweet.setText(tweet.getMessage());
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //do something
+                Toast.makeText(v.getContext(), "Aqui definimos el onclick", Toast.LENGTH_SHORT).show();
+            }
+        });
+        viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                //do something
+                Toast.makeText(v.getContext(), "Aqui definimos el on long click", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
 
     }
 

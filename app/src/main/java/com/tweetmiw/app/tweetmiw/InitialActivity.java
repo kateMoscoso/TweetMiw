@@ -75,7 +75,6 @@ public class InitialActivity extends AppCompatActivity {
             Intent i = new Intent(this, MainActivity.class );
             startActivity(i);
         }
-
         return super.onOptionsItemSelected(item);
     }
     public void login(View view) {

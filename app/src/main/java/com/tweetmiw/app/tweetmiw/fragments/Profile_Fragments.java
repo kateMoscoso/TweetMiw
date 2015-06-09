@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.tweetmiw.app.tweetmiw.R;
 import com.tweetmiw.app.tweetmiw.adapters.Tweet_Adapter;
@@ -56,6 +58,13 @@ public class Profile_Fragments extends Fragment {
         Tweet tweet2 = new Tweet("esto es otro tweet", usuario);
         tweetArrayList.add(tweet2);
 
+        Tweet tweet3 = new Tweet("esto es otro tweet", usuario);
+        tweetArrayList.add(tweet3);
+        Tweet tweet4 = new Tweet("esto es otro tweet", usuario);
+        tweetArrayList.add(tweet4);
+        Tweet tweet5 = new Tweet("esto es otro tweet", usuario);
+        tweetArrayList.add(tweet5);
+
         RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.my_recycler_view_profile);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(new Tweet_Adapter(tweetArrayList, R.layout.tweet_row));
@@ -63,5 +72,17 @@ public class Profile_Fragments extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
 
+    }
+
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+        Toast.makeText( getActivity(),
+                "Toast por defecto", Toast.LENGTH_SHORT).show();
+    }
+
+
+    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
+        Toast.makeText( getActivity(),
+                "Toast por defecto", Toast.LENGTH_SHORT).show();
+        return false;
     }
 }

@@ -56,6 +56,12 @@ public class Tweet_Fragments extends Fragment {
 
         Tweet tweet2 = new Tweet("esto es otro tweet", usuario);
         tweetArrayList.add(tweet2);
+        Tweet tweet3 = new Tweet("esto es otro tweet", usuario);
+        tweetArrayList.add(tweet3);
+        Tweet tweet4 = new Tweet("esto es otro tweet", usuario);
+        tweetArrayList.add(tweet4);
+        Tweet tweet5 = new Tweet("esto es otro tweet", usuario);
+        tweetArrayList.add(tweet5);
 
         RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.my_recycler_view_tweet);
         recyclerView.setHasFixedSize(true);

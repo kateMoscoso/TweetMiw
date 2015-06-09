@@ -4,7 +4,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tweetmiw.app.tweetmiw.R;
 import com.tweetmiw.app.tweetmiw.entities.ProfileUser;
@@ -42,6 +44,22 @@ public class Users_Adapter extends RecyclerView.Adapter<Users_Adapter.ViewHolder
         viewHolder.screenName.setText(user.getScreen_name());
         viewHolder.nombreUsuario.setText(user.getName());
         viewHolder.descripcion.setText(user.getDescription());
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //do something
+                Toast.makeText(v.getContext(), "Aqui definimos el onclick",Toast.LENGTH_SHORT).show();
+            }
+
+        });
+        viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                //do something
+                Toast.makeText(v.getContext(), "Aqui definimos el on long click", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
 
     }
 
@@ -49,6 +67,8 @@ public class Users_Adapter extends RecyclerView.Adapter<Users_Adapter.ViewHolder
     public int getItemCount() {
         return users.size();
     }
+
+
 
     /**
      * Clase que define cada elemento
@@ -67,6 +87,15 @@ public class Users_Adapter extends RecyclerView.Adapter<Users_Adapter.ViewHolder
             descripcion = (TextView) itemView.findViewById(R.id.descripcion);
 
 
+        }
+        public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+          //  Toast.makeText(this,"Toast por defecto", Toast.LENGTH_SHORT).show();
+        }
+
+
+        public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
+           // Toast.makeText( getActivity(), "Toast por defecto", Toast.LENGTH_SHORT).show();
+            return false;
         }
     }
 }
