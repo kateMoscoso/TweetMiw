@@ -12,6 +12,27 @@
     <string name="lista">lista</string>
     <string name="timeline">Timeline</string>
 
+    <string name="msg_yes">Sí</string>
+    <string name="msg_no">No</string>
+    <string name="msg_recommendation">¿Nos recomendarías?</string>
+    <string name="msg_front_desk">¿cómo consideras el servicio de la recepción?</string>
+    <string name="msg_front_desk_0">Malo</string>
+    <string name="msg_front_desk_100">Bueno</string>
+    <string name="dialog_title">¿Desea enviar los datos?</string>
+    <string name="title_tab_list">Listado</string>
+    <string name="title_tab_grid">Vista</string>
+    <string name="title_activity_main">Principal</string>
+    <string name="list_separator_standard">Estándar</string>
+    <string name="list_separator_luxury">De lujo</string>
+
+    <string-array name="array_rate">
+        <item>Excelente</item>
+        <item>Bueno</item>
+        <item>Regular</item>
+        <item>Deficiente</item>
+        <item>Necesita mejorar</item>
+    </string-array>
+
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

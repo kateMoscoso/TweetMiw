@@ -6,6 +6,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -74,15 +75,8 @@ public class Profile_Fragments extends Fragment {
 
     }
 
-    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-        Toast.makeText( getActivity(),
-                "Toast por defecto", Toast.LENGTH_SHORT).show();
-    }
-
-
-    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
-        Toast.makeText( getActivity(),
-                "Toast por defecto", Toast.LENGTH_SHORT).show();
-        return false;
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        return super.onContextItemSelected(item);
     }
 }

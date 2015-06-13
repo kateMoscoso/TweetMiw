@@ -41,6 +41,11 @@ public class Usuarios_Fragment extends Fragment {
         profileUser.setScreen_name("@screen_name");
         profileUser.setDescription("Descripcion del usuario");
         userArrayList.add(profileUser);
+        ProfileUser profileUser2 = new ProfileUser();
+        profileUser2.setName("Usuario");
+        profileUser2.setScreen_name("@screen_name");
+        profileUser2.setDescription("Descripcion del usuario");
+        userArrayList.add(profileUser2);
 
 
         RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.my_recycler_view_user);

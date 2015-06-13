@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.tweetmiw.app.tweetmiw.R;
 import com.tweetmiw.app.tweetmiw.entities.Tweet;
+import com.tweetmiw.app.tweetmiw.fragments.Profile_Fragments;
 
 import java.util.ArrayList;
 
@@ -30,7 +31,7 @@ public class Tweet_Adapter  extends RecyclerView.Adapter<Tweet_Adapter.ViewHolde
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).
-                inflate(itemLayout, viewGroup, false); // flase no heredo obtengo el contexto del fragment
+                inflate(itemLayout, viewGroup, false); // false no heredo obtengo el contexto del fragment
         return new ViewHolder(v);
     }
 
@@ -38,8 +39,6 @@ public class Tweet_Adapter  extends RecyclerView.Adapter<Tweet_Adapter.ViewHolde
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
 
         Tweet tweet = tweets.get(i);
-
-
         viewHolder.screenName.setText(tweet.getUser().getProfile().getScreen_name());
         viewHolder.nombreUsuario.setText(tweet.getUser().getProfile().getName());
         viewHolder.mensajeTweet.setText(tweet.getMessage());
@@ -47,8 +46,10 @@ public class Tweet_Adapter  extends RecyclerView.Adapter<Tweet_Adapter.ViewHolde
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //do something
-                Toast.makeText(v.getContext(), "Aqui definimos el onclick", Toast.LENGTH_SHORT).show();
+                //do somethingvi
+
+               // setContentView(R.layout.actvity_tweet_detail);
+                Toast.makeText(v.getContext(), "Aqui definimos el onclick" , Toast.LENGTH_SHORT).show();
             }
         });
         viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
@@ -70,7 +71,7 @@ public class Tweet_Adapter  extends RecyclerView.Adapter<Tweet_Adapter.ViewHolde
     /**
      * Clase que define cada elemento
      */
-    public  class ViewHolder extends RecyclerView.ViewHolder{
+    public  class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public TextView nombreUsuario;
         public TextView screenName;
@@ -84,6 +85,16 @@ public class Tweet_Adapter  extends RecyclerView.Adapter<Tweet_Adapter.ViewHolde
             mensajeTweet = (TextView) itemView.findViewById(R.id.tweets);
 
 
+        }
+        @Override
+        public void onClick(View view) {
+            // Intent i = new Intent(ViewHolder.this, MainActivity.class);
+            //   Intent i = Users_Adapter.this.getIntent(v.getContext(), mCrime);
+            //   startActivity(i);
+            int position  = ViewHolder.super.getAdapterPosition();
+
+
+            Toast.makeText(view.getContext(), "Aqui definimos el onclick nuevo " + position, Toast.LENGTH_SHORT).show();
         }
     }
 }
