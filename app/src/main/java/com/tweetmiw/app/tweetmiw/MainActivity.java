@@ -99,6 +99,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    public void onClick(View v){
+        Toast.makeText(this, "Hola, estoy escuchando", Toast.LENGTH_LONG).show();
+    }
+
 
     public void alertDialog(View view) {
         AlertDialog.Builder aviso = new AlertDialog.Builder(this);
