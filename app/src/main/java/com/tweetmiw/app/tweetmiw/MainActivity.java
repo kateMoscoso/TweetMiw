@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.twitter.sdk.android.core.TwitterAuthConfig;
 import io.fabric.sdk.android.Fabric;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.TwitterAuthToken;
 import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
@@ -25,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
     // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
     private static final String TWITTER_KEY = "UnWcjSGaKLsofmQuIB53T97bC";
     private static final String TWITTER_SECRET = "YY3Rf2PUb8aFuN3Dwhfdm7ggN7SQ2Rsu9gaY8wpZhtt9AUvsh6";
-    TwitterLoginButton loginButton;
+    private TwitterLoginButton loginButton;
+    private TwitterSession session;
 
 
     @Override
@@ -41,11 +44,16 @@ public class MainActivity extends AppCompatActivity {
             public void success(Result<TwitterSession> result) {
                 // Do something with result, which provides a
                 // TwitterSession for making API calls
+                session = Twitter.getSessionManager().getActiveSession();
+
+                Log.v("main","login succes " + session.getUserName());
+
             }
 
             @Override
             public void failure(TwitterException exception) {
                 // Do something on failure
+                Log.v("main","login fail");
             }
         });
 
@@ -57,15 +65,22 @@ public class MainActivity extends AppCompatActivity {
         //setToolbar();
     }
 
-   /* public void setToolbar(){
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-        //Configurando que el Toolbar como ActionBar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_my_toolbar);
-        //En este ejemplo, ocultamos el titulo de la aplicación, esto es opcional
-        //toolbar.setTitle("I am Pusheen");
-        setSupportActionBar(toolbar);
-
-    }*/
+        // Pass the activity result to the login button.
+        loginButton.onActivityResult(requestCode, resultCode,
+                data);
+        Log.v("main","on activity result " + session.getUserName());
+        TwitterAuthToken authToken = session.getAuthToken();
+        String token = authToken.token;
+        String secret = authToken.secret;
+        Intent i = new Intent(this, InitialActivity.class );
+        i.putExtra("token",token);
+        i.putExtra("secret",secret);
+        startActivity(i);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

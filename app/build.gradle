@@ -46,5 +46,8 @@ dependencies {
     compile('com.twitter.sdk.android:twitter:1.6.0@aar') {
         transitive = true;
     }
+    compile('com.twitter.sdk.android:tweet-ui:1.2.0@aar') {
+        transitive = true;
+    }
 
 }

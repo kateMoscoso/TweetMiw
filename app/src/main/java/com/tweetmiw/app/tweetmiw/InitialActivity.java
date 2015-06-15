@@ -1,15 +1,33 @@
 package com.tweetmiw.app.tweetmiw;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.tweetmiw.app.tweetmiw.adapters.ViewPagerAdapter;
+import com.twitter.sdk.android.Twitter;
+import com.twitter.sdk.android.core.Callback;
+import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.TwitterApiClient;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.core.TwitterCore;
+import com.twitter.sdk.android.core.TwitterException;
+import com.twitter.sdk.android.core.models.Tweet;
+import com.twitter.sdk.android.core.services.StatusesService;
+import com.twitter.sdk.android.tweetcomposer.TweetComposer;
+import com.twitter.sdk.android.tweetui.TweetUi;
+
+import java.io.File;
+import java.util.logging.FileHandler;
+
+import io.fabric.sdk.android.Fabric;
 
 public class InitialActivity extends AppCompatActivity {
 
@@ -18,14 +36,45 @@ public class InitialActivity extends AppCompatActivity {
     SlidingTabLayout tabs;
     CharSequence Titles[]={"Timeline","Followers","Mi Perfil"};
     int Numboftabs =3;
+ //   File myImageFile = new File("/path/to/");
+   // Uri myImageUri = Uri.fromFile(myImageFile);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial);
+        Bundle extras = getIntent().getExtras();
+        String consumerKey = extras.getString("token");
+        String consumerSecret= extras.getString("secret");
+        TwitterAuthConfig authConfig =
+                new TwitterAuthConfig(consumerKey,
+                        consumerSecret);
+
+       Fabric.with(this, new Twitter(authConfig));
+     /*  me redirige a la página Fabric.with(this, new TweetComposer());
+        TweetComposer.Builder builder = new TweetComposer.Builder(this)
+                .text("Probando Fabric desde Android studio");
+
+        builder.show();*/
+
+        Fabric.with(this, new TwitterCore(authConfig), new TweetUi());
 
         // Creating The Toolbar and setting it as the Toolbar for the activity
+        TwitterApiClient twitterApiClient = TwitterCore.getInstance().getApiClient();
+// Can also use Twitter directly: Twitter.getApiClient()
+        StatusesService statusesService = twitterApiClient.getStatusesService();
+        statusesService.show(524971209851543553L, null, null, null, new Callback<Tweet>() {
+            @Override
+            public void success(Result<Tweet> result) {
 
+                Log.v("InitialActivity ","resultados:  "+result.data.entities.toString());
+                //Do something with result, which provides a Tweet inside of result.data
+            }
+
+            public void failure(TwitterException exception) {
+                //Do something on failure
+            }
+        });
         Toolbar toolbar = (Toolbar) findViewById(R.id.activity_my_toolbar);
         setSupportActionBar(toolbar);//modifico el action Bar pordefecto de l
 
