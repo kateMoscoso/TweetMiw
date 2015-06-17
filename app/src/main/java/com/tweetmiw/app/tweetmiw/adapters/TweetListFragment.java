@@ -53,7 +53,6 @@ public class TweetListFragment extends ListFragment {
         usuario.setProfile(profileUser);
         Tweet tweet = new Tweet("esto es un tweet", usuario);
         tweetArrayList.add(tweet);
-
         Tweet tweet2 = new Tweet("esto es otro tweet", usuario);
         tweetArrayList.add(tweet2);
         Tweet tweet3 = new Tweet("esto es otro tweet", usuario);

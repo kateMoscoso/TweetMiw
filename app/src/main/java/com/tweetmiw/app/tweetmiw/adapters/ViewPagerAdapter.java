@@ -3,10 +3,8 @@ package com.tweetmiw.app.tweetmiw.adapters;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.util.Log;
 
 import com.tweetmiw.app.tweetmiw.fragments.Profile_Fragments;
-
 import com.tweetmiw.app.tweetmiw.fragments.Tweet_Fragments;
 import com.tweetmiw.app.tweetmiw.fragments.Usuarios_Fragment;
 
@@ -33,8 +31,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         {
             Tweet_Fragments tf = new Tweet_Fragments();
           //  Tab1 tab1 = new Tab1();
-           // return tf;
-            return TweetListFragment.init(position);
+            return tf;
         }
         if(position == 1) // if the position is 0 we are returning the First tab
         {
@@ -44,14 +41,12 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         }
         if(position == 2) // if the position is 0 we are returning the First tab
         {
-            Tweet_Fragments tf = new Tweet_Fragments();
+            Profile_Fragments pf = new Profile_Fragments();
             //  Tab1 tab1 = new Tab1();
-            return tf;
-
+         //   return pf;
          //   ArrayListFragment ar = new ArrayListFragment();
             // Tab2 tab2 = new Tab2();
-           // ArrayListFragment ar = new ArrayListFragment();
-          //  return TweetListFragment.init(position);
+            return TweetListFragment.init(position);
         }
         else             // As we are having 2 tabs if the position is now 0 it must be 1 so we are returning second tab
         {

@@ -23,7 +23,6 @@ import com.twitter.sdk.android.core.models.Tweet;
 import com.twitter.sdk.android.core.services.StatusesService;
 import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 import com.twitter.sdk.android.tweetui.TweetUi;
-import com.twitter.sdk.android.tweetui.UserTimeline;
 
 import java.io.File;
 import java.util.logging.FileHandler;
@@ -52,7 +51,7 @@ public class InitialActivity extends AppCompatActivity {
                         consumerSecret);
 
        Fabric.with(this, new Twitter(authConfig));
-     /*  me redirige a la pgina Fabric.with(this, new TweetComposer());
+     /*  me redirige a la pagina Fabric.with(this, new TweetComposer());
         TweetComposer.Builder builder = new TweetComposer.Builder(this)
                 .text("Probando Fabric desde Android studio");
 
@@ -62,12 +61,6 @@ public class InitialActivity extends AppCompatActivity {
 
         // Creating The Toolbar and setting it as the Toolbar for the activity
         TwitterApiClient twitterApiClient = TwitterCore.getInstance().getApiClient();
-        final UserTimeline userTimeline = new UserTimeline.Builder()
-                .screenName("fabric")
-                .build();
-
-        Log.v("InitialActivity ","timeline "+ userTimeline.getClass().getAnnotations() );
-        Log.v("InitialActivity ","timeline  sin metodo"+ userTimeline);
 // Can also use Twitter directly: Twitter.getApiClient()
         StatusesService statusesService = twitterApiClient.getStatusesService();
         statusesService.show(524971209851543553L, null, null, null, new Callback<Tweet>() {
