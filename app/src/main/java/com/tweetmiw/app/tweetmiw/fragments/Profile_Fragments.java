@@ -66,7 +66,7 @@ public class Profile_Fragments extends Fragment {
         Tweet tweet5 = new Tweet("esto es otro tweet", usuario);
         tweetArrayList.add(tweet5);
 
-        RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.my_recycler_view_profile);
+        RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.my_recycler_view_tweet);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(new Tweet_Adapter(tweetArrayList, R.layout.tweet_row));
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

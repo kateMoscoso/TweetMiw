@@ -51,7 +51,7 @@ public class InitialActivity extends AppCompatActivity {
                         consumerSecret);
 
        Fabric.with(this, new Twitter(authConfig));
-     /*  me redirige a la página Fabric.with(this, new TweetComposer());
+     /*  me redirige a la pgina Fabric.with(this, new TweetComposer());
         TweetComposer.Builder builder = new TweetComposer.Builder(this)
                 .text("Probando Fabric desde Android studio");
 
