@@ -1,5 +1,7 @@
 package com.tweetmiw.app.tweetmiw.adapters;
 
+import android.app.DownloadManager;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
@@ -11,11 +13,18 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.tweetmiw.app.tweetmiw.R;
 import com.tweetmiw.app.tweetmiw.TweetDetailActivity;
 import com.tweetmiw.app.tweetmiw.entities.ProfileUser;
 import com.tweetmiw.app.tweetmiw.entities.Tweet;
 import com.tweetmiw.app.tweetmiw.entities.User;
+
+import org.json.JSONArray;
 
 import java.util.ArrayList;
 
@@ -42,7 +51,7 @@ public class TweetListFragment extends ListFragment {
     /**
      * Retrieving this instance's number from its arguments.
      */
-    @Override
+   @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         fragNum = getArguments() != null ? getArguments().getInt("val") : 1;
@@ -84,6 +93,29 @@ public class TweetListFragment extends ListFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        //Codigo Salvador Garcia para trabajar con Volley
+        String URL = "https://api.twitter.com/1.1/statuses/home_timeline.json";
+
+        RequestQueue queue = Volley.newRequestQueue(getActivity());
+
+        final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "Espere por favor", "Estamos atendiendo su solicitud");
+
+        JsonArrayRequest req = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                Log.e("Mi respuesta: ", response.toString());
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        queue.add(req);
+        //Fin codigo Salvador Garcia
+
         CustomAdapter adapter = new CustomAdapter(getActivity(),  tweetArrayList, true);
         setListAdapter(adapter);
     }
