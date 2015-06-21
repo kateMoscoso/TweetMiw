@@ -2,6 +2,7 @@ package com.tweetmiw.app.tweetmiw.adapters;
 
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +16,17 @@ import com.tweetmiw.app.tweetmiw.R;
 import com.tweetmiw.app.tweetmiw.entities.ProfileUser;
 import com.tweetmiw.app.tweetmiw.entities.Tweet;
 import com.tweetmiw.app.tweetmiw.fragments.Profile_Fragments;
+import com.tweetmiw.app.tweetmiw.utils.ConstantsUtils;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+
+import twitter4j.Status;
+import twitter4j.TwitterFactory;
+import twitter4j.User;
+import twitter4j.auth.AccessToken;
+import twitter4j.conf.ConfigurationBuilder;
 
 /**
  * Created by katherin on 04/06/2015.
@@ -42,7 +52,11 @@ public class Users_Adapter extends RecyclerView.Adapter<Users_Adapter.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
 
-        ProfileUser user = users.get(i);
+
+
+
+
+    ProfileUser user = users.get(i);
 
 
         viewHolder.screenName.setText(user.getScreen_name());

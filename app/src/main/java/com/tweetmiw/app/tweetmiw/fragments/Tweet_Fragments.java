@@ -1,22 +1,41 @@
 package com.tweetmiw.app.tweetmiw.fragments;
 
 //import android.app.Fragment;
+import android.content.SharedPreferences;
+import android.os.StrictMode;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.tweetmiw.app.tweetmiw.R;
 import com.tweetmiw.app.tweetmiw.adapters.Tweet_Adapter;
 import com.tweetmiw.app.tweetmiw.entities.ProfileUser;
 import com.tweetmiw.app.tweetmiw.entities.Tweet;
 import com.tweetmiw.app.tweetmiw.entities.User;
+import com.tweetmiw.app.tweetmiw.utils.ConstantsUtils;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+
+import twitter4j.Paging;
+import twitter4j.Status;
+import twitter4j.TwitterFactory;
+import twitter4j.auth.AccessToken;
+import twitter4j.conf.ConfigurationBuilder;
 
 /**
  * Created by katherin on 02/06/2015.
@@ -24,12 +43,13 @@ import java.util.ArrayList;
 public class Tweet_Fragments extends Fragment {
 
     String f;
+    private static SharedPreferences mSharedPreferences;
 
     public Tweet_Fragments() {
         // Required empty public constructor
     }
 
-   /* public AmigosFragment(String f) {
+    /*public Tweet_Fragments(String token,String secret) {
         this.f = f;
     }*/
 
@@ -37,36 +57,75 @@ public class Tweet_Fragments extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         ArrayList<Tweet> tweetArrayList = new ArrayList<Tweet>();
+        twitter4j.User user = null;
+        try {
 
-        User usuario = new User();
-        ProfileUser profileUser = new ProfileUser();
-        profileUser.setName("Usuario");
-        profileUser.setScreen_name("@screen_name");
-        usuario.setProfile(profileUser);
-        Tweet tweet = new Tweet("esto es un tweet", usuario);
-        tweetArrayList.add(tweet);
-        Tweet tweet2 = new Tweet("esto es otro tweet", usuario);
-        tweetArrayList.add(tweet2);
-        Tweet tweet3 = new Tweet("esto es otro tweet", usuario);
-        tweetArrayList.add(tweet3);
-        Tweet tweet4 = new Tweet("esto es otro tweet", usuario);
-        tweetArrayList.add(tweet4);
-        Tweet tweet5 = new Tweet("esto es otro tweet", usuario);
-        tweetArrayList.add(tweet5);
 
-        RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.my_recycler_view_tweet);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(new Tweet_Adapter(tweetArrayList, R.layout.tweet_row));
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
+            ConfigurationBuilder builder = new ConfigurationBuilder();
+            builder.setOAuthConsumerKey(ConstantsUtils.CONSUMER_KEY);
+            builder.setOAuthConsumerSecret(ConstantsUtils.CONSUMER_SECRET);
+
+            AccessToken accessToken = new AccessToken(com.tweetmiw.app.tweetmiw.utils.Properties.getInstance().getToken(), com.tweetmiw.app.tweetmiw.utils.Properties.getInstance().getSecret());
+            twitter4j.Twitter twitter = new TwitterFactory(builder.build()).getInstance(accessToken);
+            long userID = accessToken.getUserId();
+            user = twitter.showUser(userID);
+            User usuario = new User();
+            ProfileUser profileUser = new ProfileUser();
+            profileUser.setDescription(user.getDescription());
+            profileUser.setName(user.getName());
+            profileUser.setScreen_name(user.getScreenName());
+            usuario.setProfile(profileUser);
+            TextView screenName = (TextView) getActivity().findViewById(R.id.screenName2);
+            TextView nombreUsuario = (TextView) getActivity().findViewById(R.id.name2);
+            TextView descripcion = (TextView) getActivity(). findViewById(R.id.descripcion2);
+            screenName.setText(user.getScreenName());
+            nombreUsuario.setText(user.getName());
+            descripcion.setText(user.getDescription());
+            //List< Status> favoritesResources = twitter.getFavorites();
+            int pageno = 1;
+            Paging page = new Paging(pageno++, 10);
+
+            List<Status> statuses = twitter.getUserTimeline(userID);
+
+            //twitter.getHomeTimeline()
+            System.out.println("Showing home timeline.");
+            User usuarioAux = new User();
+            ProfileUser profileUserAux = new ProfileUser();
+            for (Status status : statuses) {
+                profileUserAux.setDescription(status.getUser().getDescription());
+                profileUserAux.setName(status.getUser().getName());
+                profileUserAux.setScreen_name(status.getUser().getScreenName());
+                usuarioAux.setProfile(profileUserAux);
+                Tweet tweet = new Tweet(status.getText(), usuarioAux);
+                tweetArrayList.add(tweet);
+            }
+
+
+            RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.my_recycler_view_tweet);
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setAdapter(new Tweet_Adapter(tweetArrayList, R.layout.tweet_row));
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+            recyclerView.setItemAnimator(new DefaultItemAnimator());
+           // System.exit(0);
+        } catch (twitter4j.TwitterException e) {
+            //  Log.e()
+            Log.e("ss", e.getMessage());
+        }
+
+
+
+
 
 
     }

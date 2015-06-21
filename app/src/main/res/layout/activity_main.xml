@@ -23,15 +23,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="109dp" />
 
-    <!-- <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/registrar"
-        android:id="@+id/textView2"
-        android:onClick="http://www.twitter.com"
-        android:layout_below="@+id/login_button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp" /> -->
 
     <TextView
         android:layout_width="wrap_content"
@@ -43,17 +34,5 @@
         android:layout_marginTop="48dp"
         android:onClick="alertDialog" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button4"
-        android:onClick="login"
-        android:layout_below="@+id/login_button"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-
-    <!-- -->
 
 </RelativeLayout>

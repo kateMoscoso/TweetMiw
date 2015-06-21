@@ -94,27 +94,7 @@ public class TweetListFragment extends ListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        //Codigo Salvador Garcia para trabajar con Volley
-        String URL = "https://api.twitter.com/1.1/statuses/home_timeline.json";
 
-        RequestQueue queue = Volley.newRequestQueue(getActivity());
-
-        final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "Espere por favor", "Estamos atendiendo su solicitud");
-
-        JsonArrayRequest req = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                Log.e("Mi respuesta: ", response.toString());
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        });
-
-        queue.add(req);
-        //Fin codigo Salvador Garcia
 
         CustomAdapter adapter = new CustomAdapter(getActivity(),  tweetArrayList, true);
         setListAdapter(adapter);
