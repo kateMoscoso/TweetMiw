@@ -13,6 +13,14 @@ apply plugin: 'io.fabric'
 repositories {
     maven { url 'https://maven.fabric.io/public' }
 }
+repositories { mavenCentral() }
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:support-v4:19.+'
+    compile 'org.twitter4j:twitter4j-core:4.0.2'
+
+}
 
 
 android {
@@ -43,6 +51,7 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:+'
     compile 'com.getbase:floatingactionbutton:1.2.1'
     compile 'de.hdodenhof:circleimageview:1.2.1'
+    compile 'com.mcxiaoke.volley:library:1.0.6'
     compile('com.twitter.sdk.android:twitter:1.6.0@aar') {
         transitive = true;
     }
