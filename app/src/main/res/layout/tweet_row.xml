@@ -8,8 +8,7 @@
         android:layout_height="1dp"
         android:layout_width="fill_parent"
         android:layout_marginTop="84dp"
-        android:background="@drawable/border_line"
-        >
+        android:background="@drawable/border_line" >
 
     </RelativeLayout>
 
@@ -32,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="ScreenName Nombre"
+                android:text="@string/name"
                 android:id="@+id/screenName"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="80dp"
@@ -44,12 +43,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Hora"
+                android:text="@string/user_name"
+                android:id="@+id/username"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/screenName"
+                android:layout_toRightOf="@+id/screenName"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/hour"
                 android:id="@+id/hora"
                 android:layout_toEndOf="@+id/screenName"
                 android:layout_toRightOf="@+id/screenName"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
+                android:layout_marginStart="140dp"
+                android:layout_marginLeft="140dp"
                 />
 
 

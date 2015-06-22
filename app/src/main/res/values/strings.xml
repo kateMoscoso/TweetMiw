@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">TweetMiw</string>
 
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Configuración</string>
     <string name="login">Login</string>
     <string name="title_activity_initial">InitialActivity</string>
@@ -11,6 +10,9 @@
     <string name="ayuda">¿Necesitas ayuda?</string>
     <string name="lista">lista</string>
     <string name="timeline">Timeline</string>
+    <string name="name">Nombre</string>
+    <string name="user_name">\@Usuario</string>
+    <string name="hour">Hora</string>
 
     <string name="msg_yes">Sí</string>
     <string name="msg_no">No</string>
