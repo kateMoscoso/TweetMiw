@@ -1,5 +1,7 @@
 package com.tweetmiw.app.tweetmiw.entities;
 
+import com.tweetmiw.app.tweetmiw.utils.DateUtils;
+
 /**
  * Created by katherin on 02/06/2015.
  */
@@ -13,6 +15,7 @@ public class ProfileUser {
     private String favorites_count;
     private String verified;
     private String profile_image_url;
+    private String createdAt;
 
 
     public ProfileUser(){
@@ -87,6 +90,14 @@ public class ProfileUser {
     }
 
     public void setScreen_name(String screen_name) {
-        this.screen_name = screen_name;
+        this.screen_name = "@"+screen_name;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = DateUtils.setDateFormat(createdAt);
     }
 }

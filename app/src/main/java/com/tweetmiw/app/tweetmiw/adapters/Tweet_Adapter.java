@@ -2,15 +2,18 @@ package com.tweetmiw.app.tweetmiw.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tweetmiw.app.tweetmiw.R;
 import com.tweetmiw.app.tweetmiw.entities.Tweet;
 import com.tweetmiw.app.tweetmiw.fragments.Profile_Fragments;
+import com.tweetmiw.app.tweetmiw.utils.BitmapManager;
 
 import java.util.ArrayList;
 
@@ -39,9 +42,14 @@ public class Tweet_Adapter  extends RecyclerView.Adapter<Tweet_Adapter.ViewHolde
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
 
         Tweet tweet = tweets.get(i);
-        viewHolder.screenName.setText(tweet.getUser().getProfile().getScreen_name());
+        Log.v("Tweet_Adapter", tweet.getUser().getProfile().getProfile_image_url());
+        BitmapManager.getInstance().loadBitmap(tweet.getUser().getProfile().getProfile_image_url(),viewHolder.avatar);
         viewHolder.nombreUsuario.setText(tweet.getUser().getProfile().getName());
+        viewHolder.screenName.setText(tweet.getUser().getProfile().getScreen_name());
         viewHolder.mensajeTweet.setText(tweet.getMessage());
+        viewHolder.hora.setText(tweet.getCreated_at());
+
+
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,16 +81,23 @@ public class Tweet_Adapter  extends RecyclerView.Adapter<Tweet_Adapter.ViewHolde
      */
     public  class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        public TextView nombreUsuario;
-        public TextView screenName;
-        public TextView mensajeTweet;
+            public TextView nombreUsuario;
+            public TextView screenName;
+            public TextView mensajeTweet;
+            public TextView hora;
+            public ImageView avatar;
+
+
 
         public ViewHolder(View itemView) {
             super(itemView);
 
+
+            nombreUsuario = (TextView) itemView.findViewById(R.id.username);
             screenName = (TextView) itemView.findViewById(R.id.screenName);
-            nombreUsuario = (TextView) itemView.findViewById(R.id.hora);
             mensajeTweet = (TextView) itemView.findViewById(R.id.tweets);
+            hora = (TextView) itemView.findViewById(R.id.hora);
+            avatar = (ImageView) itemView.findViewById(R.id.avatar_usuario);
 
 
         }
@@ -97,4 +112,5 @@ public class Tweet_Adapter  extends RecyclerView.Adapter<Tweet_Adapter.ViewHolde
             Toast.makeText(view.getContext(), "Aqui definimos el onclick nuevo " + position, Toast.LENGTH_SHORT).show();
         }
     }
+
 }

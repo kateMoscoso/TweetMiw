@@ -13,6 +13,9 @@
     <string name="name">Nombre</string>
     <string name="user_name">\@Usuario</string>
     <string name="hour">Hora</string>
+    <string name="user_loading">Cargando Usuarios..</string>
+    <string name="label_tweets_not_found">Tweets no encontrados</string>
+    <string name="label_tweets_downloaded">Tweets encntrados</string>
 
     <string name="msg_yes">Sí</string>
     <string name="msg_no">No</string>

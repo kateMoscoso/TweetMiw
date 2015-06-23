@@ -2,6 +2,7 @@ package com.tweetmiw.app.tweetmiw.fragments;
 
 //import android.app.Fragment;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -71,13 +72,14 @@ public class Tweet_Fragments extends Fragment {
         twitter4j.User user = null;
         try {
 
-
+/*
             ConfigurationBuilder builder = new ConfigurationBuilder();
             builder.setOAuthConsumerKey(ConstantsUtils.CONSUMER_KEY);
             builder.setOAuthConsumerSecret(ConstantsUtils.CONSUMER_SECRET);
-
+*/
             AccessToken accessToken = new AccessToken(com.tweetmiw.app.tweetmiw.utils.Properties.getInstance().getToken(), com.tweetmiw.app.tweetmiw.utils.Properties.getInstance().getSecret());
-            twitter4j.Twitter twitter = new TwitterFactory(builder.build()).getInstance(accessToken);
+
+            twitter4j.Twitter twitter = com.tweetmiw.app.tweetmiw.utils.Properties.getInstance().getTwitter();
             long userID = accessToken.getUserId();
             user = twitter.showUser(userID);
             User usuario = new User();
@@ -86,12 +88,6 @@ public class Tweet_Fragments extends Fragment {
             profileUser.setName(user.getName());
             profileUser.setScreen_name(user.getScreenName());
             usuario.setProfile(profileUser);
-            TextView screenName = (TextView) getActivity().findViewById(R.id.screenName2);
-            TextView nombreUsuario = (TextView) getActivity().findViewById(R.id.name2);
-            TextView descripcion = (TextView) getActivity(). findViewById(R.id.descripcion2);
-            screenName.setText(user.getScreenName());
-            nombreUsuario.setText(user.getName());
-            descripcion.setText(user.getDescription());
             //List< Status> favoritesResources = twitter.getFavorites();
             int pageno = 1;
             Paging page = new Paging(pageno++, 10);
@@ -99,15 +95,17 @@ public class Tweet_Fragments extends Fragment {
             List<Status> statuses = twitter.getUserTimeline(userID);
 
             //twitter.getHomeTimeline()
-            System.out.println("Showing home timeline.");
             User usuarioAux = new User();
             ProfileUser profileUserAux = new ProfileUser();
+            Tweet tweet;
             for (Status status : statuses) {
-                profileUserAux.setDescription(status.getUser().getDescription());
                 profileUserAux.setName(status.getUser().getName());
                 profileUserAux.setScreen_name(status.getUser().getScreenName());
+                profileUser.setProfile_image_url(status.getUser().getProfileImageURL());
+                Log.v("Tweet_fragments",status.getUser().getProfileImageURL());
                 usuarioAux.setProfile(profileUserAux);
-                Tweet tweet = new Tweet(status.getText(), usuarioAux);
+                tweet = new Tweet(status.getText(), usuarioAux);
+                tweet.setCreated_at(""+status.getCreatedAt().getTime());
                 tweetArrayList.add(tweet);
             }
 
@@ -123,10 +121,6 @@ public class Tweet_Fragments extends Fragment {
             Log.e("ss", e.getMessage());
         }
 
-
-
-
-
-
     }
+
 }

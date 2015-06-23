@@ -8,13 +8,12 @@ import java.util.Date;
 public class Tweet {
     private String message;
     private User user;
-    private int favorites;
-    private Date created_at;
+    private String favorites;
+    private String created_at;
 
     public Tweet(String message, User user){
         this.message = message;
         this.user = user;
-        this.favorites = 0;
 
     }
 
@@ -34,12 +33,20 @@ public class Tweet {
         this.user = user;
     }
 
-    public int getFavorites() {
+    public String getFavorites() {
         return favorites;
     }
 
-    public void setFavorites(int favorites) {
+    public void setFavorites(String favorites) {
         this.favorites = favorites;
+    }
+
+    public String getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
     }
 }
 

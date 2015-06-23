@@ -1,0 +1,42 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/avatar_usuario"
+        android:src="@drawable/avatar2"
+        android:scaleType="centerCrop"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="ScreenName"
+        android:id="@+id/screenName2"
+        android:layout_below="@+id/avatar_usuario"
+        android:layout_centerHorizontal="true" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Name"
+        android:id="@+id/name2"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/screenName2"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Descripcion"
+        android:id="@+id/descripcion2"
+        android:layout_below="@+id/name2"
+        android:layout_centerHorizontal="true"
+        />
+</LinearLayout>

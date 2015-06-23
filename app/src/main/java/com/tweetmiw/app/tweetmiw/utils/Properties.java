@@ -1,5 +1,10 @@
 package com.tweetmiw.app.tweetmiw.utils;
 
+import twitter4j.Twitter;
+import twitter4j.TwitterFactory;
+import twitter4j.auth.AccessToken;
+import twitter4j.conf.ConfigurationBuilder;
+
 /**
  * Created by katherin on 21/06/2015.
  */
@@ -8,6 +13,7 @@ public class Properties  {
 
     public String token;
     public String secret;
+    public Twitter twitter;
 
     protected Properties(){}
 
@@ -32,5 +38,19 @@ public class Properties  {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public Twitter getTwitter() {
+        ConfigurationBuilder builder = new ConfigurationBuilder();
+        builder.setOAuthConsumerKey(ConstantsUtils.CONSUMER_KEY);
+        builder.setOAuthConsumerSecret(ConstantsUtils.CONSUMER_SECRET);
+
+        AccessToken accessToken = new AccessToken(token, secret);
+        this.twitter = new TwitterFactory(builder.build()).getInstance(accessToken);
+        return this.twitter;
+    }
+
+    public void setTwitter(Twitter twitter) {
+        this.twitter = twitter;
     }
 }
