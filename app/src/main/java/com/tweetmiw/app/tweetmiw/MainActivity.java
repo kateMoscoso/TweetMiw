@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.tweetmiw.app.tweetmiw.utils.ConstantsUtils;
 import com.tweetmiw.app.tweetmiw.utils.Properties;
+import com.tweetmiw.app.tweetmiw.utils.SessionManager;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 
@@ -35,21 +36,25 @@ public class MainActivity extends AppCompatActivity {
     private TwitterLoginButton loginButton;
     private TwitterSession session;
     private static final String TOKEN_URL = "https://api.twitter.com/oauth2/token";
-
+    // Session Manager Class
+    SessionManager sessionManager;
     SharedPreferences pref;
-    private static SharedPreferences mSharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
+        sessionManager = new SessionManager(getApplicationContext());
+       // sessionManager.checkLogin();
+        if(sessionManager.isLoggedIn()){
+            //lanzarLogeado();
+            Intent i = new Intent(this, InitialActivity.class);
+            startActivity(i);
+        }
         TwitterAuthConfig authConfig = new TwitterAuthConfig(ConstantsUtils.CONSUMER_KEY, ConstantsUtils.CONSUMER_SECRET);
         Fabric.with(this, new Twitter(authConfig));
         setContentView(R.layout.activity_main);
-        loginButton = (TwitterLoginButton)
-                findViewById(R.id.login_button);
+        loginButton = (TwitterLoginButton)findViewById(R.id.login_button);
 
 
         loginButton.setCallback(new Callback<TwitterSession>() {
@@ -58,15 +63,11 @@ public class MainActivity extends AppCompatActivity {
                 // Do something with result, which provides a
                 // TwitterSession for making API calls
                 session = Twitter.getSessionManager().getActiveSession();
-
                 Log.v("main", "login succes " + session.getUserName());
-
-
             }
 
             @Override
             public void failure(TwitterException exception) {
-                // Do something on failure
                 Log.v("main", "login fail");
             }
         });
@@ -90,19 +91,18 @@ public class MainActivity extends AppCompatActivity {
 
         try {
 
-
             TwitterAuthToken authToken = session.getAuthToken();
             Properties.getInstance().setToken(authToken.token);
             Properties.getInstance().setSecret(authToken.secret);
-            Log.v("main", "on activity result " + authToken.token);
-            Log.v("main", "on activity result " + authToken.secret);
-
+            Log.v("Main " , authToken.token+"  "+ authToken.secret);
+            sessionManager.createLoginSession(authToken.token, authToken.secret);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Intent i = new Intent(this, InitialActivity.class);
-        startActivity(i);
+        //lanzarLogeado();
+       Intent i = new Intent(this, InitialActivity.class);
+       startActivity(i);
     }
 
     @Override
@@ -126,26 +126,9 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-    public void login(View view) {
-        Intent i = new Intent(this, SegundaActividad.class);
+    public void lanzarLogeado() {
+        Intent i = new Intent(this, InitialActivity.class);
         startActivity(i);
-    }
-
-    public void lista(View view) {
-        //Intent i = new Intent(this, InitialActivity.class );
-        //startActivity(i);
-        final UserTimeline userTimeline = new UserTimeline.Builder()
-                .screenName("fabric")
-                .build();
-        final TweetTimelineListAdapter adaptertweet = new TweetTimelineListAdapter(this, userTimeline);
-
-        // setListAdapte(adapter);
-    }
-
-
-    public void onClick(View v) {
-        Toast.makeText(this, "Hola, estoy escuchando", Toast.LENGTH_LONG).show();
     }
 
 

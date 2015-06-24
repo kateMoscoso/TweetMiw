@@ -21,6 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import com.tweetmiw.app.tweetmiw.adapters.ViewPagerAdapter;
 import com.tweetmiw.app.tweetmiw.utils.ConstantsUtils;
+import com.tweetmiw.app.tweetmiw.utils.SessionManager;
 import com.twitter.sdk.android.Twitter;
 
 import com.twitter.sdk.android.core.TwitterAuthConfig;
@@ -38,13 +39,15 @@ public class InitialActivity extends AppCompatActivity {
     int Numboftabs =3;
     private static Twitter twitter;
     TwitterAuthConfig authConfig;
-
+    // Session Manager Class
+    SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_initial);
 
+        setContentView(R.layout.activity_initial);
+        session = new SessionManager(getApplicationContext());
         Toolbar toolbar = (Toolbar) findViewById(R.id.activity_my_toolbar);
         setSupportActionBar(toolbar);//modifico el action Bar pordefecto de l
 
@@ -91,6 +94,7 @@ public class InitialActivity extends AppCompatActivity {
             return true;
         }
         if(id == R.id.action_cerrar_sesion){
+            session.logoutUser();
             Intent i = new Intent(this, MainActivity.class );
             startActivity(i);
         }
