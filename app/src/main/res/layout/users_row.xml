@@ -31,18 +31,32 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="ScreenName"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/name"
             android:id="@+id/screenName"
             android:layout_marginStart="80dp"
             android:layout_marginLeft="80dp"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Seguir"
+            android:id="@+id/hora"
+            android:layout_toEndOf="@+id/screenName"
+            android:layout_toRightOf="@+id/screenName"
+            android:gravity="right"
+            android:layout_marginStart="130dp"
+            android:layout_marginLeft="130dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            />
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Name"
+            android:text="@string/user_name"
             android:id="@+id/name"
             android:layout_marginStart="80dp"
             android:layout_marginLeft="80dp"
@@ -51,12 +65,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Descripcion"
+            android:text="@string/description"
             android:id="@+id/descripcion"
             android:layout_marginStart="80dp"
             android:layout_marginLeft="80dp"
-            android:layout_below="@+id/name"/>
+            android:layout_below="@+id/name"
+            />
 
 
         </RelativeLayout>

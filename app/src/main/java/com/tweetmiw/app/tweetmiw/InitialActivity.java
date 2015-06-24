@@ -2,6 +2,7 @@ package com.tweetmiw.app.tweetmiw;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Outline;
 import android.net.Uri;
 import android.os.StrictMode;
 import android.support.v4.view.ViewPager;

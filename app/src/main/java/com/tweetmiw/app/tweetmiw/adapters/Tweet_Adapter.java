@@ -78,7 +78,7 @@ public class Tweet_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             public void onClick(View v) {
                 //do somethingvi
 
-                // setContentView(R.layout.actvity_tweet_detail);
+                // setContentView(R.layout.activity_tweet_detail);
                 Toast.makeText(v.getContext(), "Aqui definimos el onclick", Toast.LENGTH_SHORT).show();
             }
         });

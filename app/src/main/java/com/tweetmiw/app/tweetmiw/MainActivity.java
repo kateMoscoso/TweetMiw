@@ -71,13 +71,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Configurando que el Toolbar como ActionBar
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.activity_my_toolbar);
-        //En este ejemplo, ocultamos el titulo de la aplicación, esto es opcional
-        // setSupportActionBar(toolbar);
-
-        //setToolbar();
-
     }
 
     @Override
@@ -125,11 +118,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void login(View view) {
-        Intent i = new Intent(this, SegundaActividad.class);
-        startActivity(i);
     }
 
     public void lista(View view) {
