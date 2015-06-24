@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.tweetmiw.app.tweetmiw.R;
 
 import com.tweetmiw.app.tweetmiw.entities.Tweet;
+import com.tweetmiw.app.tweetmiw.holders.ViewHolderTweet;
 
 import java.util.ArrayList;
 
@@ -34,7 +35,7 @@ public class CustomAdapter extends ArrayAdapter<Tweet> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder = new ViewHolder();
+        ViewHolderTweet viewHolder = new ViewHolderTweet(parent);
 
         Tweet tweet = tweets.get(position);
 
@@ -44,15 +45,15 @@ public class CustomAdapter extends ArrayAdapter<Tweet> {
           // convertView = inflater.inflate(R.layout.tweet_row, null);
             convertView = LayoutInflater.from(context).inflate(R.layout.tweet_row, parent, false);
             viewHolder.nombreUsuario = (TextView) convertView.findViewById(R.id.username);
-            viewHolder.screenName = (TextView) convertView.findViewById(R.id.screen);
+            viewHolder.screenName = (TextView) convertView.findViewById(R.id.screenName);
             viewHolder.mensajeTweet = (TextView) convertView.findViewById(R.id.tweets);
-            viewHolder.mensajeTweet = (TextView) convertView.findViewById(R.id.hora);
+            viewHolder.hora = (TextView) convertView.findViewById(R.id.hora);
 
             convertView.setTag(viewHolder);
         } else {
-            viewHolder= (ViewHolder) convertView.getTag();
+            viewHolder= (ViewHolderTweet) convertView.getTag();
         }
-        viewHolder= (ViewHolder) convertView.getTag();
+        viewHolder= (ViewHolderTweet) convertView.getTag();
         viewHolder.nombreUsuario.setText(tweet.getUser().getProfile().getName());
         viewHolder.screenName.setText(tweet.getUser().getProfile().getScreen_name());
         viewHolder.mensajeTweet.setText(tweet.getMessage());
@@ -60,11 +61,5 @@ public class CustomAdapter extends ArrayAdapter<Tweet> {
         return convertView;
     }
 
-    private static class ViewHolder {
-        public TextView nombreUsuario;
-        public TextView screenName;
-        public TextView mensajeTweet;
-        public TextView hora;
 
-    }
 }

@@ -72,11 +72,6 @@ public class Tweet_Fragments extends Fragment {
         twitter4j.User user = null;
         try {
 
-/*
-            ConfigurationBuilder builder = new ConfigurationBuilder();
-            builder.setOAuthConsumerKey(ConstantsUtils.CONSUMER_KEY);
-            builder.setOAuthConsumerSecret(ConstantsUtils.CONSUMER_SECRET);
-*/
             AccessToken accessToken = new AccessToken(com.tweetmiw.app.tweetmiw.utils.Properties.getInstance().getToken(), com.tweetmiw.app.tweetmiw.utils.Properties.getInstance().getSecret());
 
             twitter4j.Twitter twitter = com.tweetmiw.app.tweetmiw.utils.Properties.getInstance().getTwitter();
@@ -87,6 +82,7 @@ public class Tweet_Fragments extends Fragment {
             profileUser.setDescription(user.getDescription());
             profileUser.setName(user.getName());
             profileUser.setScreen_name(user.getScreenName());
+            profileUser.setProfile_image_url(user.getProfileImageURL());
             usuario.setProfile(profileUser);
             //List< Status> favoritesResources = twitter.getFavorites();
             int pageno = 1;
@@ -112,9 +108,10 @@ public class Tweet_Fragments extends Fragment {
 
             RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.my_recycler_view_tweet);
             recyclerView.setHasFixedSize(true);
-            recyclerView.setAdapter(new Tweet_Adapter(tweetArrayList, R.layout.tweet_row));
+            recyclerView.setAdapter(new Tweet_Adapter(R.layout.tweet_row, R.layout.header,tweetArrayList, usuario));
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             recyclerView.setItemAnimator(new DefaultItemAnimator());
+           // recyclerView.notifySubtreeAccessibilityStateChanged();
            // System.exit(0);
         } catch (twitter4j.TwitterException e) {
             //  Log.e()

@@ -12,7 +12,10 @@ import android.widget.Toast;
 
 import com.tweetmiw.app.tweetmiw.R;
 import com.tweetmiw.app.tweetmiw.entities.Tweet;
+import com.tweetmiw.app.tweetmiw.entities.User;
 import com.tweetmiw.app.tweetmiw.fragments.Profile_Fragments;
+import com.tweetmiw.app.tweetmiw.holders.ViewHolderTweet;
+import com.tweetmiw.app.tweetmiw.holders.ViewHolderUser;
 import com.tweetmiw.app.tweetmiw.utils.BitmapManager;
 
 import java.util.ArrayList;
@@ -20,35 +23,54 @@ import java.util.ArrayList;
 /**
  * Created by katherin on 02/06/2015.
  */
-public class Tweet_Adapter  extends RecyclerView.Adapter<Tweet_Adapter.ViewHolder>{
-
+public class Tweet_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    private static final int HEADER = 0;
+    private static final int OTHER = 1;
     private ArrayList<Tweet> tweets;// dataset
-    private  int itemLayout; // la vista, los row
+    private int itemLayout; // la vista, los row
+    private int header; //usuario
+    private User user;
 
-    public  Tweet_Adapter( ArrayList<Tweet>  tweets, int itemLayout){
+    public Tweet_Adapter(int itemLayout, int header, ArrayList<Tweet> tweets, User user) {
         this.tweets = tweets;
         this.itemLayout = itemLayout;
+        this.header = header;
+        this.user = user;
     }
 
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).
-                inflate(itemLayout, viewGroup, false); // false no heredo obtengo el contexto del fragment
-        return new ViewHolder(v);
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+        if (i == HEADER) {
+            View v = LayoutInflater.from(viewGroup.getContext()).inflate(header, viewGroup, false);
+            return new ViewHolderUser(v);
+        } else if (i == OTHER) {
+            View v = LayoutInflater.from(viewGroup.getContext()).
+                    inflate(itemLayout, viewGroup, false); // false no heredo obtengo el contexto del fragment
+            return new ViewHolderTweet(v);
+        } else
+            throw new RuntimeException("Could not inflate layout");
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
 
-        Tweet tweet = tweets.get(i);
-        Log.v("Tweet_Adapter", tweet.getUser().getProfile().getProfile_image_url());
-        BitmapManager.getInstance().loadBitmap(tweet.getUser().getProfile().getProfile_image_url(),viewHolder.avatar);
-        viewHolder.nombreUsuario.setText(tweet.getUser().getProfile().getName());
-        viewHolder.screenName.setText(tweet.getUser().getProfile().getScreen_name());
-        viewHolder.mensajeTweet.setText(tweet.getMessage());
-        viewHolder.hora.setText(tweet.getCreated_at());
 
+
+       // Log.v("Tweet_Adapter", tweet.getUser().getProfile().getProfile_image_url());
+        if (viewHolder instanceof ViewHolderTweet) {
+            Tweet tweet = tweets.get(position-1);
+            ((ViewHolderTweet) viewHolder).nombreUsuario.setText(tweet.getUser().getProfile().getName());
+            ((ViewHolderTweet) viewHolder).screenName.setText(tweet.getUser().getProfile().getScreen_name());
+            ((ViewHolderTweet) viewHolder).mensajeTweet.setText(tweet.getMessage());
+            ((ViewHolderTweet) viewHolder).hora.setText(tweet.getCreated_at());
+        }
+        if (viewHolder instanceof ViewHolderUser) {
+            BitmapManager.getInstance().loadBitmap(user.getProfile().getProfile_image_url(), ((ViewHolderUser) viewHolder).avatar);
+            ((ViewHolderUser) viewHolder).nombreUsuario.setText(user.getProfile().getName());
+            ((ViewHolderUser) viewHolder).screenName.setText(user.getProfile().getScreen_name());
+            ((ViewHolderUser) viewHolder).descripcion.setText(user.getProfile().getDescription());
+        }
 
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -56,8 +78,8 @@ public class Tweet_Adapter  extends RecyclerView.Adapter<Tweet_Adapter.ViewHolde
             public void onClick(View v) {
                 //do somethingvi
 
-               // setContentView(R.layout.actvity_tweet_detail);
-                Toast.makeText(v.getContext(), "Aqui definimos el onclick" , Toast.LENGTH_SHORT).show();
+                // setContentView(R.layout.actvity_tweet_detail);
+                Toast.makeText(v.getContext(), "Aqui definimos el onclick", Toast.LENGTH_SHORT).show();
             }
         });
         viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
@@ -73,44 +95,17 @@ public class Tweet_Adapter  extends RecyclerView.Adapter<Tweet_Adapter.ViewHolde
 
     @Override
     public int getItemCount() {
-        return tweets.size();
+        return tweets.size()+1;
+    }
+    @Override
+    public int getItemViewType(int position) {
+       // Log.v("getItemViewType position: " , ""+ position);
+        if (position == HEADER)
+            return HEADER;
+        else
+            return OTHER;
     }
 
-    /**
-     * Clase que define cada elemento
-     */
-    public  class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-            public TextView nombreUsuario;
-            public TextView screenName;
-            public TextView mensajeTweet;
-            public TextView hora;
-            public ImageView avatar;
-
-
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-
-
-            nombreUsuario = (TextView) itemView.findViewById(R.id.username);
-            screenName = (TextView) itemView.findViewById(R.id.screenName);
-            mensajeTweet = (TextView) itemView.findViewById(R.id.tweets);
-            hora = (TextView) itemView.findViewById(R.id.hora);
-            avatar = (ImageView) itemView.findViewById(R.id.avatar_usuario);
-
-
-        }
-        @Override
-        public void onClick(View view) {
-            // Intent i = new Intent(ViewHolder.this, MainActivity.class);
-            //   Intent i = Users_Adapter.this.getIntent(v.getContext(), mCrime);
-            //   startActivity(i);
-            int position  = ViewHolder.super.getAdapterPosition();
-
-
-            Toast.makeText(view.getContext(), "Aqui definimos el onclick nuevo " + position, Toast.LENGTH_SHORT).show();
-        }
-    }
 
 }

@@ -110,7 +110,8 @@ public class Profile_Fragments extends Fragment {
 
         RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.my_recycler_view_tweet);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(new Tweet_Adapter(tweetArrayList, R.layout.tweet_row));
+        recyclerView.setAdapter(new Tweet_Adapter(R.layout.tweet_row, R.layout.header,tweetArrayList, usuario));
+       // recyclerView.setAdapter(new Tweet_Adapter(tweetArrayList, R.layout.tweet_row));
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
