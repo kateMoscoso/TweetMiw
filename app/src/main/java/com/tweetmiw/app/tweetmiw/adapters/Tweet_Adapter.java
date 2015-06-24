@@ -1,6 +1,8 @@
 package com.tweetmiw.app.tweetmiw.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +20,9 @@ import com.tweetmiw.app.tweetmiw.holders.ViewHolderTweet;
 import com.tweetmiw.app.tweetmiw.holders.ViewHolderUser;
 import com.tweetmiw.app.tweetmiw.utils.BitmapManager;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -58,15 +63,33 @@ public class Tweet_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
 
        // Log.v("Tweet_Adapter", tweet.getUser().getProfile().getProfile_image_url());
+        URL url = null;
         if (viewHolder instanceof ViewHolderTweet) {
             Tweet tweet = tweets.get(position-1);
+
+            try {
+                url = new URL(tweet.getUser().getProfile().getProfile_image_url());
+                Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+                ((ViewHolderTweet) viewHolder).avatar.setImageBitmap(bmp);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             ((ViewHolderTweet) viewHolder).nombreUsuario.setText(tweet.getUser().getProfile().getName());
             ((ViewHolderTweet) viewHolder).screenName.setText(tweet.getUser().getProfile().getScreen_name());
             ((ViewHolderTweet) viewHolder).mensajeTweet.setText(tweet.getMessage());
             ((ViewHolderTweet) viewHolder).hora.setText(tweet.getCreated_at());
         }
         if (viewHolder instanceof ViewHolderUser) {
-            BitmapManager.getInstance().loadBitmap(user.getProfile().getProfile_image_url(), ((ViewHolderUser) viewHolder).avatar);
+           // BitmapManager.getInstance().loadBitmap(user.getProfile().getProfile_image_url(), ((ViewHolderUser) viewHolder).avatar);
+            try {
+                url = new URL(user.getProfile().getProfile_image_url());
+                Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+                ((ViewHolderUser) viewHolder).avatar.setImageBitmap(bmp);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             ((ViewHolderUser) viewHolder).nombreUsuario.setText(user.getProfile().getName());
             ((ViewHolderUser) viewHolder).screenName.setText(user.getProfile().getScreen_name());
             ((ViewHolderUser) viewHolder).descripcion.setText(user.getProfile().getDescription());

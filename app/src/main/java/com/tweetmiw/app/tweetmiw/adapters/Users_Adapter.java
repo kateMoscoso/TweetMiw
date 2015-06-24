@@ -1,12 +1,15 @@
 package com.tweetmiw.app.tweetmiw.adapters;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +21,11 @@ import com.tweetmiw.app.tweetmiw.entities.Tweet;
 import com.tweetmiw.app.tweetmiw.fragments.Profile_Fragments;
 import com.tweetmiw.app.tweetmiw.utils.ConstantsUtils;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -52,17 +60,22 @@ public class Users_Adapter extends RecyclerView.Adapter<Users_Adapter.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
 
-
-
-
-
     ProfileUser user = users.get(i);
 
 
         viewHolder.screenName.setText(user.getScreen_name());
         viewHolder.nombreUsuario.setText(user.getName());
         viewHolder.descripcion.setText(user.getDescription());
+        URL url = null;
+        try {
+            url = new URL(user.getProfile_image_url());
+            HttpURLConnection conn = null;
+            Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+            viewHolder.avatar.setImageBitmap(bmp);
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -82,6 +95,7 @@ public class Users_Adapter extends RecyclerView.Adapter<Users_Adapter.ViewHolder
         public TextView nombreUsuario;
         public TextView screenName;
         public TextView descripcion;
+        public ImageView avatar;
         private AdapterView.OnItemClickListener onItemClickListener;
 
         public ViewHolder(View itemView) {
@@ -91,6 +105,7 @@ public class Users_Adapter extends RecyclerView.Adapter<Users_Adapter.ViewHolder
             screenName = (TextView) itemView.findViewById(R.id.screenName);
             nombreUsuario = (TextView) itemView.findViewById(R.id.name);
             descripcion = (TextView) itemView.findViewById(R.id.descripcion);
+            avatar = (ImageView) itemView.findViewById(R.id.avatar_usuario);
 
 
         }
@@ -110,9 +125,6 @@ public class Users_Adapter extends RecyclerView.Adapter<Users_Adapter.ViewHolder
          //   Intent i = Users_Adapter.this.getIntent(v.getContext(), mCrime);
          //   startActivity(i);
             int position  = ViewHolder.super.getAdapterPosition();
-
-
-
 
             Toast.makeText(view.getContext(), "Aqui definimos el onclick nuevo " + position, Toast.LENGTH_SHORT).show();
         }

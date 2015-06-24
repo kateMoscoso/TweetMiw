@@ -96,6 +96,8 @@ public class Tweet_Fragments extends Fragment {
             ProfileUser profileUserAux = new ProfileUser();
             Tweet tweet;
             for (Status status : statuses) {
+                usuarioAux = new User();
+                profileUserAux = new ProfileUser();
                 profileUserAux.setName(status.getUser().getName());
                 profileUserAux.setScreen_name(status.getUser().getScreenName());
                 profileUser.setProfile_image_url(status.getUser().getProfileImageURL());

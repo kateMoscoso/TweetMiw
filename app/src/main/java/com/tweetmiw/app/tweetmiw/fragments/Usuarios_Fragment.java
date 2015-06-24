@@ -38,24 +38,15 @@ import twitter4j.auth.AccessToken;
 public class Usuarios_Fragment extends Fragment {
     private WeakReference<FollowersSearchTask> asyncTaskWeakRef;
     ArrayList<ProfileUser> followers = new ArrayList<ProfileUser>();
-    private FollowersSearchTask mTask;
-    View view;
-    private TaskCallbacks mCallbacks;
+    private RecyclerView recyclerView;
+    private Users_Adapter adapter;
     public Usuarios_Fragment(){}
-    interface TaskCallbacks {
-        void onPreExecute();
-        void onProgressUpdate(int percent);
-        void onCancelled();
-        void onPostExecute();
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         setRetainInstance(true);
         startNewAsyncTask();
-        this.view = inflater.inflate(R.layout.fragment_usuarios, container, false);
         return inflater.inflate(R.layout.fragment_usuarios, container, false);
 
     }
@@ -66,75 +57,23 @@ public class Usuarios_Fragment extends Fragment {
 
         asyncTask.execute();
 
-        followers =  asyncTask.getFollowers();
+    }
 
-        Log.v("", this.asyncTaskWeakRef.toString() + "status  " + asyncTask.getStatus().toString());
-    }
-    public interface FragmentCallback {
-        public void onTaskDone();
-    }
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-       RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.my_recycler_view_user);
+       recyclerView = (RecyclerView) getActivity().findViewById(R.id.my_recycler_view_user);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(new Users_Adapter(followers, R.layout.users_row));
+        //recyclerView.setAdapter(new Users_Adapter(followers, R.layout.users_row));
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
 
     }
 
-    /**
-     * Hold a reference to the parent Activity so we can report the
-     * task's current progress and results. The Android framework
-     * will pass us a reference to the newly created Activity after
-     * each configuration change.
-     *
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        mCallbacks = (TaskCallbacks) activity;
-    }
-
-
-    /**
-     * This method will only be called once when the retained
-     * Fragment is first created.
-     *
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        // Retain this fragment across configuration changes.
-        setRetainInstance(true);
-
-        // Create and execute the background task.
-        mTask = new FollowersSearchTask(this);
-        mTask.execute();
-    }
-
-    /**
-     * Set the callback to null so we don't accidentally leak the
-     * Activity instance.
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mCallbacks = null;
-    }*/
     private class FollowersSearchTask extends AsyncTask<Object, Void, ArrayList<ProfileUser>> {
         SessionManager session;
         private WeakReference<Usuarios_Fragment> fragmentWeakRef;
-        private ArrayList<ProfileUser> followers = new ArrayList<ProfileUser>();
-
-        public ArrayList<ProfileUser> getFollowers() {
-            return followers;
-        }
-
-        public void setFollowers(ArrayList<ProfileUser> followers) {
-            this.followers = followers;
-        }
 
         private FollowersSearchTask (Usuarios_Fragment fragment) {
             this.fragmentWeakRef = new WeakReference<Usuarios_Fragment>(fragment);
@@ -203,12 +142,8 @@ public class Usuarios_Fragment extends Fragment {
             } else {
                 Toast.makeText(getActivity(), getResources().getString(R.string.label_tweets_downloaded),
                         Toast.LENGTH_SHORT).show();
-                /*getActivity().getLayoutInflater().inflate()
-                RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.my_recycler_view_user);
-                recyclerView.setHasFixedSize(true);
                 recyclerView.setAdapter(new Users_Adapter(followers, R.layout.users_row));
-                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-                recyclerView.setItemAnimator(new DefaultItemAnimator());*/
+
             }
         }
 
