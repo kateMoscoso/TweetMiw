@@ -42,7 +42,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         if(position == 2) // if the position is 0 we are returning the First tab
         {
             Tweet_Fragments tf = new Tweet_Fragments();
-            Profile_Fragments pf = new Profile_Fragments();
+            //Profile_Fragments pf = new Profile_Fragments();
 
             return tf;
         }

@@ -22,6 +22,7 @@ import com.tweetmiw.app.tweetmiw.entities.ProfileUser;
 import com.tweetmiw.app.tweetmiw.entities.Tweet;
 import com.tweetmiw.app.tweetmiw.entities.User;
 import com.tweetmiw.app.tweetmiw.utils.ConstantsUtils;
+import com.tweetmiw.app.tweetmiw.utils.SessionManager;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -44,6 +45,7 @@ import twitter4j.conf.ConfigurationBuilder;
 public class Tweet_Fragments extends Fragment {
 
     String f;
+    private SessionManager session;
     private static SharedPreferences mSharedPreferences;
 
     public Tweet_Fragments() {
@@ -59,7 +61,7 @@ public class Tweet_Fragments extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-
+        session = new SessionManager(getActivity());
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
@@ -72,10 +74,9 @@ public class Tweet_Fragments extends Fragment {
         twitter4j.User user = null;
         try {
 
-            AccessToken accessToken = new AccessToken(com.tweetmiw.app.tweetmiw.utils.Properties.getInstance().getToken(), com.tweetmiw.app.tweetmiw.utils.Properties.getInstance().getSecret());
 
-            twitter4j.Twitter twitter = com.tweetmiw.app.tweetmiw.utils.Properties.getInstance().getTwitter();
-            long userID = accessToken.getUserId();
+            twitter4j.Twitter twitter = session.getTwitter();
+            long userID = twitter.getId();
             user = twitter.showUser(userID);
             User usuario = new User();
             ProfileUser profileUser = new ProfileUser();

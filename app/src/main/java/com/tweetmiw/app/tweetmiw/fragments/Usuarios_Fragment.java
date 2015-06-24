@@ -22,6 +22,7 @@ import com.tweetmiw.app.tweetmiw.adapters.Users_Adapter;
 import com.tweetmiw.app.tweetmiw.entities.ProfileUser;
 import com.tweetmiw.app.tweetmiw.entities.Tweet;
 import com.tweetmiw.app.tweetmiw.entities.User;
+import com.tweetmiw.app.tweetmiw.utils.SessionManager;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -123,6 +124,7 @@ public class Usuarios_Fragment extends Fragment {
         mCallbacks = null;
     }*/
     private class FollowersSearchTask extends AsyncTask<Object, Void, ArrayList<ProfileUser>> {
+        SessionManager session;
         private WeakReference<Usuarios_Fragment> fragmentWeakRef;
         private ArrayList<ProfileUser> followers = new ArrayList<ProfileUser>();
 
@@ -142,6 +144,7 @@ public class Usuarios_Fragment extends Fragment {
         @Override
         protected void onPreExecute(){
             super.onPreExecute();
+            session = new SessionManager(getActivity());
             progressDialog = new ProgressDialog(getActivity());
             progressDialog.setMessage(getResources().getString(R.string.user_loading));
             progressDialog.show();
@@ -155,7 +158,7 @@ public class Usuarios_Fragment extends Fragment {
             StrictMode.setThreadPolicy(policy);
             try {
 
-                twitter4j.Twitter twitter = com.tweetmiw.app.tweetmiw.utils.Properties.getInstance().getTwitter();
+                twitter4j.Twitter twitter = session.getTwitter();
 
                 PagableResponseList<twitter4j.User> users;
                 String screename = twitter.getScreenName();
