@@ -127,11 +127,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void login(View view) {
-        Intent i = new Intent(this, SegundaActividad.class);
-        startActivity(i);
-    }
-
     public void lista(View view) {
         //Intent i = new Intent(this, InitialActivity.class );
         //startActivity(i);
