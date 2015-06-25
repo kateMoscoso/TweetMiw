@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.tweetmiw.app.tweetmiw.utils.ConstantsUtils;
 import com.tweetmiw.app.tweetmiw.utils.Properties;
+import com.tweetmiw.app.tweetmiw.utils.SessionManager;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
     private TwitterLoginButton loginButton;
     private TwitterSession session;
+    SessionManager sessionManager;
     private static final String TOKEN_URL = "https://api.twitter.com/oauth2/token";
 
     SharedPreferences pref;
@@ -43,7 +45,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        sessionManager = new SessionManager(getApplicationContext());
+        // sessionManager.checkLogin();
+        if (sessionManager.isLoggedIn()) {
+            lanzarLogeado();
+        }
 
         TwitterAuthConfig authConfig = new TwitterAuthConfig(ConstantsUtils.CONSUMER_KEY, ConstantsUtils.CONSUMER_SECRET);
         Fabric.with(this, new Twitter(authConfig));
@@ -55,12 +61,7 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setCallback(new Callback<TwitterSession>() {
             @Override
             public void success(Result<TwitterSession> result) {
-                // Do something with result, which provides a
-                // TwitterSession for making API calls
                 session = Twitter.getSessionManager().getActiveSession();
-
-                Log.v("main", "login succes " + session.getUserName());
-
 
             }
 
@@ -71,12 +72,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Configurando que el Toolbar como ActionBar
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.activity_my_toolbar);
-        //En este ejemplo, ocultamos el titulo de la aplicación, esto es opcional
-        // setSupportActionBar(toolbar);
-
-        //setToolbar();
 
     }
 
@@ -94,13 +89,16 @@ public class MainActivity extends AppCompatActivity {
             TwitterAuthToken authToken = session.getAuthToken();
             Properties.getInstance().setToken(authToken.token);
             Properties.getInstance().setSecret(authToken.secret);
-            Log.v("main", "on activity result " + authToken.token);
-            Log.v("main", "on activity result " + authToken.secret);
-
+            sessionManager.createLoginSession(authToken.token, authToken.secret);
+            lanzarLogeado();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+    }
+
+    public void lanzarLogeado() {
         Intent i = new Intent(this, InitialActivity.class);
         startActivity(i);
     }
@@ -128,19 +126,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void lista(View view) {
-        //Intent i = new Intent(this, InitialActivity.class );
-        //startActivity(i);
-        final UserTimeline userTimeline = new UserTimeline.Builder()
-                .screenName("fabric")
-                .build();
-        final TweetTimelineListAdapter adaptertweet = new TweetTimelineListAdapter(this, userTimeline);
 
-        // setListAdapte(adapter);
-    }
-
-
-    public void onClick(View v) {
-        Toast.makeText(this, "Hola, estoy escuchando", Toast.LENGTH_LONG).show();
     }
 
 
