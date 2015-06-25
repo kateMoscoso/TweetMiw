@@ -14,6 +14,7 @@
     <string name="user_name">\@Usuario</string>
     <string name="hour">Hora</string>
     <string name="description">Descripción</string>
+    <string name="search">Buscar</string>
 
     <string name="msg_yes">Sí</string>
     <string name="msg_no">No</string>

@@ -3,12 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.tweetmiw.app.tweetmiw.InitialActivity">
 
-    <item android:id="@+id/action_tweets_pendientes" android:title="@string/tweets_pendientes"
-        android:orderInCategory="1" />
+    <item android:id="@+id/buscar"
+        android:icon="@mipmap/ic_buscar_24dp"
+        android:title="@string/search"
+        android:orderInCategory="1"
+        app:showAsAction="ifRoom" />
 
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="2" app:showAsAction="never" />
+    <item android:id="@+id/action_tweets_pendientes"
+        android:title="@string/tweets_pendientes"
+        android:orderInCategory="2"
+        app:showAsAction="never"/>
 
-    <item android:id="@+id/action_cerrar_sesion" android:title="@string/cerrar_sesion"
-        android:orderInCategory="3" />
+    <item android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        android:orderInCategory="3"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/action_cerrar_sesion"
+        android:title="@string/cerrar_sesion"
+        android:orderInCategory="4"
+        app:showAsAction="never"/>
 </menu>
