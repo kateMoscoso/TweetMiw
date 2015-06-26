@@ -104,7 +104,7 @@ public class Tweet_Fragments extends Fragment {
                 profileUserAux.setName(status.getUser().getName());
                 profileUserAux.setScreen_name(status.getUser().getScreenName());
                 profileUser.setProfile_image_url(status.getUser().getProfileImageURL());
-                Log.v("Tweet_fragments",status.getUser().getProfileImageURL());
+                Log.v("Tweet_fragments", status.getUser().getProfileImageURL());
                 usuarioAux.setProfile(profileUserAux);
                 tweet = new Tweet(status.getText(), usuarioAux);
                 tweet.setCreated_at(""+status.getCreatedAt().getTime());
