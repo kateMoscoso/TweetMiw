@@ -1,30 +1,14 @@
 package com.tweetmiw.app.tweetmiw.activity;
 
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 
 import com.tweetmiw.app.tweetmiw.R;
-import com.tweetmiw.app.tweetmiw.adapters.ViewPagerAdapter;
-import com.tweetmiw.app.tweetmiw.entities.ProfileUser;
 import com.tweetmiw.app.tweetmiw.entities.Tweet;
-import com.tweetmiw.app.tweetmiw.entities.User;
 import com.tweetmiw.app.tweetmiw.fragments.TweetDetailFragment;
-import com.tweetmiw.app.tweetmiw.holders.ViewHolderTweet;
-import com.twitter.sdk.android.Twitter;
-import com.twitter.sdk.android.core.TwitterAuthConfig;
 
-import java.util.ArrayList;
-
-/**
- * Created by katherin on 13/06/2015.
- */
 public class TweetDetailActivity extends AppCompatActivity {
     Tweet tweet;
 

@@ -15,11 +15,6 @@ import com.tweetmiw.app.tweetmiw.entities.User;
 import java.util.ArrayList;
 import java.util.List;
 
-import twitter4j.Status;
-
-/**
- * Created by katherin on 23/06/2015.
- */
 public class TimelineActivity extends Activity {
 
 

@@ -1,39 +1,23 @@
 package com.tweetmiw.app.tweetmiw;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Outline;
-import android.net.Uri;
-import android.os.StrictMode;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Base64;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import com.tweetmiw.app.tweetmiw.activity.WriteTweetActivity;
 import com.tweetmiw.app.tweetmiw.adapters.ViewPagerAdapter;
-import com.tweetmiw.app.tweetmiw.utils.ConstantsUtils;
 import com.tweetmiw.app.tweetmiw.utils.SessionManager;
 import com.twitter.sdk.android.Twitter;
 
 import com.twitter.sdk.android.core.TwitterAuthConfig;
-import com.twitter.sdk.android.core.TwitterCore;
-import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 
 import java.util.ArrayList;
-
-import io.fabric.sdk.android.Fabric;
 
 
 public class InitialActivity extends AppCompatActivity {

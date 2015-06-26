@@ -24,9 +24,6 @@ import twitter4j.Status;
 import twitter4j.StatusUpdate;
 import twitter4j.Twitter;
 
-/**
- * Created by katherin on 26/06/2015.
- */
 public class WriteTweetActivity extends AppCompatActivity {
     SessionManager session;
     int RESULT_LOAD_IMAGE = 0;
