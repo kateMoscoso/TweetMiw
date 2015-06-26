@@ -42,22 +42,22 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/descripcion"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="100dp"
-        android:id="@+id/siguiendo"/>
+        android:id="@+id/siguiendo"
+        android:layout_weight="2"
+        android:text="@string/label_tweet_followers"
+        android:layout_margin="15dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/descripcion"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/siguiendo"
+        android:id="@+id/seguidores"
+        android:layout_weight="2"
+        android:text="@string/label_tweet_following"
+        android:layout_margin="15dp"
         android:layout_toRightOf="@+id/siguiendo"
         android:layout_below="@+id/descripcion"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="100dp"
-        android:id="@+id/seguidores"
-        />
+         />
 
 </RelativeLayout>

@@ -50,21 +50,13 @@ public class Tweet_Fragments extends Fragment {
 
     String f;
     private SessionManager session;
-    private static SharedPreferences mSharedPreferences;
-
     public Tweet_Fragments() {
         // Required empty public constructor
     }
 
-    /*public Tweet_Fragments(String token,String secret) {
-        this.f = f;
-    }*/
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         session = new SessionManager(getActivity());
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
@@ -78,7 +70,6 @@ public class Tweet_Fragments extends Fragment {
         twitter4j.User user = null;
         try {
 
-
             twitter4j.Twitter twitter = session.getTwitter();
 
             long userID = twitter.getId();
@@ -89,6 +80,8 @@ public class Tweet_Fragments extends Fragment {
             profileUser.setName(user.getName());
             profileUser.setScreen_name(user.getScreenName());
             profileUser.setProfile_image_url(user.getProfileImageURL());
+            profileUser.setFollowers_count( Integer.toString(user.getFollowersCount()));
+            profileUser.setFriends_count(Integer.toString(user.getFriendsCount()));
             usuario.setProfile(profileUser);
             //List< Status> favoritesResources = twitter.getFavorites();
             int pageno = 1;
@@ -106,17 +99,13 @@ public class Tweet_Fragments extends Fragment {
                 profileUserAux.setName(status.getUser().getName());
                 profileUserAux.setScreen_name(status.getUser().getScreenName());
                 profileUser.setProfile_image_url(status.getUser().getProfileImageURL());
-                Log.v("Tweet_fragments", status.getUser().getProfileImageURL());
+
                 usuarioAux.setProfile(profileUserAux);
                 tweet = new Tweet(status.getText(), usuarioAux);
                 Date date = status.getCreatedAt();
                 tweet.setCreated_at(new SimpleDateFormat("dd/MM/yy-HH:mm").format(date));
-
                 tweetArrayList.add(tweet);
-
             }
-
-
             RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.my_recycler_view_tweet);
             recyclerView.setHasFixedSize(true);
             recyclerView.setAdapter(new Tweet_Adapter(R.layout.tweet_row, R.layout.header,tweetArrayList, usuario));

@@ -1,6 +1,7 @@
 package com.tweetmiw.app.tweetmiw.adapters;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
@@ -94,6 +95,9 @@ public class Tweet_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             ((ViewHolderUser) viewHolder).nombreUsuario.setText(user.getProfile().getName());
             ((ViewHolderUser) viewHolder).screenName.setText(user.getProfile().getScreen_name());
             ((ViewHolderUser) viewHolder).descripcion.setText(user.getProfile().getDescription());
+
+            ((ViewHolderUser) viewHolder).seguidores.setText(user.getProfile().getFollowers_count() + " " +  ((ViewHolderUser) viewHolder).seguidores.getText());
+            ((ViewHolderUser) viewHolder).siguiendo.setText(user.getProfile().getFriends_count() + " " +((ViewHolderUser) viewHolder).siguiendo.getText() );
         }
 
 

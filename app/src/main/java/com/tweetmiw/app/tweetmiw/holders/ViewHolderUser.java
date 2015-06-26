@@ -18,6 +18,8 @@ public class ViewHolderUser extends RecyclerView.ViewHolder implements View.OnCl
     public TextView descripcion;
     public TextView hora;
     public ImageView avatar;
+    public TextView seguidores;
+    public TextView siguiendo;
 
 
     public ViewHolderUser(View itemView) {
@@ -29,6 +31,8 @@ public class ViewHolderUser extends RecyclerView.ViewHolder implements View.OnCl
         descripcion = (TextView) itemView.findViewById(R.id.descripcion);
         hora = (TextView) itemView.findViewById(R.id.hora);
         avatar = (ImageView) itemView.findViewById(R.id.avatar_usuario);
+        seguidores = (TextView) itemView.findViewById(R.id.seguidores);
+        siguiendo = (TextView) itemView.findViewById(R.id.siguiendo);
 
 
     }
