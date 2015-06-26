@@ -1,4 +1,4 @@
-package com.tweetmiw.app.tweetmiw.adapters;
+package com.tweetmiw.app.tweetmiw.fragments;
 
 import android.support.v4.app.ListFragment;
 import android.os.Bundle;
