@@ -1,5 +1,7 @@
 package com.tweetmiw.app.tweetmiw.entities;
 
+import com.tweetmiw.app.tweetmiw.utils.DateUtils;
+
 import java.util.Date;
 
 /**

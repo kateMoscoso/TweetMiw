@@ -13,7 +13,7 @@ public class DateUtils {
 		String str = removeTimeZone(date);
 		
 		String strData = null;
-		TimeZone tzUTC = TimeZone.getTimeZone("UTC");
+		TimeZone tzUTC = TimeZone.getTimeZone("CET");
 		SimpleDateFormat formatoEntrada = new SimpleDateFormat("EEE MMM dd HH:mm:ss yyyy", Locale.US);
 		formatoEntrada.setTimeZone(tzUTC);
 		SimpleDateFormat formatoSalida = new SimpleDateFormat("EEE, dd/MM/yy, HH:mm");

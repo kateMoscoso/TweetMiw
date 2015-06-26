@@ -31,7 +31,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
@@ -107,7 +109,9 @@ public class Tweet_Fragments extends Fragment {
                 Log.v("Tweet_fragments", status.getUser().getProfileImageURL());
                 usuarioAux.setProfile(profileUserAux);
                 tweet = new Tweet(status.getText(), usuarioAux);
-                tweet.setCreated_at(""+status.getCreatedAt().getTime());
+                Date date = status.getCreatedAt();
+                tweet.setCreated_at(new SimpleDateFormat("dd/MM/yy-HH:mm").format(date));
+
                 tweetArrayList.add(tweet);
 
             }

@@ -79,6 +79,7 @@ public class Tweet_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             ((ViewHolderTweet) viewHolder).screenName.setText(tweet.getUser().getProfile().getScreen_name());
             ((ViewHolderTweet) viewHolder).mensajeTweet.setText(tweet.getMessage());
             ((ViewHolderTweet) viewHolder).hora.setText(tweet.getCreated_at());
+
         }
         if (viewHolder instanceof ViewHolderUser) {
            // BitmapManager.getInstance().loadBitmap(user.getProfile().getProfile_image_url(), ((ViewHolderUser) viewHolder).avatar);
