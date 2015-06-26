@@ -19,6 +19,9 @@
 
     <string name="description_close">Botón de cerrar</string>
     <string name="description_photo">Botón para insertar una foto</string>
+    <string name="description_responder">Botón para responder un tuit</string>
+    <string name="description_retuitear">Botón para retuitear</string>
+    <string name="description_favorito">Botón para marcar el tuit como favorito</string>
 
 
     <string name="msg_yes">Sí</string>
@@ -36,20 +39,14 @@
     <string name="twittear">Twittear</string>
     <string name="hint_twittear">¿Qué está pasando?</string>
 
-    <string-array name="array_rate">
-        <item>Excelente</item>
-        <item>Bueno</item>
-        <item>Regular</item>
-        <item>Deficiente</item>
-        <item>Necesita mejorar</item>
-    </string-array>
-
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="user_loading">cargando</string>
-    <string name="label_tweets_not_found">tuits no encontrados</string>
-    <string name="label_tweets_downloaded">tuits descargados</string>
+    <string name="label_tweets_not_found">Tuits no encontrados. Compruebe su conexión a internet.</string>
+    <string name="label_tweets_downloaded">Tuits descargados</string>
     <string name="label_login_noAuth">Login No Autorizado</string>
     <string name="label_tweet_published">Tweet publicado</string>
-    <string name="label_tweet_Nopublished">Error publicando el Tweet</string>
+    <string name="label_tweet_Nopublished">Error publicando el Tweet. Compruebe su coneción a internet.</string>
+    <string name="label_tweet_followers">Siguiendo</string>
+    <string name="label_tweet_following">Seguidores</string>
 </resources>
