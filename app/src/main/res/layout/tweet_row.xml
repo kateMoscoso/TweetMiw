@@ -49,8 +49,8 @@
                 android:id="@+id/hora"
                 android:layout_toEndOf="@+id/screenName"
                 android:layout_toRightOf="@+id/screenName"
-                android:layout_marginStart="80dp"
-                android:layout_marginLeft="80dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
                 />
 
 

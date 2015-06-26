@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/name"
-            android:id="@+id/screenName"
+            android:id="@+id/name"
             android:layout_marginStart="80dp"
             android:layout_marginLeft="80dp"/>
 
@@ -55,10 +55,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/user_name"
-            android:id="@+id/name"
+            android:id="@+id/screenName"
             android:layout_marginStart="80dp"
             android:layout_marginLeft="80dp"
-            android:layout_below="@+id/screenName"/>
+            android:layout_below="@+id/name"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -67,7 +67,7 @@
             android:id="@+id/descripcion"
             android:layout_marginStart="80dp"
             android:layout_marginLeft="80dp"
-            android:layout_below="@+id/name"
+            android:layout_below="@+id/screenName"
             />
 
 
