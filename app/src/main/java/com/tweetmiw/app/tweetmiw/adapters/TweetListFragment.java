@@ -21,9 +21,6 @@ import com.tweetmiw.app.tweetmiw.utils.SessionManager;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by katherin on 11/06/2015.
- */
 public class TweetListFragment extends ListFragment {
     int fragNum;
     // Session Manager Class

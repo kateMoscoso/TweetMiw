@@ -14,9 +14,6 @@ import com.tweetmiw.app.tweetmiw.holders.ViewHolderTweet;
 
 import java.util.ArrayList;
 
-/**
- * Created by katherin on 11/06/2015.
- */
 public class CustomAdapter extends ArrayAdapter<Tweet> {
     private Context context;
     private ArrayList<Tweet> tweets;// dataset

@@ -4,7 +4,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.tweetmiw.app.tweetmiw.fragments.Profile_Fragments;
 import com.tweetmiw.app.tweetmiw.fragments.Tweet_Fragments;
 import com.tweetmiw.app.tweetmiw.fragments.Usuarios_Fragment;
 

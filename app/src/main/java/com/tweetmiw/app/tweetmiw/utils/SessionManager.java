@@ -15,9 +15,6 @@ import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
 import twitter4j.conf.ConfigurationBuilder;
 
-/**
- * Created by katherin on 24/06/2015.
- */
 public class SessionManager {
     SharedPreferences pref;
 

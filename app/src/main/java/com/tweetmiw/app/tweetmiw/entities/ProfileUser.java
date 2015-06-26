@@ -1,10 +1,5 @@
 package com.tweetmiw.app.tweetmiw.entities;
 
-import com.tweetmiw.app.tweetmiw.utils.DateUtils;
-
-/**
- * Created by katherin on 02/06/2015.
- */
 public class ProfileUser {
     private String id_user;
     private String screen_name;

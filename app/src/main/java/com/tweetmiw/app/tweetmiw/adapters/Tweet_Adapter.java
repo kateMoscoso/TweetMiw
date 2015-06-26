@@ -1,34 +1,22 @@
 package com.tweetmiw.app.tweetmiw.adapters;
 
-import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.tweetmiw.app.tweetmiw.R;
 import com.tweetmiw.app.tweetmiw.entities.Tweet;
 import com.tweetmiw.app.tweetmiw.entities.User;
-import com.tweetmiw.app.tweetmiw.fragments.Profile_Fragments;
 import com.tweetmiw.app.tweetmiw.holders.ViewHolderTweet;
 import com.tweetmiw.app.tweetmiw.holders.ViewHolderUser;
-import com.tweetmiw.app.tweetmiw.utils.BitmapManager;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-/**
- * Created by katherin on 02/06/2015.
- */
 public class Tweet_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int HEADER = 0;
     private static final int OTHER = 1;

@@ -5,9 +5,6 @@ import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
 import twitter4j.conf.ConfigurationBuilder;
 
-/**
- * Created by katherin on 21/06/2015.
- */
 public class Properties  {
     private static Properties mInstance= null;
 

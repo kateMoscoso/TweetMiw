@@ -8,9 +8,6 @@ import android.widget.Toast;
 
 import com.tweetmiw.app.tweetmiw.R;
 
-/**
- * Created by katherin on 23/06/2015.
- */
 public class ViewHolderUser extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     public TextView nombreUsuario;

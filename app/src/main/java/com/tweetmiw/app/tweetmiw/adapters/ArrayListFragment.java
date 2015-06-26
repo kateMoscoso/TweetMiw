@@ -9,11 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
-/**
- * Created by katherin on 11/06/2015.
- */
 public class ArrayListFragment extends ListFragment {
     int fragNum;
     String arr[] = { "This is", "a Truiton", "Demo", "App", "For", "Showing",

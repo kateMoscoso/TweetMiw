@@ -1,7 +1,5 @@
 package com.tweetmiw.app.tweetmiw.utils;
 
-import android.app.Application;
-
 public class ConstantsUtils  {
 
     public static final String URL_ROOT_TWITTER_API = "https://api.twitter.com";
