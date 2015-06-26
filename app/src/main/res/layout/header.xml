@@ -8,6 +8,7 @@
         android:scaleType="centerCrop"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_marginTop="10dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -32,9 +33,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Descripcion"
         android:id="@+id/descripcion"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_below="@+id/username"
-        android:layout_centerHorizontal="true"
         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/descripcion"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="100dp"
+        android:id="@+id/siguiendo"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/siguiendo"
+        android:layout_toRightOf="@+id/siguiendo"
+        android:layout_below="@+id/descripcion"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="100dp"
+        android:id="@+id/seguidores"
+        />
+
 </RelativeLayout>
