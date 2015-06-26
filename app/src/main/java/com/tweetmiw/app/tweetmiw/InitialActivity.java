@@ -20,6 +20,8 @@ import android.view.View;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.tweetmiw.app.tweetmiw.activity.WriteTweetActivity;
 import com.tweetmiw.app.tweetmiw.adapters.ViewPagerAdapter;
 import com.tweetmiw.app.tweetmiw.utils.ConstantsUtils;
 import com.tweetmiw.app.tweetmiw.utils.SessionManager;
@@ -106,10 +108,12 @@ public class InitialActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
     public void lanzarEscribirTweet(View view){
-        TwitterAuthConfig authConfig =  new TwitterAuthConfig("consumerKey", "consumerSecret");
+        /*TwitterAuthConfig authConfig =  new TwitterAuthConfig("consumerKey", "consumerSecret");
         Fabric.with(this, new TwitterCore(authConfig), new TweetComposer());
         TweetComposer.Builder builder = new TweetComposer.Builder(this);
-        builder.show();
+        builder.show();*/
+        Intent i = new Intent(this, WriteTweetActivity.class);
+        startActivity(i);
     }
 
 }

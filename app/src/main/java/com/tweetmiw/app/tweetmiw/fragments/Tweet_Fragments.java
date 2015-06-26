@@ -78,6 +78,7 @@ public class Tweet_Fragments extends Fragment {
 
 
             twitter4j.Twitter twitter = session.getTwitter();
+
             long userID = twitter.getId();
             user = twitter.showUser(userID);
             User usuario = new User();
@@ -108,6 +109,7 @@ public class Tweet_Fragments extends Fragment {
                 tweet = new Tweet(status.getText(), usuarioAux);
                 tweet.setCreated_at(""+status.getCreatedAt().getTime());
                 tweetArrayList.add(tweet);
+
             }
 
 
