@@ -20,6 +20,7 @@ import com.tweetmiw.app.tweetmiw.entities.ProfileUser;
 import com.tweetmiw.app.tweetmiw.entities.Tweet;
 import com.tweetmiw.app.tweetmiw.fragments.Profile_Fragments;
 import com.tweetmiw.app.tweetmiw.utils.ConstantsUtils;
+import com.twitter.sdk.android.tweetui.UserTimeline;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -121,11 +122,9 @@ public class Users_Adapter extends RecyclerView.Adapter<Users_Adapter.ViewHolder
         }
         @Override
         public void onClick(View view) {
-          // Intent i = new Intent(ViewHolder.this, MainActivity.class);
-         //   Intent i = Users_Adapter.this.getIntent(v.getContext(), mCrime);
-         //   startActivity(i);
             int position  = ViewHolder.super.getAdapterPosition();
-
+            String screename = users.get(position).getScreen_name();
+            UserTimeline userTimeline = new UserTimeline.Builder().screenName(screename).build();
             Toast.makeText(view.getContext(), "Aqui definimos el onclick nuevo " + position, Toast.LENGTH_SHORT).show();
         }
     }

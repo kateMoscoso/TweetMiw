@@ -42,4 +42,5 @@
     <string name="user_loading">cargando</string>
     <string name="label_tweets_not_found">tuits no encontrados</string>
     <string name="label_tweets_downloaded">tuits descargados</string>
+    <string name="label_login_noAuth">Login No Autorizado</string>
 </resources>

@@ -98,6 +98,6 @@ public class ProfileUser {
     }
 
     public void setCreatedAt(String createdAt) {
-        this.createdAt = DateUtils.setDateFormat(createdAt);
+        this.createdAt = createdAt;
     }
 }

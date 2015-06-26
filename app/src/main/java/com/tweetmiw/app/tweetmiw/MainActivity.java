@@ -36,17 +36,12 @@ public class MainActivity extends AppCompatActivity {
     private TwitterLoginButton loginButton;
     private TwitterSession session;
     SessionManager sessionManager;
-    private static final String TOKEN_URL = "https://api.twitter.com/oauth2/token";
-
-    SharedPreferences pref;
-    private static SharedPreferences mSharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         sessionManager = new SessionManager(getApplicationContext());
-        // sessionManager.checkLogin();
         if (sessionManager.isLoggedIn()) {
             lanzarLogeado();
         }
@@ -56,8 +51,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         loginButton = (TwitterLoginButton)
                 findViewById(R.id.login_button);
-
-
         loginButton.setCallback(new Callback<TwitterSession>() {
             @Override
             public void success(Result<TwitterSession> result) {
@@ -68,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void failure(TwitterException exception) {
                 // Do something on failure
-                Log.v("main", "login fail");
+                Toast.makeText(getApplication(), getResources().getString(R.string.label_login_noAuth),
+                        Toast.LENGTH_LONG).show();
             }
         });
 

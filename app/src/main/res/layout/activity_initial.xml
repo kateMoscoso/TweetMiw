@@ -32,7 +32,7 @@
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:id="@+id/boton_escribir"
-        android:onClick="onClick"
+        android:onClick="lanzarEscribirTweet"
         android:background="@drawable/boton_escribir"
         android:src="@mipmap/ic_pencil_24dp"
         android:elevation="4dp"

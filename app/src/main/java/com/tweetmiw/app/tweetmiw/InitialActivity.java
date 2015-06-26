@@ -26,8 +26,12 @@ import com.tweetmiw.app.tweetmiw.utils.SessionManager;
 import com.twitter.sdk.android.Twitter;
 
 import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.core.TwitterCore;
+import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 
 import java.util.ArrayList;
+
+import io.fabric.sdk.android.Fabric;
 
 
 public class InitialActivity extends AppCompatActivity {
@@ -100,6 +104,12 @@ public class InitialActivity extends AppCompatActivity {
             startActivity(i);
         }
         return super.onOptionsItemSelected(item);
+    }
+    public void lanzarEscribirTweet(View view){
+        TwitterAuthConfig authConfig =  new TwitterAuthConfig("consumerKey", "consumerSecret");
+        Fabric.with(this, new TwitterCore(authConfig), new TweetComposer());
+        TweetComposer.Builder builder = new TweetComposer.Builder(this);
+        builder.show();
     }
 
 }

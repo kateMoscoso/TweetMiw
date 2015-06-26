@@ -1,6 +1,7 @@
 package com.tweetmiw.app.tweetmiw.fragments;
 
 //import android.app.Fragment;
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.StrictMode;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.tweetmiw.app.tweetmiw.R;
@@ -122,5 +124,6 @@ public class Tweet_Fragments extends Fragment {
         }
 
     }
+
 
 }

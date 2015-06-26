@@ -16,10 +16,10 @@ public class DateUtils {
 		TimeZone tzUTC = TimeZone.getTimeZone("UTC");
 		SimpleDateFormat formatoEntrada = new SimpleDateFormat("EEE MMM dd HH:mm:ss yyyy", Locale.US);
 		formatoEntrada.setTimeZone(tzUTC);
-		SimpleDateFormat formatoSaida = new SimpleDateFormat("EEE, dd/MM/yy, HH:mm");
+		SimpleDateFormat formatoSalida = new SimpleDateFormat("EEE, dd/MM/yy, HH:mm");
 		
 		try {
-			strData = formatoSaida.format(formatoEntrada.parse(str));
+			strData = formatoSalida.format(formatoEntrada.parse(str));
 		} catch (ParseException e) {
 		Log.e("Erro parser data", Log.getStackTraceString(e));
 		}

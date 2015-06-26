@@ -136,12 +136,10 @@ public class Usuarios_Fragment extends Fragment {
 
 
             if (followers.isEmpty()) {
-                Toast.makeText(getActivity(), getResources().getString(R.string.label_tweets_not_found),
-                        Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), getResources().getString(R.string.label_tweets_not_found),Toast.LENGTH_SHORT).show();
 
             } else {
-                Toast.makeText(getActivity(), getResources().getString(R.string.label_tweets_downloaded),
-                        Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(getActivity(), getResources().getString(R.string.label_tweets_downloaded), Toast.LENGTH_SHORT).show();
                 recyclerView.setAdapter(new Users_Adapter(followers, R.layout.users_row));
 
             }
