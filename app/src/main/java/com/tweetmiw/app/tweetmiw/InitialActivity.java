@@ -14,7 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
+import android.widget.Toast;
 
 
 import org.json.JSONArray;
@@ -112,6 +112,25 @@ public class InitialActivity extends AppCompatActivity {
         builder.show();*/
         Intent i = new Intent(this, WriteTweetActivity.class);
         startActivity(i);
+    }
+
+
+    /**
+     *
+     * @param view
+     */
+    public void showFollowersList (View view){
+        twitter4j.Twitter twitter = session.getTwitter();
+        
+        Toast.makeText(view.getContext(), "Mostrar Followers", Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     *
+     * @param view
+     */
+    public void showFollowingList (View view){
+        Toast.makeText(view.getContext(), "Mostrar Following", Toast.LENGTH_SHORT).show();
     }
 
 }
