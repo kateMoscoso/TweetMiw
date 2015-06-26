@@ -7,10 +7,11 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/description_close"
         android:id="@+id/closeButton"
+        android:background="@mipmap/ic_close_36dp"
         android:onClick="cerrar"
-        android:background="@mipmap/ic_close_36dp"/>
-
+        />
 
     <EditText
         android:layout_width="match_parent"
@@ -18,15 +19,26 @@
         android:id="@+id/tweet"
         android:layout_below="@+id/closeButton"
         android:layout_marginTop="20dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
         android:maxLength="140"
-        android:hint="@string/hint_twittear"
-        android:singleLine="false"
-        android:selectAllOnFocus="false" />
+        android:hint="@string/hint_twittear">
+       <requestFocus />
+    </EditText>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/photo"
+        android:layout_below="@+id/tweet"
+        android:layout_marginTop="15dp"
+        android:visibility="invisible"/>
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/photoButton"
+        android:contentDescription="@string/description_photo"
         android:onClick="seleccionarImagen"
         android:background="@mipmap/ic_photo_36dp"
         android:layout_alignParentBottom="true"

@@ -16,6 +16,11 @@
     <string name="description">Descripción</string>
     <string name="search">Buscar</string>
 
+
+    <string name="description_close">Botón de cerrar</string>
+    <string name="description_photo">Botón para insertar una foto</string>
+
+
     <string name="msg_yes">Sí</string>
     <string name="msg_no">No</string>
     <string name="msg_recommendation">¿Nos recomendarías?</string>
