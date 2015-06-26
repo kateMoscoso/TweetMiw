@@ -28,6 +28,8 @@
     <string name="title_activity_main">Principal</string>
     <string name="list_separator_standard">Estándar</string>
     <string name="list_separator_luxury">De lujo</string>
+    <string name="twittear">Twittear</string>
+    <string name="hint_twittear">¿Qué está pasando?</string>
 
     <string-array name="array_rate">
         <item>Excelente</item>
