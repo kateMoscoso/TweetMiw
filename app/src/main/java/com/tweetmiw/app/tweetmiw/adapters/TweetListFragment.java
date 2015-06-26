@@ -1,11 +1,6 @@
 package com.tweetmiw.app.tweetmiw.adapters;
 
-import android.app.Activity;
-import android.app.DownloadManager;
-import android.app.Fragment;
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.app.ListFragment;
@@ -13,27 +8,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.tweetmiw.app.tweetmiw.R;
-import com.tweetmiw.app.tweetmiw.TweetDetailActivity;
+import com.tweetmiw.app.tweetmiw.activity.TweetDetailActivity;
 import com.tweetmiw.app.tweetmiw.entities.ProfileUser;
 import com.tweetmiw.app.tweetmiw.entities.Tweet;
 import com.tweetmiw.app.tweetmiw.entities.User;
-import com.tweetmiw.app.tweetmiw.fragments.TweetDetailFragment;
-import com.tweetmiw.app.tweetmiw.fragments.Tweet_Fragments;
 import com.tweetmiw.app.tweetmiw.utils.SessionManager;
-
-import org.json.JSONArray;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import twitter4j.Status;
 
 /**
  * Created by katherin on 11/06/2015.

@@ -27,16 +27,20 @@ import twitter4j.Twitter;
 /**
  * Created by katherin on 26/06/2015.
  */
-public class WriteTweetActivity  extends AppCompatActivity {
+public class WriteTweetActivity extends AppCompatActivity {
     SessionManager session;
     int RESULT_LOAD_IMAGE = 0;
     StatusUpdate statusUpdate;
+    String fileName = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tweet);
         session = new SessionManager(getApplication());
-        Button publicar = (Button)findViewById(R.id.twittear);
+        statusUpdate = new StatusUpdate("");
+        Button publicar = (Button) findViewById(R.id.twittear);
+
         publicar.setOnClickListener(buttonClickListener);
 
     }
@@ -44,7 +48,7 @@ public class WriteTweetActivity  extends AppCompatActivity {
 
     private View.OnClickListener buttonClickListener = new View.OnClickListener() {
         @Override
-        public void onClick(View v){
+        public void onClick(View v) {
             try {
                 TextView tv = (TextView) findViewById(R.id.tweet);
                 String mensaje = tv.getText().toString();
@@ -52,29 +56,29 @@ public class WriteTweetActivity  extends AppCompatActivity {
                 StrictMode.setThreadPolicy(policy);
                 Twitter twitter = session.getTwitter();
                 statusUpdate = new StatusUpdate(mensaje);
-
+                statusUpdate.setMedia(new File(fileName));
                 Status status = twitter.updateStatus(statusUpdate);
-                if(status.getCreatedAt().toString().length()>0){
+                if (status.getCreatedAt().toString().length() > 0) {
                     Toast.makeText(getApplication(), getResources().getString(R.string.label_tweet_published),
                             Toast.LENGTH_LONG).show();
                     onBackPressed();
-                }
-                else{
+                } else {
                     Toast.makeText(getApplication(), getResources().getString(R.string.label_tweet_Nopublished),
                             Toast.LENGTH_LONG).show();
                 }
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 Log.e("error: ", Log.getStackTraceString(e));
 
             }
         }
     };
+
     public void cerrar(View v) {
         onBackPressed();
     }
-    public  void seleccionarImagen(View v){
-        Intent i = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+    public void seleccionarImagen(View v) {
+        Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(i, RESULT_LOAD_IMAGE);
     }
 
@@ -83,15 +87,16 @@ public class WriteTweetActivity  extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
             Uri selectedImage = data.getData();
-            String[] filePathColumn = { MediaStore.Images.Media.DATA };
-            Cursor cursor = getContentResolver().query(selectedImage,filePathColumn, null, null, null);
+            String[] filePathColumn = {MediaStore.Images.Media.DATA};
+            Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
             cursor.moveToFirst();
             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            String picturePath = cursor.getString(columnIndex);
+            fileName = cursor.getString(columnIndex);
             cursor.close();
-            statusUpdate.setMedia(new File(picturePath));
-           // ImageView imageView = (ImageView) findViewById(R.id.imgView);
-            //imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+
+           ImageView imageView = (ImageView) findViewById(R.id.photo);
+            imageView.setImageBitmap(BitmapFactory.decodeFile(fileName));
+            imageView.setVisibility(View.VISIBLE);
         }
     }
 }

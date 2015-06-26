@@ -1,4 +1,4 @@
-package com.tweetmiw.app.tweetmiw;
+package com.tweetmiw.app.tweetmiw.activity;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 
+import com.tweetmiw.app.tweetmiw.R;
 import com.tweetmiw.app.tweetmiw.adapters.ViewPagerAdapter;
 import com.tweetmiw.app.tweetmiw.entities.ProfileUser;
 import com.tweetmiw.app.tweetmiw.entities.Tweet;
