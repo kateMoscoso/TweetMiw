@@ -60,8 +60,7 @@
                 android:layout_below="@+id/tweets"
                 android:layout_marginTop="5dp"
                 android:layout_alignStart="@+id/tweets"
-                android:layout_alignLeft="@+id/tweets"
-            />
+                android:layout_alignLeft="@+id/tweets" />
 
             <ImageView
                 android:layout_width="wrap_content"

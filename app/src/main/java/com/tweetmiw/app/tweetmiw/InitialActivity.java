@@ -97,9 +97,7 @@ public class InitialActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+
         if(id == R.id.action_cerrar_sesion){
             session.logoutUser();
             Intent i = new Intent(this, MainActivity.class );

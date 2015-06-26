@@ -22,6 +22,7 @@
     <string name="description_responder">Botón para responder un tuit</string>
     <string name="description_retuitear">Botón para retuitear</string>
     <string name="description_favorito">Botón para marcar el tuit como favorito</string>
+    <string name="description_avatar">Imagen del avatar del usuario</string>
 
 
     <string name="msg_yes">Sí</string>

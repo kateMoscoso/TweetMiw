@@ -18,6 +18,7 @@
             android:id="@+id/avatar_usuario"
             android:src="@drawable/avatar"
             android:scaleType="centerCrop"
+            android:contentDescription="@string/description_avatar"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:layout_width="50dp"
@@ -54,21 +55,33 @@
             android:layout_marginLeft="80dp"
             android:layout_below="@+id/name" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/hora"
+            android:layout_below="@+id/tweets"
+            android:layout_marginTop="5dp"
+            android:layout_alignStart="@+id/tweets"
+            android:layout_alignLeft="@+id/tweets" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/ic_undo_24dp"
-            android:layout_below="@+id/tweets"
+            android:contentDescription="@string/description_responder"
+            android:layout_below="@+id/hora"
             android:layout_marginTop="5dp"
-            android:layout_alignLeft="@+id/tweets"
-            android:layout_alignStart="@+id/tweets"
+            android:layout_alignLeft="@+id/hora"
+            android:layout_alignStart="@+id/hora"
             android:src="@mipmap/ic_undo_24dp" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/ic_swap_horiz"
-            android:layout_below="@+id/tweets"
+            android:contentDescription="@string/description_retuitear"
+            android:layout_below="@+id/hora"
             android:layout_marginTop="5dp"
             android:src="@mipmap/ic_swap_horiz_24dp"
             android:layout_toEndOf="@+id/ic_undo_24dp"
@@ -80,7 +93,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/ic_star_rate"
-            android:layout_below="@+id/tweets"
+            android:contentDescription="@string/description_favorito"
+            android:layout_below="@+id/hora"
             android:layout_marginTop="5dp"
             android:src="@mipmap/ic_star_rate_24dp"
             android:layout_toEndOf="@+id/ic_swap_horiz"
