@@ -18,9 +18,6 @@ import java.util.ArrayList;
 
 import twitter4j.PagableResponseList;
 
-/**
- * Created by katherin on 27/06/2015.
- */
 public class ListaActivity extends ListActivity {
     private SessionManager sessionManager;
     private ArrayList<ProfileUser> usersList = new ArrayList<ProfileUser>();

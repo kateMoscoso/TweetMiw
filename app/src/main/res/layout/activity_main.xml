@@ -21,7 +21,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="109dp" />
 
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,7 +32,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="48dp"
         android:onClick="alertDialog" />
-
 
 </RelativeLayout>
 

@@ -9,7 +9,7 @@
         android:contentDescription="@string/description_avatar"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -20,7 +20,6 @@
         android:id="@+id/screenName"
         android:layout_below="@+id/avatar_usuario"
         android:layout_centerHorizontal="true" />
-
 
     <TextView
         android:layout_width="wrap_content"
@@ -35,24 +34,24 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/descripcion"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_below="@+id/username"
-        />
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_below="@+id/username" />
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/descripcion"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp">
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/siguiendo"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:onClick="showFollowersList"/>
 
         <TextView
@@ -62,8 +61,8 @@
             android:text="@string/label_tweet_followers"
             android:layout_toRightOf="@+id/siguiendo"
             android:layout_toEndOf="@+id/siguiendo"
-            android:layout_marginLeft="5dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
             android:textStyle="bold"
             android:onClick="showFollowersList"/>
 
@@ -73,23 +72,21 @@
             android:id="@+id/seguidores"
             android:layout_toRightOf="@+id/txt_siguiendo"
             android:layout_toEndOf="@+id/txt_siguiendo"
-            android:layout_marginLeft="25dp"
-            android:layout_marginStart="25dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
             android:onClick="showFollowingList"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/label_tweet_following"
-            android:layout_marginLeft="5dp"
-            android:layout_marginStart="5dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
             android:layout_toRightOf="@+id/seguidores"
             android:layout_toEndOf="@+id/seguidores"
             android:textStyle="bold"
             android:onClick="showFollowingList"/>
 
     </RelativeLayout>
-
-
 
 </RelativeLayout>

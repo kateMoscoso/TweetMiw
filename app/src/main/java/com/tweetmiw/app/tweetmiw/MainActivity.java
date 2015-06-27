@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
     public void alertDialog(View view) {
         AlertDialog.Builder aviso = new AlertDialog.Builder(this);
         aviso.setMessage("Esta aplicación es un cliente de Twitter, por lo que se necesita estar registrado en Twitter para poder utilizarla. Esta aplicación no guarda ni tu usuario ni tu contraseña,\n" +
-                "simplemente se autentica a través del propio Twitter. Si todavía no tienes una cuenta de Twitter, deberás ir a la página oficial de Twitter y crearte una.");
+                "simplemente se autentica a través del propio Twitter.");
         aviso.setTitle("¡Bienvenido!");
         aviso.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override

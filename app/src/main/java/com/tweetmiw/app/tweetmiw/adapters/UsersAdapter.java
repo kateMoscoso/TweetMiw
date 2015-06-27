@@ -23,10 +23,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-
-/**
- * Created by katherin on 27/06/2015.
- */
 public class UsersAdapter extends ArrayAdapter<ProfileUser> {
     private Context context;
     private int itemLayout; // la vista, los row
