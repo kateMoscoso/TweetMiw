@@ -35,24 +35,16 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
           //  Tab1 tab1 = new Tab1();
             return TweetListFragment.init(position);
         }
-        if(position == 1) // if the position is 0 we are returning the First tab
+        if(position == 1) // if the position is 1 we are returning the Second tab
         {
             Usuarios_Fragment uf = new Usuarios_Fragment();
             //  Tab1 tab1 = new Tab1();
             return uf;
         }
-        if(position == 2) // if the position is 0 we are returning the First tab
-        {
-            Tweet_Fragments tf = new Tweet_Fragments();
-            //Profile_Fragments pf = new Profile_Fragments();
-
-            return tf;
-        }
         else             // As we are having 2 tabs if the position is now 0 it must be 1 so we are returning second tab
         {
-            ArrayListFragment ar = new ArrayListFragment();
-           // Tab2 tab2 = new Tab2();
-            return TweetListFragment.init(position);
+
+            return new Tweet_Fragments();
         }
 
     }
