@@ -20,6 +20,7 @@
     <string name="description_avatar">Imagen del avatar del usuario</string>
     <string name="description_seguir">Imagen para seguir a otro usuario</string>
     <string name="description_logo">Imagen del logo de la aplicación</string>
+    <string name="description_escribir">Botón para escribir un Tuit</string>
 
 
     <string name="msg_yes">Sí</string>

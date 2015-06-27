@@ -12,93 +12,98 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="65dp">
+        android:layout_below="@+id/activity_my_toolbar"
+        android:layout_marginTop="@dimen/activity_vertical_margin">
 
         <ImageView
             android:id="@+id/avatar_usuario"
             android:src="@drawable/avatar"
             android:scaleType="centerCrop"
             android:contentDescription="@string/description_avatar"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_width="50dp"
             android:layout_height="50dp"/>
 
-        <TextView
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/screenName"
-            android:layout_marginStart="80dp"
-            android:layout_marginLeft="80dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/name"
-            android:layout_below="@+id/screenName"
-            android:layout_marginStart="80dp"
-            android:layout_marginLeft="80dp"
-            />
+            android:layout_toRightOf="@+id/avatar_usuario"
+            android:layout_toEndOf="@+id/avatar_usuario"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin" >
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="25sp"
-            android:id="@+id/tweets"
-            android:layout_marginStart="80dp"
-            android:layout_marginLeft="80dp"
-            android:layout_below="@+id/name" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/screenName" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:id="@+id/hora"
-            android:layout_below="@+id/tweets"
-            android:layout_marginTop="5dp"
-            android:layout_alignStart="@+id/tweets"
-            android:layout_alignLeft="@+id/tweets" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/name"
+                android:layout_below="@+id/screenName" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ic_undo_24dp"
-            android:contentDescription="@string/description_responder"
-            android:layout_below="@+id/hora"
-            android:layout_marginTop="5dp"
-            android:layout_alignLeft="@+id/hora"
-            android:layout_alignStart="@+id/hora"
-            android:src="@mipmap/ic_undo_24dp" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ic_swap_horiz"
-            android:contentDescription="@string/description_retuitear"
-            android:layout_below="@+id/hora"
-            android:layout_marginTop="5dp"
-            android:src="@mipmap/ic_swap_horiz_24dp"
-            android:layout_toEndOf="@+id/ic_undo_24dp"
-            android:layout_toRightOf="@+id/ic_undo_24dp"
-            android:layout_marginLeft="80dp"
-            android:layout_marginStart="80dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="25sp"
+                android:id="@+id/tweets"
+                android:layout_below="@+id/name" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ic_star_rate"
-            android:contentDescription="@string/description_favorito"
-            android:layout_below="@+id/hora"
-            android:layout_marginTop="5dp"
-            android:src="@mipmap/ic_star_rate_24dp"
-            android:layout_toEndOf="@+id/ic_swap_horiz"
-            android:layout_toRightOf="@+id/ic_swap_horiz"
-            android:layout_marginStart="80dp"
-            android:layout_marginLeft="80dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:id="@+id/hora"
+                android:layout_below="@+id/tweets"
+                android:layout_marginTop="5dp"
+                android:layout_alignStart="@+id/tweets"
+                android:layout_alignLeft="@+id/tweets" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ic_undo_24dp"
+                android:contentDescription="@string/description_responder"
+                android:layout_below="@+id/hora"
+                android:layout_marginTop="5dp"
+                android:layout_alignLeft="@+id/hora"
+                android:layout_alignStart="@+id/hora"
+                android:src="@mipmap/ic_undo_24dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ic_swap_horiz"
+                android:contentDescription="@string/description_retuitear"
+                android:layout_below="@+id/hora"
+                android:layout_marginTop="5dp"
+                android:src="@mipmap/ic_swap_horiz_24dp"
+                android:layout_toEndOf="@+id/ic_undo_24dp"
+                android:layout_toRightOf="@+id/ic_undo_24dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginStart="80dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ic_star_rate"
+                android:contentDescription="@string/description_favorito"
+                android:layout_below="@+id/hora"
+                android:layout_marginTop="5dp"
+                android:src="@mipmap/ic_star_rate_24dp"
+                android:layout_toEndOf="@+id/ic_swap_horiz"
+                android:layout_toRightOf="@+id/ic_swap_horiz"
+                android:layout_marginStart="80dp"
+                android:layout_marginLeft="80dp" />
 
         </RelativeLayout>
+
+    </RelativeLayout>
 
 </RelativeLayout>
