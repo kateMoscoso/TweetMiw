@@ -33,9 +33,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
             return TweetListFragment.init(position);
         }
         if(position == 1){ // if the position is 1 we are returning the Second tab
-            Usuarios_Fragment uf = new Usuarios_Fragment();
-            //  Tab1 tab1 = new Tab1();
-            return uf;
+            return new Usuarios_Fragment();
         }
         else             // As we are having 2 tabs if the position is now 0 it must be 1 so we are returning second tab
         {
