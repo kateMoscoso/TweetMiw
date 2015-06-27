@@ -1,5 +1,6 @@
 package com.tweetmiw.app.tweetmiw;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
@@ -71,6 +72,7 @@ public class InitialActivity extends AppCompatActivity implements SwipeRefreshLa
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_initial, menu);
+
         return true;
     }
 

@@ -9,18 +9,18 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/description_close"
         android:id="@+id/closeButton"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:background="@mipmap/ic_close_36dp"
-        android:onClick="cerrar"
-        />
+        android:onClick="cerrar" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tweet"
         android:layout_below="@+id/closeButton"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
+        android:layout_margin="@dimen/activity_vertical_margin"
         android:maxLength="140"
         android:hint="@string/hint_twittear">
        <requestFocus />
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/photo"
         android:layout_below="@+id/tweet"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:visibility="invisible"/>
 
     <ImageButton
@@ -42,9 +42,9 @@
         android:onClick="seleccionarImagen"
         android:background="@mipmap/ic_photo_36dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="30dp"/>
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -54,9 +54,9 @@
         android:text="@string/twittear"
         android:textAllCaps="false"
         android:background="@color/accent_color"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"/>
