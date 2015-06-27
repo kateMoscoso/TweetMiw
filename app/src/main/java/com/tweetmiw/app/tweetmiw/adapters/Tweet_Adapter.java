@@ -84,8 +84,8 @@ public class Tweet_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             ((ViewHolderUser) viewHolder).screenName.setText(user.getProfile().getScreen_name());
             ((ViewHolderUser) viewHolder).descripcion.setText(user.getProfile().getDescription());
 
-            ((ViewHolderUser) viewHolder).seguidores.setText(user.getProfile().getFollowers_count() + " " +  ((ViewHolderUser) viewHolder).seguidores.getText());
-            ((ViewHolderUser) viewHolder).siguiendo.setText(user.getProfile().getFriends_count() + " " +((ViewHolderUser) viewHolder).siguiendo.getText() );
+            ((ViewHolderUser) viewHolder).seguidores.setText(user.getProfile().getFollowers_count());
+            ((ViewHolderUser) viewHolder).siguiendo.setText(user.getProfile().getFriends_count());
         }
 
 

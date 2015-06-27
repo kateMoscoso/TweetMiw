@@ -28,8 +28,6 @@ import twitter4j.Paging;
 import twitter4j.Status;
 
 public class Tweet_Fragments extends Fragment {
-
-    String f;
     private SessionManager session;
     public Tweet_Fragments() {
         // Required empty public constructor
@@ -69,10 +67,8 @@ public class Tweet_Fragments extends Fragment {
             Paging page = new Paging(pageno++, 10);
 
             List<Status> statuses = twitter.getUserTimeline(userID);
-
-            //twitter.getHomeTimeline()
-            User usuarioAux = new User();
-            ProfileUser profileUserAux = new ProfileUser();
+            User usuarioAux;
+            ProfileUser profileUserAux ;
             Tweet tweet;
             for (Status status : statuses) {
                 usuarioAux = new User();
