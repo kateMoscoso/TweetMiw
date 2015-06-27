@@ -94,10 +94,6 @@ public class InitialActivity extends AppCompatActivity  {
     }
 
     public void lanzarEscribirTweet(View view) {
-        /*TwitterAuthConfig authConfig =  new TwitterAuthConfig("consumerKey", "consumerSecret");
-        Fabric.with(this, new TwitterCore(authConfig), new TweetComposer());
-        TweetComposer.Builder builder = new TweetComposer.Builder(this);
-        builder.show();*/
         Intent i = new Intent(this, WriteTweetActivity.class);
         startActivity(i);
     }
@@ -119,7 +115,6 @@ public class InitialActivity extends AppCompatActivity  {
     public void showFollowingList(View view) {
 
         Intent intent = new Intent();
-        //ListaActivity l = new ListaActivity();
         intent.setClass(this, ListaActivity.class);
         intent.putExtra("tipo", ConstantsUtils
                 .FOLLOWING);
