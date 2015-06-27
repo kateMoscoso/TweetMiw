@@ -24,6 +24,7 @@
     <string name="description_favorito">Botón para marcar el tuit como favorito</string>
     <string name="description_avatar">Imagen del avatar del usuario</string>
     <string name="description_seguir">Imagen para seguir a otro usuario</string>
+    <string name="description_logo">Imagen del logo de la aplicación</string>
 
 
     <string name="msg_yes">Sí</string>
@@ -40,6 +41,7 @@
     <string name="list_separator_luxury">De lujo</string>
     <string name="twittear">Twittear</string>
     <string name="hint_twittear">¿Qué está pasando?</string>
+
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
