@@ -12,33 +12,6 @@ import com.tweetmiw.app.tweetmiw.fragments.TweetDetailFragment;
 public class TweetDetailActivity extends AppCompatActivity {
     Tweet tweet;
 
-    /*
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_tweet_detail);
-
-            Intent intent = getIntent();
-            User usuario = new User();
-            ProfileUser profileUser = new ProfileUser();
-            profileUser.setName("Usuario");
-            profileUser.setScreen_name("@screen_name");
-            usuario.setProfile(profileUser);
-            tweet = new Tweet("esto es un tweet", usuario);
-
-
-            Toolbar toolbar = (Toolbar) findViewById(R.id.activity_my_toolbar);
-            setSupportActionBar(toolbar);//modifico el action Bar pordefecto de l
-
-        }
-
-        @Override
-        public boolean onCreateOptionsMenu(Menu menu) {
-            // Inflate the menu; this adds items to the action bar if it is present.
-            getMenuInflater().inflate(R.menu.menu_initial, menu);
-            return true;
-        }
-    */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

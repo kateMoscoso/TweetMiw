@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_main);
         sessionManager = new SessionManager(getApplicationContext());
         if (sessionManager.isLoggedIn()) {
             lanzarLogeado();
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         TwitterAuthConfig authConfig = new TwitterAuthConfig(ConstantsUtils.CONSUMER_KEY, ConstantsUtils.CONSUMER_SECRET);
         Fabric.with(this, new Twitter(authConfig));
-        setContentView(R.layout.activity_main);
+
         loginButton = (TwitterLoginButton)
                 findViewById(R.id.login_button);
         loginButton.setCallback(new Callback<TwitterSession>() {

@@ -12,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
 
 import com.tweetmiw.app.tweetmiw.R;
@@ -61,10 +60,6 @@ public class TweetListFragment extends ListFragment {
         super.onCreate(savedInstanceState);
         session = new SessionManager(getActivity());
         fragNum = getArguments() != null ? getArguments().getInt("val") : 1;
-
-
-        //final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-       // mRecyclerView.setLayoutManager(layoutManager);
         actualizarLista();
     }
     private void actualizarLista(){
@@ -75,7 +70,6 @@ public class TweetListFragment extends ListFragment {
 
             twitter4j.Twitter twitter = session.getTwitter();
             List<twitter4j.Status> statuses = twitter.getHomeTimeline();
-            // String timeline = TwitterUtils.getTimelineForSearchTerm(ConstantsUtils.MEJORANDROID_TERM);
             Tweet tweet;
             User user;
             ProfileUser profileUser;
@@ -148,10 +142,17 @@ public class TweetListFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
+        Tweet t = tweets.get(position);
         Intent intent = new Intent();
         intent.setClass(getActivity(), TweetDetailActivity.class);
+        intent.putExtra("name", t.getUser().getProfile().getName());
+        intent.putExtra("screenName", t.getUser().getProfile().getScreen_name());
         intent.putExtra("position", position);
         startActivity(intent);
-
+        /*Usuarios_Fragment nextFrag= new Usuarios_Fragment();
+        this.getFragmentManager().beginTransaction()
+                .replace(R.id.my_recycler_view_tweet, nextFrag,"22")
+                .addToBackStack(null)
+                .commit();*/
     }
 }

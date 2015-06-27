@@ -4,36 +4,36 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
+import com.tweetmiw.app.tweetmiw.activity.ListaActivity;
 import com.tweetmiw.app.tweetmiw.activity.WriteTweetActivity;
 import com.tweetmiw.app.tweetmiw.adapters.ViewPagerAdapter;
 import com.tweetmiw.app.tweetmiw.utils.SessionManager;
 import com.twitter.sdk.android.Twitter;
-
+import com.tweetmiw.app.tweetmiw.utils.ConstantsUtils;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 
 import java.util.ArrayList;
 
 
-public class InitialActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener{
+public class InitialActivity extends AppCompatActivity  {
 
     ViewPager pager;
     ViewPagerAdapter adapter;
     SlidingTabLayout tabs;
     ArrayList<String> dataset;
-    CharSequence Titles[]={"Timeline","Followers","Mi Perfil"};
-    int Numboftabs =3;
+    CharSequence Titles[] = {"Timeline", "Followers", "Mi Perfil"};
+    int Numboftabs = 3;
     private static Twitter twitter;
     TwitterAuthConfig authConfig;
     // Session Manager Class
     SessionManager session;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,7 @@ public class InitialActivity extends AppCompatActivity implements SwipeRefreshLa
         setSupportActionBar(toolbar);//modifico el action Bar pordefecto de l
 
         // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
-        adapter =  new ViewPagerAdapter(getSupportFragmentManager(),Titles,Numboftabs);
+        adapter = new ViewPagerAdapter(getSupportFragmentManager(), Titles, Numboftabs);
 
         // Assigning ViewPager View and setting the adapter
         pager = (ViewPager) findViewById(R.id.pager);
@@ -85,14 +85,15 @@ public class InitialActivity extends AppCompatActivity implements SwipeRefreshLa
 
         //noinspection SimplifiableIfStatement
 
-        if(id == R.id.action_cerrar_sesion){
+        if (id == R.id.action_cerrar_sesion) {
             session.logoutUser();
-            Intent i = new Intent(this, MainActivity.class );
+            Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
         }
         return super.onOptionsItemSelected(item);
     }
-    public void lanzarEscribirTweet(View view){
+
+    public void lanzarEscribirTweet(View view) {
         /*TwitterAuthConfig authConfig =  new TwitterAuthConfig("consumerKey", "consumerSecret");
         Fabric.with(this, new TwitterCore(authConfig), new TweetComposer());
         TweetComposer.Builder builder = new TweetComposer.Builder(this);
@@ -103,25 +104,26 @@ public class InitialActivity extends AppCompatActivity implements SwipeRefreshLa
 
 
     /**
-     *
      * @param view
      */
-    public void showFollowersList (View view){
-        twitter4j.Twitter twitter = session.getTwitter();
-        
-        Toast.makeText(view.getContext(), "Mostrar Followers", Toast.LENGTH_SHORT).show();
+    public void showFollowersList(View view) {
+        Intent intent = new Intent();
+        intent.setClass(this, ListaActivity.class);
+        intent.putExtra("tipo", ConstantsUtils.FOLLOWERS);
+        startActivity(intent);
     }
 
     /**
-     *
      * @param view
      */
-    public void showFollowingList (View view){
-        Toast.makeText(view.getContext(), "Mostrar Following", Toast.LENGTH_SHORT).show();
+    public void showFollowingList(View view) {
+
+        Intent intent = new Intent();
+        //ListaActivity l = new ListaActivity();
+        intent.setClass(this, ListaActivity.class);
+        intent.putExtra("tipo", ConstantsUtils
+                .FOLLOWING);
+        startActivity(intent);
     }
 
-    @Override
-    public void onRefresh() {
-        Toast.makeText(getApplication(), "On refresh", Toast.LENGTH_SHORT).show();
-    }
 }
