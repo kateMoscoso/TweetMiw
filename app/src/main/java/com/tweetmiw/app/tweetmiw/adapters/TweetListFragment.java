@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.app.ListFragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 
 import com.tweetmiw.app.tweetmiw.R;
@@ -18,10 +20,14 @@ import com.tweetmiw.app.tweetmiw.entities.Tweet;
 import com.tweetmiw.app.tweetmiw.entities.User;
 import com.tweetmiw.app.tweetmiw.utils.SessionManager;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
 
-public class TweetListFragment extends ListFragment {
+public class TweetListFragment extends ListFragment implements SwipeRefreshLayout.OnRefreshListener{
     int fragNum;
     // Session Manager Class
     SessionManager session;
@@ -63,10 +69,12 @@ public class TweetListFragment extends ListFragment {
                 profileUser.setName(status.getUser().getName());
                 profileUser.setScreen_name(status.getUser().getScreenName());
                 profileUser.setProfile_image_url(status.getUser().getProfileImageURL());
-                profileUser.setCreatedAt(status.getCreatedAt().toString());
+               // profileUser.setCreatedAt(status.getCreatedAt().toString());
                 user.setProfile(profileUser);
 
                 tweet = new Tweet(status.getText(), user);
+                Date date = status.getCreatedAt();
+                tweet.setCreated_at(new SimpleDateFormat("dd/MM/yy - HH:mm").format(date));
                 tweets.add(i, tweet);
                 i++;
             }
@@ -114,22 +122,27 @@ public class TweetListFragment extends ListFragment {
         intent.setClass(getActivity(), TweetDetailActivity.class);
         intent.putExtra("position", position);
         startActivity(intent);
-      /* TweetDetailFragment nextFrag = new TweetDetailFragment();
-        this.getFragmentManager().beginTransaction()
-                .replace(R.id.tweets, nextFrag, null)
-                .addToBackStack(null)
-                .commit();
 
-        // Set the item as checked to be highlighted when in two-pane layout
-        getListView().setItemChecked(position, true);
-/*
-
-        Tweet clicked_tweet = (Tweet) l.getItemAtPosition(position);
-       Intent intent = new Intent (getActivity(), TweetDetailActivity.class);
-       Tweet tweetIntent =  tweets.get(position);
-
-        intent.putExtra("tweet", tweetIntent);
-        startActivity(intent);*/
     }
 
+    @Override
+    public void onRefresh() {
+        Toast.makeText(getActivity(), "Refresh", Toast.LENGTH_SHORT).show();
+        new Handler() {
+            @Override
+            public void close() {
+
+            }
+
+            @Override
+            public void flush() {
+
+            }
+
+            @Override
+            public void publish(LogRecord record) {
+
+            }
+        };
+    }
 }

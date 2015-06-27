@@ -3,6 +3,7 @@ package com.tweetmiw.app.tweetmiw;
 import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -20,7 +21,7 @@ import com.twitter.sdk.android.core.TwitterAuthConfig;
 import java.util.ArrayList;
 
 
-public class InitialActivity extends AppCompatActivity {
+public class InitialActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener{
 
     ViewPager pager;
     ViewPagerAdapter adapter;
@@ -117,4 +118,8 @@ public class InitialActivity extends AppCompatActivity {
         Toast.makeText(view.getContext(), "Mostrar Following", Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onRefresh() {
+        Toast.makeText(getApplication(), "On refresh", Toast.LENGTH_SHORT).show();
+    }
 }

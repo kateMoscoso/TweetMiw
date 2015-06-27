@@ -84,7 +84,7 @@ public class Tweet_Fragments extends Fragment {
                 usuarioAux.setProfile(profileUserAux);
                 tweet = new Tweet(status.getText(), usuarioAux);
                 Date date = status.getCreatedAt();
-                tweet.setCreated_at(new SimpleDateFormat("dd/MM/yy-HH:mm").format(date));
+                tweet.setCreated_at(new SimpleDateFormat("dd/MM/yy - HH:mm").format(date));
                 tweetArrayList.add(tweet);
             }
             RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.my_recycler_view_tweet);
