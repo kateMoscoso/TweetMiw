@@ -23,6 +23,7 @@
     <string name="description_retuitear">Botón para retuitear</string>
     <string name="description_favorito">Botón para marcar el tuit como favorito</string>
     <string name="description_avatar">Imagen del avatar del usuario</string>
+    <string name="description_seguir">Imagen para seguir a otro usuario</string>
 
 
     <string name="msg_yes">Sí</string>

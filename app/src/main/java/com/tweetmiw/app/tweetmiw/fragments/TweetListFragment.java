@@ -1,4 +1,4 @@
-package com.tweetmiw.app.tweetmiw.adapters;
+package com.tweetmiw.app.tweetmiw.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.tweetmiw.app.tweetmiw.R;
 import com.tweetmiw.app.tweetmiw.activity.TweetDetailActivity;
+import com.tweetmiw.app.tweetmiw.adapters.CustomAdapter;
 import com.tweetmiw.app.tweetmiw.entities.ProfileUser;
 import com.tweetmiw.app.tweetmiw.entities.Tweet;
 import com.tweetmiw.app.tweetmiw.entities.User;
