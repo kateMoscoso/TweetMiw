@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.tweetmiw.app.tweetmiw.InitialActivity">
 
-    <!-- <item android:id="@+id/buscar"
+     <!-- <item android:id="@+id/buscar"
         android:icon="@mipmap/ic_buscar_24dp"
         android:title="@string/search"
         android:orderInCategory="1"
-        app:showAsAction="ifRoom" /> -->
+        app:showAsAction="ifRoom|withText" /> -->
 
     <item android:id="@+id/action_cerrar_sesion"
         android:title="@string/cerrar_sesion"

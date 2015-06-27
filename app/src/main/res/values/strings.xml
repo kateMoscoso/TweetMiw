@@ -6,14 +6,9 @@
     <string name="title_activity_initial">InitialActivity</string>
     <string name="tweets_pendientes">Tweets Pendientes</string>
     <string name="cerrar_sesion">Cerrar Sesión</string>
-    <string name="registrar">Regístrate en Twitter</string>
     <string name="ayuda">¿Necesitas ayuda?</string>
     <string name="lista">lista</string>
     <string name="timeline">Timeline</string>
-    <string name="name">Nombre</string>
-    <string name="user_name">\@Usuario</string>
-    <string name="hour">Hora</string>
-    <string name="description">Descripción</string>
     <string name="search">Buscar</string>
 
 

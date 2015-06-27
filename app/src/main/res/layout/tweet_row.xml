@@ -4,7 +4,6 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp" >
 
-
     <ImageView
         android:id="@+id/avatar_usuario"
         android:src="@drawable/avatar"
@@ -27,9 +26,7 @@
                 android:id="@+id/username"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="80dp"
-                android:layout_marginLeft="80dp"
-                />
-            <!--android:layout_toEndOf="@+id/avatar" />-->
+                android:layout_marginLeft="80dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -40,8 +37,7 @@
                 android:layout_toEndOf="@+id/username"
                 android:layout_toRightOf="@+id/username"
                 android:layout_marginStart="10dp"
-                android:layout_marginLeft="5dp"
-                />
+                android:layout_marginLeft="5dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -105,11 +101,8 @@
             android:layout_width="fill_parent"
             android:layout_below="@+id/ic_star_rate"
             android:layout_marginTop="10dp"
-            android:background="@drawable/border_line"
-            />
-
+            android:background="@drawable/border_line" />
 
     </RelativeLayout>
-
 
 </RelativeLayout>
