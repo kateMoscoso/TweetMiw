@@ -49,10 +49,8 @@ public class Tweet_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
 
-
-
        // Log.v("Tweet_Adapter", tweet.getUser().getProfile().getProfile_image_url());
-        URL url = null;
+        URL url ;
         if (viewHolder instanceof ViewHolderTweet) {
             Tweet tweet = tweets.get(position-1);
 

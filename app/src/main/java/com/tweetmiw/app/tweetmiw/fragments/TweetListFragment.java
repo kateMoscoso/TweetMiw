@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.app.ListFragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,12 +30,20 @@ import java.util.List;
 import java.util.logging.Handler;
 import java.util.logging.LogRecord;
 
-public class TweetListFragment extends ListFragment implements SwipeRefreshLayout.OnRefreshListener{
-    int fragNum;
+public class TweetListFragment extends ListFragment {
+   private int fragNum;
     // Session Manager Class
-    SessionManager session;
+    private SessionManager session;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
+    private View layoutView;
     public ArrayList<Tweet> tweets = new ArrayList<Tweet>();
+    private RecyclerView mRecyclerView;
 
+    /**
+     *
+     * @param val
+     * @return
+     */
     public static TweetListFragment init(int val) {
         TweetListFragment truitonList = new TweetListFragment();
         Bundle args = new Bundle();
@@ -42,7 +52,6 @@ public class TweetListFragment extends ListFragment implements SwipeRefreshLayou
 
         return truitonList;
     }
-
 
     /**
      * Retrieving this instance's number from its arguments.
@@ -53,6 +62,13 @@ public class TweetListFragment extends ListFragment implements SwipeRefreshLayou
         session = new SessionManager(getActivity());
         fragNum = getArguments() != null ? getArguments().getInt("val") : 1;
 
+
+        //final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+       // mRecyclerView.setLayoutManager(layoutManager);
+        actualizarLista();
+    }
+    private void actualizarLista(){
+        tweets.clear();
         try {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
@@ -70,7 +86,7 @@ public class TweetListFragment extends ListFragment implements SwipeRefreshLayou
                 profileUser.setName(status.getUser().getName());
                 profileUser.setScreen_name(status.getUser().getScreenName());
                 profileUser.setProfile_image_url(status.getUser().getProfileImageURL());
-               // profileUser.setCreatedAt(status.getCreatedAt().toString());
+                // profileUser.setCreatedAt(status.getCreatedAt().toString());
                 user.setProfile(profileUser);
 
                 tweet = new Tweet(status.getText(), user);
@@ -85,10 +101,12 @@ public class TweetListFragment extends ListFragment implements SwipeRefreshLayou
 
         }
     }
-
-    public boolean pullToRefreshEnabled() {
-        return true;
+    private void setupAdapter() {
+        actualizarLista();
+        CustomAdapter adapter = new CustomAdapter(getActivity(), 0, tweets);
+        setListAdapter(adapter);
     }
+
 
     /**
      * The Fragment's UI is a simple text view showing its instance number and
@@ -97,14 +115,26 @@ public class TweetListFragment extends ListFragment implements SwipeRefreshLayou
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View layoutView = inflater.inflate(R.layout.fragment_pager_list,
+        layoutView = inflater.inflate(R.layout.fragment_pager_list,
                 container, false);
-       /* layoutView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        } );*/
+        //= (SwipeRefreshLayout) getActivity().findViewById(R.id.timeline_swipe_refresh_layout);
+         mSwipeRefreshLayout = (SwipeRefreshLayout)  layoutView.findViewById(R.id.timeline_swipe_refresh_layout);
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.accent_color, R.color.primary_dark_color, R.color.primary_color);
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        mSwipeRefreshLayout.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        new android.os.Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Log.v("","onRefresh");
+                                setupAdapter();
+                                mSwipeRefreshLayout.setRefreshing(false);
+                            }
+                        }, 2500);
+                    }
+                });
         return layoutView;
     }
 
@@ -116,7 +146,6 @@ public class TweetListFragment extends ListFragment implements SwipeRefreshLayou
 
     }
 
-
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         Intent intent = new Intent();
@@ -124,26 +153,5 @@ public class TweetListFragment extends ListFragment implements SwipeRefreshLayou
         intent.putExtra("position", position);
         startActivity(intent);
 
-    }
-
-    @Override
-    public void onRefresh() {
-        Toast.makeText(getActivity(), "Refresh", Toast.LENGTH_SHORT).show();
-        new Handler() {
-            @Override
-            public void close() {
-
-            }
-
-            @Override
-            public void flush() {
-
-            }
-
-            @Override
-            public void publish(LogRecord record) {
-
-            }
-        };
     }
 }
