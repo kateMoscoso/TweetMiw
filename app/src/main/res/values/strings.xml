@@ -44,7 +44,7 @@
     <string name="user_loading">cargando</string>
     <string name="label_tweets_not_found">Tuits no encontrados. Compruebe su conexión a internet.</string>
     <string name="label_tweets_downloaded">Tuits descargados</string>
-    <string name="label_login_noAuth">Login No Autorizado</string>
+    <string name="label_login_noAuth">Login No Autorizado. Compruebe su conexión a internet.</string>
     <string name="label_tweet_published">Tweet publicado</string>
     <string name="label_tweet_Nopublished">Error publicando el Tweet. Compruebe su coneción a internet.</string>
     <string name="label_tweet_followers">Siguiendo</string>
