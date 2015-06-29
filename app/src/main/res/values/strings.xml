@@ -49,4 +49,7 @@
     <string name="label_tweet_Nopublished">Error publicando el Tweet. Compruebe su coneción a internet.</string>
     <string name="label_tweet_followers">Siguiendo</string>
     <string name="label_tweet_following">Seguidores</string>
+    <string name="tab1">Tweets</string>
+    <string name="tab2">Seguidores</string>
+    <string name="tab3">Mi perfil</string>
 </resources>

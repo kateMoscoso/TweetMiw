@@ -27,9 +27,6 @@ public class TweetDetailActivity extends AppCompatActivity {
             // During initial setup, plug in the details fragment.
             TweetDetailFragment details = new TweetDetailFragment();
             details.setArguments(getIntent().getExtras());
-
-            //getFragmentManager().beginTransaction().add(R.id.contentPanel,details) add(android.R.id.content, details).commit();
-
         }
         Toolbar toolbar = (Toolbar) findViewById(R.id.activity_my_toolbar);
         setSupportActionBar(toolbar);//modifico el action Bar pordefecto de l

@@ -51,7 +51,6 @@ public class SessionManager {
      * Create login session
      */
     public void createLoginSession(String token, String secret) {
-        Log.v("Session alamacenando ", token+ "  "+ secret);
         // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
 
@@ -130,15 +129,18 @@ public class SessionManager {
     public boolean isLoggedIn() {
         return pref.getBoolean(IS_LOGIN, false);
     }
+
+    /**
+     * Metodo que ddevuleve una nstancia de Twitter del usuario logeado
+     * @return twitter
+     */
     public Twitter getTwitter() {
         ConfigurationBuilder builder = new ConfigurationBuilder();
         builder.setOAuthConsumerKey(ConstantsUtils.CONSUMER_KEY);
         builder.setOAuthConsumerSecret(ConstantsUtils.CONSUMER_SECRET);
         String token = pref.getString(TOKEN, null);
         String secret = pref.getString(SECRET, null);
-        Log.v("Session 2 ", token+ "  "+secret);
         AccessToken accessToken = new AccessToken( token,  secret);
-
         return new TwitterFactory(builder.build()).getInstance(accessToken);
     }
 }

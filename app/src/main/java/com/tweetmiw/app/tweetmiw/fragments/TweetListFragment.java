@@ -80,7 +80,6 @@ public class TweetListFragment extends ListFragment {
                 profileUser.setName(status.getUser().getName());
                 profileUser.setScreen_name(status.getUser().getScreenName());
                 profileUser.setProfile_image_url(status.getUser().getProfileImageURL());
-                // profileUser.setCreatedAt(status.getCreatedAt().toString());
                 user.setProfile(profileUser);
 
                 tweet = new Tweet(status.getText(), user);
@@ -129,6 +128,7 @@ public class TweetListFragment extends ListFragment {
                         }, 2500);
                     }
                 });
+       // mSwipeRefreshLayout.setProgressViewEndTarget( new SwipeRefreshLayout.OnDragListener());
         return layoutView;
     }
 
@@ -155,4 +155,5 @@ public class TweetListFragment extends ListFragment {
                 .addToBackStack(null)
                 .commit();*/
     }
+
 }

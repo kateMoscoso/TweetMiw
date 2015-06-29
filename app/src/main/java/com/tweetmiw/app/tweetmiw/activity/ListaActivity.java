@@ -73,11 +73,7 @@ public class ListaActivity extends ListActivity {
             } while ((cursor = followers.getNextCursor()) != 0);*/
 
 
-        } catch (
-                twitter4j.TwitterException e
-                )
-
-        {
+        } catch ( twitter4j.TwitterException e) {
             //  Log.e()
             Log.e("ss", e.getMessage());
         }
