@@ -23,16 +23,16 @@ import java.util.ArrayList;
 
 public class InitialActivity extends AppCompatActivity  {
 
-    ViewPager pager;
-    ViewPagerAdapter adapter;
-    SlidingTabLayout tabs;
-    ArrayList<String> dataset;
-    CharSequence Titles[] = {"Timeline", "Followers", "Mi Perfil"};
-    int Numboftabs = 3;
+    private ViewPager pager;
+    private ViewPagerAdapter adapter;
+    private SlidingTabLayout tabs;
+    private ArrayList<String> dataset;
+
+    private CharSequence Titles[] = new CharSequence[3];
+    private int Numboftabs = 3;
     private static Twitter twitter;
-    TwitterAuthConfig authConfig;
-    // Session Manager Class
-    SessionManager session;
+    private TwitterAuthConfig authConfig;
+    private SessionManager session;
 
 
     @Override
@@ -41,6 +41,9 @@ public class InitialActivity extends AppCompatActivity  {
 
         setContentView(R.layout.activity_initial);
         session = new SessionManager(getApplicationContext());
+        Titles[0] = getString(R.string.tab1);
+        Titles[1] = getString(R.string.tab2);
+        Titles[2] = getString(R.string.tab3);
         Toolbar toolbar = (Toolbar) findViewById(R.id.activity_my_toolbar);
         setSupportActionBar(toolbar);//modifico el action Bar pordefecto de l
 

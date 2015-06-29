@@ -1,6 +1,9 @@
 package com.tweetmiw.app.tweetmiw.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +15,8 @@ import com.tweetmiw.app.tweetmiw.R;
 import com.tweetmiw.app.tweetmiw.entities.Tweet;
 import com.tweetmiw.app.tweetmiw.holders.ViewHolderTweet;
 
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class CustomAdapter extends ArrayAdapter<Tweet> {
@@ -51,6 +56,16 @@ public class CustomAdapter extends ArrayAdapter<Tweet> {
             viewHolder= (ViewHolderTweet) convertView.getTag();
         }
         viewHolder= (ViewHolderTweet) convertView.getTag();
+        URL url ;
+        try {
+            Log.v("Customdapter",tweet.getUser().getProfile().getProfile_image_url() );
+            url = new URL(tweet.getUser().getProfile().getProfile_image_url());
+           // Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+            //viewHolder.avatar.setImageBitmap(bmp);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         viewHolder.nombreUsuario.setText(tweet.getUser().getProfile().getName());
         viewHolder.screenName.setText(tweet.getUser().getProfile().getScreen_name());
         viewHolder.mensajeTweet.setText(tweet.getMessage());
