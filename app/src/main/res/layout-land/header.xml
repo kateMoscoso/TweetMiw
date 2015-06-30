@@ -1,0 +1,92 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/avatar_usuario"
+        android:src="@drawable/avatar2"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/description_avatar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/screenName"
+        android:layout_below="@+id/avatar_usuario"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/username"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/screenName"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/descripcion"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_below="@+id/username" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/descripcion"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/siguiendo"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:onClick="showFollowersList"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_siguiendo"
+            android:text="@string/label_tweet_followers"
+            android:layout_toRightOf="@+id/siguiendo"
+            android:layout_toEndOf="@+id/siguiendo"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:textStyle="bold"
+            android:onClick="showFollowersList"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/seguidores"
+            android:layout_toRightOf="@+id/txt_siguiendo"
+            android:layout_toEndOf="@+id/txt_siguiendo"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
+            android:onClick="showFollowingList"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_tweet_following"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_toRightOf="@+id/seguidores"
+            android:layout_toEndOf="@+id/seguidores"
+            android:textStyle="bold"
+            android:onClick="showFollowingList"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
