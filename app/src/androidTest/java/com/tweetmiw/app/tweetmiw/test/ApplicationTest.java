@@ -1,4 +1,4 @@
-package com.tweetmiw.app.tweetmiw;
+package com.tweetmiw.app.tweetmiw.test;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
@@ -9,5 +9,8 @@ import android.test.ApplicationTestCase;
 public class ApplicationTest extends ApplicationTestCase<Application> {
     public ApplicationTest() {
         super(Application.class);
+    }
+    public void test_prueba(){
+        assertTrue(5>1);
     }
 }

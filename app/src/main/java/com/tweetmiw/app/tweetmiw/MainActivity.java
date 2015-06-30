@@ -27,8 +27,8 @@ import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 public class MainActivity extends AppCompatActivity {
 
     // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
-    private TwitterLoginButton loginButton;
-    private TwitterSession session;
+    TwitterLoginButton loginButton;
+    TwitterSession session;
     SessionManager sessionManager;
 
     @Override
@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

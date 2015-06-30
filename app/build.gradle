@@ -33,6 +33,12 @@ android {
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+        testApplicationId "com.tweetmiw.app.tweetmiw.test"
+        testInstrumentationRunner "android.test.InstrumentationTestRunner"
+    }
+    testOptions {
+        reportDir = "$project.buildDir/results/report"
+        resultsDir = "$project.buildDir/results"
     }
     buildTypes {
         release {
