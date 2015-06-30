@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <RelativeLayout
+    <!-- <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/activity_my_toolbar"
@@ -23,13 +23,13 @@
             android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_width="50dp"
-            android:layout_height="50dp"/>
+            android:layout_height="50dp"/> -->
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/avatar_usuario"
-            android:layout_toEndOf="@+id/avatar_usuario"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_below="@+id/activity_my_toolbar"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginStart="@dimen/activity_horizontal_margin" >
 
@@ -61,9 +61,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:id="@+id/hora"
                 android:layout_below="@+id/tweets"
-                android:layout_marginTop="5dp"
-                android:layout_alignStart="@+id/tweets"
-                android:layout_alignLeft="@+id/tweets" />
+                android:layout_marginTop="5dp" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -72,8 +70,6 @@
                 android:contentDescription="@string/description_responder"
                 android:layout_below="@+id/hora"
                 android:layout_marginTop="5dp"
-                android:layout_alignLeft="@+id/hora"
-                android:layout_alignStart="@+id/hora"
                 android:src="@mipmap/ic_undo_24dp" />
 
             <ImageView
@@ -84,10 +80,7 @@
                 android:layout_below="@+id/hora"
                 android:layout_marginTop="5dp"
                 android:src="@mipmap/ic_swap_horiz_24dp"
-                android:layout_toEndOf="@+id/ic_undo_24dp"
-                android:layout_toRightOf="@+id/ic_undo_24dp"
-                android:layout_marginLeft="80dp"
-                android:layout_marginStart="80dp" />
+                android:layout_centerHorizontal="true" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -97,13 +90,11 @@
                 android:layout_below="@+id/hora"
                 android:layout_marginTop="5dp"
                 android:src="@mipmap/ic_star_rate_24dp"
-                android:layout_toEndOf="@+id/ic_swap_horiz"
-                android:layout_toRightOf="@+id/ic_swap_horiz"
-                android:layout_marginStart="80dp"
-                android:layout_marginLeft="80dp" />
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"/>
 
         </RelativeLayout>
 
     </RelativeLayout>
-
-</RelativeLayout>
