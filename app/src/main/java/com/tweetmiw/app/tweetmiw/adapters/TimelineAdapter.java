@@ -56,6 +56,7 @@ public class TimelineAdapter extends ArrayAdapter<Tweet> {
             viewHolder.mensajeTweet = (TextView) convertView.findViewById(R.id.tweets);
             viewHolder.hora = (TextView) convertView.findViewById(R.id.hora);
             viewHolder.retweet = (ImageView)convertView.findViewById(R.id.retweet);
+            viewHolder.favorite = (ImageView)convertView.findViewById(R.id.favorito);
 
             convertView.setTag(viewHolder);
         } else {
@@ -92,6 +93,22 @@ public class TimelineAdapter extends ArrayAdapter<Tweet> {
             }
 
         });
+        viewHolder.favorite.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        try {
+                            Log.v("",""+tweet.getId());
+
+                            twitter.createFavorite(tweet.getId());
+                            //  finalViewHolder.retweet.setColorFilter(R.color.accent_color);
+                            //   Toast.makeText()
+                        } catch (Exception e){
+                            Log.v("Error", "e.getMessage");
+                        }
+                    }
+
+                });
 
         return convertView;
     }

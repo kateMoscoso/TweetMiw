@@ -85,7 +85,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/ic_star_rate"
+                android:id="@+id/favorito"
                 android:contentDescription="@string/description_favorito"
                 android:layout_below="@+id/hora"
                 android:layout_marginTop="5dp"

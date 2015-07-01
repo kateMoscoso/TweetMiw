@@ -2,7 +2,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
+    android:layout_marginTop="30dp"
     >
 
     <!-- <ImageView
@@ -25,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:id="@+id/username"
+                android:text="Nombre"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin" />
@@ -85,7 +86,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/ic_star_rate"
+                android:id="@+id/favorito"
                 android:layout_below="@+id/hora"
                 android:contentDescription="@string/description_favorito"
                 android:layout_marginTop="5dp"
@@ -98,7 +99,7 @@
         <RelativeLayout
             android:layout_height="1dp"
             android:layout_width="fill_parent"
-            android:layout_below="@+id/ic_star_rate"
+            android:layout_below="@+id/favorito"
             android:layout_marginTop="10dp"
             android:background="@drawable/border_line" />
 

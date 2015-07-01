@@ -16,6 +16,7 @@ public class ViewHolderTweet  extends RecyclerView.ViewHolder implements View.On
     public TextView hora;
     public ImageView avatar;
     public ImageView retweet;
+    public ImageView favorite;
 
 
     public ViewHolderTweet(View itemView) {
@@ -28,6 +29,7 @@ public class ViewHolderTweet  extends RecyclerView.ViewHolder implements View.On
         hora = (TextView) itemView.findViewById(R.id.hora);
         avatar = (ImageView) itemView.findViewById(R.id.avatar_usuario);
         retweet = (ImageView)itemView.findViewById(R.id.retweet);
+        favorite = (ImageView)itemView.findViewById(R.id.favorito);
 
 
     }

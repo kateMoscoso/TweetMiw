@@ -25,6 +25,7 @@ public class TestMainActivity  extends ActivityInstrumentationTestCase2<MainActi
     }
     @SmallTest
     public void buttonNotNult() {
+        activity = getActivity();
         TwitterLoginButton loginButton = (TwitterLoginButton)
                 activity.findViewById(R.id.login_button);
         assertNotNull(loginButton);
