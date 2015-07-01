@@ -1,4 +1,4 @@
-package com.tweetmiw.app.tweetmiw;
+package com.tweetmiw.app.tweetmiw.test;
 
 import android.test.suitebuilder.annotation.SmallTest;
 
@@ -25,5 +25,6 @@ public class TestTwitterUsers extends TestCase {
     @SmallTest
     public void test_usuarioSeguido(){
         assertTrue("Luis".equals(usuario.getName()));
+        assertTrue("2".equals(usuario.getFriends_count()));
     }
 }

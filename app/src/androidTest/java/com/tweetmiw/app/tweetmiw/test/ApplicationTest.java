@@ -1,4 +1,4 @@
-package com.tweetmiw.app.tweetmiw;
+package com.tweetmiw.app.tweetmiw.test;
 
 import android.app.Application;
 import android.content.Context;
@@ -12,11 +12,9 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
     public ApplicationTest() {
         super(Application.class);
     }
+    @SmallTest
     public void test_prueba(){
         assertTrue(5>1);
     }
-    @SmallTest
-    public void test_wifi(){
-        Context context = this.getContext();
-    }
+
 }

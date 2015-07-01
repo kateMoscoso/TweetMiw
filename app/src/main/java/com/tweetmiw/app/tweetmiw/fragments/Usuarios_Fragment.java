@@ -99,6 +99,8 @@ public class Usuarios_Fragment extends Fragment {
                     twitterUser.setName(user.getName());
                     twitterUser.setScreen_name(user.getScreenName());
                     twitterUser.setProfile_image_url(user.getProfileImageURL());
+                    twitterUser.setIsFollower(true);
+                    twitterUser.setId_user(user.getId());
                     followers.add(twitterUser);
                     Log.v("Usuarios",user.getName() + " " + user.getScreenName());
                 }

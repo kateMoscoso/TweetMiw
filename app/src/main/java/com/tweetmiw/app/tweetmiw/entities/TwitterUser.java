@@ -1,7 +1,7 @@
 package com.tweetmiw.app.tweetmiw.entities;
 
 public class TwitterUser {
-    private String id_user;
+    private Long id_user;
     private String screen_name;
     private String name;
     private String description;
@@ -11,16 +11,18 @@ public class TwitterUser {
     private String verified;
     private String profile_image_url;
     private String createdAt;
+    private boolean isFriend;
+    private boolean isFollower;
 
 
     public TwitterUser(){
     }
 
-    public String getId_user() {
+    public Long getId_user() {
         return id_user;
     }
 
-    public void setId_user(String id_user) {
+    public void setId_user(Long id_user) {
         this.id_user = id_user;
     }
 
@@ -94,5 +96,21 @@ public class TwitterUser {
 
     public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public boolean isFriend() {
+        return isFriend;
+    }
+
+    public void setIsFriend(boolean isFriend) {
+        this.isFriend = isFriend;
+    }
+
+    public boolean isFollower() {
+        return isFollower;
+    }
+
+    public void setIsFollower(boolean isFollower) {
+        this.isFollower = isFollower;
     }
 }

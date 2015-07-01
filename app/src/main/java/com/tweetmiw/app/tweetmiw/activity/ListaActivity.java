@@ -61,6 +61,8 @@ public class ListaActivity extends ListActivity {
                 twitterUser.setName(user.getName());
                 twitterUser.setScreen_name(user.getScreenName());
                 twitterUser.setProfile_image_url(user.getProfileImageURL());
+                twitterUser.setIsFollower(user.isFollowRequestSent());
+
                 usersList.add(twitterUser);
 
                 Log.v("Usuarios", user.getName() + " " + user.getScreenName());
