@@ -15,11 +15,11 @@ public class TestTweetEntity extends TestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        usuario = new TwitterUser();
-        usuario.setName("Luis");
-        usuario.setFriends_count("2");
-        tweet = new Tweet("Esto es un Tweet", usuario);
-        tweet.setFavorites("2");
+        this.usuario = new TwitterUser();
+        this.usuario.setName("Luis");
+        this.usuario.setFriends_count("2");
+        this.tweet = new Tweet("Esto es un Tweet", usuario);
+        this.tweet.setFavorites("2");
     }
 
     @Override

@@ -16,7 +16,7 @@ import android.widget.ListView;
 
 import com.tweetmiw.app.tweetmiw.R;
 import com.tweetmiw.app.tweetmiw.activity.TweetDetailActivity;
-import com.tweetmiw.app.tweetmiw.adapters.CustomAdapter;
+import com.tweetmiw.app.tweetmiw.adapters.TimelineAdapter;
 import com.tweetmiw.app.tweetmiw.entities.TwitterUser;
 import com.tweetmiw.app.tweetmiw.entities.Tweet;
 import com.tweetmiw.app.tweetmiw.utils.SessionManager;
@@ -79,6 +79,7 @@ public class TweetListFragment extends ListFragment {
                 tweet = new Tweet(status.getText(), user);
                 Date date = status.getCreatedAt();
                 tweet.setCreated_at(new SimpleDateFormat("dd/MM/yy - HH:mm").format(date));
+                tweet.setId(status.getId());
                 tweets.add(i, tweet);
                 i++;
             }
@@ -90,7 +91,7 @@ public class TweetListFragment extends ListFragment {
     }
     private void setupAdapter() {
         actualizarLista();
-        CustomAdapter adapter = new CustomAdapter(getActivity(), 0, tweets);
+        TimelineAdapter adapter = new TimelineAdapter(getActivity(), 0, tweets);
         setListAdapter(adapter);
     }
 
@@ -129,7 +130,7 @@ public class TweetListFragment extends ListFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        CustomAdapter adapter = new CustomAdapter(getActivity(), 0, tweets);
+        TimelineAdapter adapter = new TimelineAdapter(getActivity(), 0, tweets);
         setListAdapter(adapter);
 
     }

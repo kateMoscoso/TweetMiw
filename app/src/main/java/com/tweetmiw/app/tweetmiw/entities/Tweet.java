@@ -5,6 +5,7 @@ public class Tweet {
     private String favorites;
     private String created_at;
     private TwitterUser twitterUser;
+    private Long id;
 
     public Tweet(String message, TwitterUser twitterUser){
         this.message = message;
@@ -44,6 +45,14 @@ public class Tweet {
 
     public void setCreated_at(String created_at) {
         this.created_at = created_at;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
 

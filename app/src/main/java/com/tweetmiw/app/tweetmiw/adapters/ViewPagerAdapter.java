@@ -14,8 +14,12 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     int NumbOfTabs; // Store the number of tabs, this will also be passed when the ViewPagerAdapter is created
 
 
-
-    // Build a Constructor and assign the passed Values to appropriate values in the class
+    /**
+     * Constructor de del ViewPagerAdapter
+     * @param fm fm
+     * @param mTitles mTitles
+     * @param mNumbOfTabsumb mNumbOfTabsumb
+     */
     public ViewPagerAdapter(FragmentManager fm,CharSequence mTitles[], int mNumbOfTabsumb) {
         super(fm);
         this.Titles = mTitles;
@@ -23,6 +27,11 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     }
 
+    /**
+     * Método que crea cada uno de los tabs
+     * @param position position
+     * @return fragment
+     */
     @Override
     public Fragment getItem(int position) {
 

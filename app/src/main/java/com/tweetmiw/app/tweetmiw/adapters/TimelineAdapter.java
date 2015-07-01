@@ -8,18 +8,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tweetmiw.app.tweetmiw.R;
 
 import com.tweetmiw.app.tweetmiw.entities.Tweet;
 import com.tweetmiw.app.tweetmiw.holders.ViewHolderTweet;
+import com.tweetmiw.app.tweetmiw.utils.SessionManager;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class CustomAdapter extends ArrayAdapter<Tweet> {
+public class TimelineAdapter extends ArrayAdapter<Tweet> {
     private Context context;
     private ArrayList<Tweet> tweets;// dataset
     private  int itemLayout; // la vista, los row
@@ -27,20 +30,22 @@ public class CustomAdapter extends ArrayAdapter<Tweet> {
     private boolean is_list;
     private ArrayList<Tweet> data;
     private LayoutInflater inflater;
+    private SessionManager sessionManager;
 
-    public CustomAdapter(Context context, int viewResourceId, ArrayList<Tweet> tweets) {
+    public TimelineAdapter(Context context, int viewResourceId, ArrayList<Tweet> tweets) {
         super(context, viewResourceId, tweets);
         this.context = context;
         this.tweets = tweets;
         inflater = LayoutInflater.from(context);
+        sessionManager = new SessionManager(getContext());
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolderTweet viewHolder = new ViewHolderTweet(parent);
 
-        Tweet tweet = tweets.get(position);
-
+        final Tweet tweet = tweets.get(position);
+        final twitter4j.Twitter twitter = sessionManager.getTwitter();
 
 
         if (convertView == null) {
@@ -50,6 +55,7 @@ public class CustomAdapter extends ArrayAdapter<Tweet> {
             viewHolder.screenName = (TextView) convertView.findViewById(R.id.screenName);
             viewHolder.mensajeTweet = (TextView) convertView.findViewById(R.id.tweets);
             viewHolder.hora = (TextView) convertView.findViewById(R.id.hora);
+            viewHolder.retweet = (ImageView)convertView.findViewById(R.id.retweet);
 
             convertView.setTag(viewHolder);
         } else {
@@ -70,6 +76,23 @@ public class CustomAdapter extends ArrayAdapter<Tweet> {
         viewHolder.screenName.setText(tweet.getTwitterUser().getScreen_name());
         viewHolder.mensajeTweet.setText(tweet.getMessage());
         viewHolder.hora.setText(tweet.getCreated_at());
+        final ViewHolderTweet finalViewHolder = viewHolder;
+        viewHolder.retweet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Log.v("",""+tweet.getId());
+
+                    twitter.retweetStatus(tweet.getId());
+                  //  finalViewHolder.retweet.setColorFilter(R.color.accent_color);
+                 //   Toast.makeText()
+                } catch (Exception e){
+                    Log.v("Error", "e.getMessage");
+                }
+            }
+
+        });
+
         return convertView;
     }
 
