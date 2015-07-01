@@ -17,17 +17,14 @@ import android.widget.ListView;
 import com.tweetmiw.app.tweetmiw.R;
 import com.tweetmiw.app.tweetmiw.activity.TweetDetailActivity;
 import com.tweetmiw.app.tweetmiw.adapters.CustomAdapter;
-import com.tweetmiw.app.tweetmiw.entities.ProfileUser;
+import com.tweetmiw.app.tweetmiw.entities.TwitterUser;
 import com.tweetmiw.app.tweetmiw.entities.Tweet;
-import com.tweetmiw.app.tweetmiw.entities.User;
 import com.tweetmiw.app.tweetmiw.utils.SessionManager;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Handler;
-import java.util.logging.LogRecord;
 
 public class TweetListFragment extends ListFragment {
    private int fragNum;
@@ -71,16 +68,13 @@ public class TweetListFragment extends ListFragment {
             twitter4j.Twitter twitter = session.getTwitter();
             List<twitter4j.Status> statuses = twitter.getHomeTimeline();
             Tweet tweet;
-            User user;
-            ProfileUser profileUser;
+            TwitterUser user;
             int i = 0;
             for (twitter4j.Status status : statuses) {
-                user = new User();
-                profileUser = new ProfileUser();
-                profileUser.setName(status.getUser().getName());
-                profileUser.setScreen_name(status.getUser().getScreenName());
-                profileUser.setProfile_image_url(status.getUser().getProfileImageURL());
-                user.setProfile(profileUser);
+                user = new TwitterUser();
+                user.setName(status.getUser().getName());
+                user.setScreen_name(status.getUser().getScreenName());
+                user.setProfile_image_url(status.getUser().getProfileImageURL());
 
                 tweet = new Tweet(status.getText(), user);
                 Date date = status.getCreatedAt();
@@ -145,8 +139,8 @@ public class TweetListFragment extends ListFragment {
         Tweet t = tweets.get(position);
         Intent intent = new Intent();
         intent.setClass(getActivity(), TweetDetailActivity.class);
-        intent.putExtra("name", t.getUser().getProfile().getName());
-        intent.putExtra("screenName", t.getUser().getProfile().getScreen_name());
+        intent.putExtra("name", t.getTwitterUser().getName());
+        intent.putExtra("screenName", t.getTwitterUser().getScreen_name());
         intent.putExtra("position", position);
         startActivity(intent);
         /*Usuarios_Fragment nextFrag= new Usuarios_Fragment();

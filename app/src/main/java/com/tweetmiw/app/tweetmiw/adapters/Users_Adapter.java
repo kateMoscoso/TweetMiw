@@ -3,6 +3,7 @@ package com.tweetmiw.app.tweetmiw.adapters;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tweetmiw.app.tweetmiw.R;
-import com.tweetmiw.app.tweetmiw.entities.ProfileUser;
+import com.tweetmiw.app.tweetmiw.entities.TwitterUser;
 import com.twitter.sdk.android.tweetui.UserTimeline;
 
 import java.io.IOException;
@@ -22,10 +23,10 @@ import java.util.ArrayList;
 
 public class Users_Adapter extends RecyclerView.Adapter<Users_Adapter.ViewHolder>{
 
-    private ArrayList<ProfileUser> users;// dataset
+    private ArrayList<TwitterUser> users;// dataset
     private  int itemLayout; // la vista, los row
 
-    public  Users_Adapter( ArrayList<ProfileUser>  users, int itemLayout){
+    public  Users_Adapter( ArrayList<TwitterUser>  users, int itemLayout){
         this.users = users;
         this.itemLayout = itemLayout;
     }
@@ -41,7 +42,7 @@ public class Users_Adapter extends RecyclerView.Adapter<Users_Adapter.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
 
-    ProfileUser user = users.get(i);
+    TwitterUser user = users.get(i);
 
 
         viewHolder.screenName.setText(user.getScreen_name());
@@ -55,7 +56,8 @@ public class Users_Adapter extends RecyclerView.Adapter<Users_Adapter.ViewHolder
             viewHolder.avatar.setImageBitmap(bmp);
 
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.v("", "error cargando foto");
+           // e.printStackTrace();
         }
     }
 

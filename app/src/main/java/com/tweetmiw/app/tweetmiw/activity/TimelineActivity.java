@@ -8,9 +8,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.tweetmiw.app.tweetmiw.R;
-import com.tweetmiw.app.tweetmiw.entities.ProfileUser;
 import com.tweetmiw.app.tweetmiw.entities.Tweet;
-import com.tweetmiw.app.tweetmiw.entities.User;
+import com.tweetmiw.app.tweetmiw.entities.TwitterUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,13 +47,11 @@ public class TimelineActivity extends Activity {
                 List<twitter4j.Status> statuses = twitter.getHomeTimeline();
                // String timeline = TwitterUtils.getTimelineForSearchTerm(ConstantsUtils.MEJORANDROID_TERM);
                 Tweet tweet;
-                User user = new User();
-                ProfileUser profileUser = new ProfileUser();
+                TwitterUser user = new TwitterUser();
                 int i = 0;
                 for (twitter4j.Status status : statuses) {
-                    profileUser.setName(status.getUser().getName());
-                    profileUser.setScreen_name(status.getUser().getScreenName());
-                    user.setProfile(profileUser);
+                    user.setName(status.getUser().getName());
+                    user.setScreen_name(status.getUser().getScreenName());
 
                     tweet = new Tweet(status.getText(), user);
                     tweets.add(i, tweet);

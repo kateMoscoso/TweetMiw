@@ -10,7 +10,7 @@ import android.widget.ListView;
 
 import com.tweetmiw.app.tweetmiw.R;
 import com.tweetmiw.app.tweetmiw.adapters.UsersAdapter;
-import com.tweetmiw.app.tweetmiw.entities.ProfileUser;
+import com.tweetmiw.app.tweetmiw.entities.TwitterUser;
 import com.tweetmiw.app.tweetmiw.utils.ConstantsUtils;
 import com.tweetmiw.app.tweetmiw.utils.SessionManager;
 
@@ -20,7 +20,7 @@ import twitter4j.PagableResponseList;
 
 public class ListaActivity extends ListActivity {
     private SessionManager sessionManager;
-    private ArrayList<ProfileUser> usersList = new ArrayList<ProfileUser>();
+    private ArrayList<TwitterUser> usersList = new ArrayList<TwitterUser>();
     private String tipo;
 
     @Override
@@ -54,14 +54,14 @@ public class ListaActivity extends ListActivity {
             } else  {
                 users =  twitter.getFriendsList(screename, -1);
             }
-            ProfileUser profileUser;
+            TwitterUser twitterUser;
             for (twitter4j.User user : users) {
-                profileUser = new ProfileUser();
-                profileUser.setDescription(user.getDescription());
-                profileUser.setName(user.getName());
-                profileUser.setScreen_name(user.getScreenName());
-                profileUser.setProfile_image_url(user.getProfileImageURL());
-                usersList.add(profileUser);
+                twitterUser = new TwitterUser();
+                twitterUser.setDescription(user.getDescription());
+                twitterUser.setName(user.getName());
+                twitterUser.setScreen_name(user.getScreenName());
+                twitterUser.setProfile_image_url(user.getProfileImageURL());
+                usersList.add(twitterUser);
 
                 Log.v("Usuarios", user.getName() + " " + user.getScreenName());
             }
@@ -74,7 +74,6 @@ public class ListaActivity extends ListActivity {
 
 
         } catch ( twitter4j.TwitterException e) {
-            //  Log.e()
             Log.e("ss", e.getMessage());
         }
 

@@ -2,31 +2,33 @@ package com.tweetmiw.app.tweetmiw.entities;
 
 public class Tweet {
     private String message;
-    private User user;
     private String favorites;
     private String created_at;
+    private TwitterUser twitterUser;
 
-    public Tweet(String message, User user){
+    public Tweet(String message, TwitterUser twitterUser){
         this.message = message;
-        this.user = user;
+        this.twitterUser = twitterUser;
 
+    }
+
+    public TwitterUser getTwitterUser() {
+        return twitterUser;
+    }
+
+    public void setTwitterUser(TwitterUser twitterUser) {
+        this.twitterUser = twitterUser;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public User getUser() {
-        return user;
-    }
 
     public void setMessage(String message) {
         this.message = message;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     public String getFavorites() {
         return favorites;

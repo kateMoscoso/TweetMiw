@@ -23,8 +23,8 @@ import java.util.ArrayList;
 
 public class InitialActivity extends AppCompatActivity  {
 
-    private ViewPager pager;
-    private ViewPagerAdapter adapter;
+    private ViewPager viewPager;
+    private ViewPagerAdapter viewPagerAdapter;
     private SlidingTabLayout tabs;
     private ArrayList<String> dataset;
 
@@ -48,11 +48,11 @@ public class InitialActivity extends AppCompatActivity  {
         setSupportActionBar(toolbar);//modifico el action Bar pordefecto de l
 
         // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
-        adapter = new ViewPagerAdapter(getSupportFragmentManager(), Titles, Numboftabs);
+        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), Titles, Numboftabs);
 
         // Assigning ViewPager View and setting the adapter
-        pager = (ViewPager) findViewById(R.id.pager);
-        pager.setAdapter(adapter);
+        viewPager = (ViewPager) findViewById(R.id.pager);
+        viewPager.setAdapter(viewPagerAdapter);
 
         // Assiging the Sliding Tab Layout View
         tabs = (SlidingTabLayout) findViewById(R.id.tabs);
@@ -67,7 +67,7 @@ public class InitialActivity extends AppCompatActivity  {
         });
 
         // Setting the ViewPager For the SlidingTabsLayout
-        tabs.setViewPager(pager);
+        tabs.setViewPager(viewPager);
 
     }
 

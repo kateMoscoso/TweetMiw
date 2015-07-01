@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 
 import com.tweetmiw.app.tweetmiw.R;
 import com.tweetmiw.app.tweetmiw.adapters.Users_Adapter;
-import com.tweetmiw.app.tweetmiw.entities.ProfileUser;
+import com.tweetmiw.app.tweetmiw.entities.TwitterUser;
 import com.tweetmiw.app.tweetmiw.utils.SessionManager;
 
 import java.lang.ref.WeakReference;
@@ -26,7 +26,7 @@ import twitter4j.PagableResponseList;
 
 public class Usuarios_Fragment extends Fragment {
     private WeakReference<FollowersSearchTask> asyncTaskWeakRef;
-    ArrayList<ProfileUser> followers = new ArrayList<ProfileUser>();
+    ArrayList<TwitterUser> followers = new ArrayList<TwitterUser>();
     private RecyclerView recyclerView;
     private Users_Adapter adapter;
     public Usuarios_Fragment(){}
@@ -60,7 +60,7 @@ public class Usuarios_Fragment extends Fragment {
 
     }
 
-    private class FollowersSearchTask extends AsyncTask<Object, Void, ArrayList<ProfileUser>> {
+    private class FollowersSearchTask extends AsyncTask<Object, Void, ArrayList<TwitterUser>> {
         SessionManager session;
         private WeakReference<Usuarios_Fragment> fragmentWeakRef;
 
@@ -79,7 +79,7 @@ public class Usuarios_Fragment extends Fragment {
         }
 
         @Override
-        protected ArrayList<ProfileUser> doInBackground(Object... param) {
+        protected ArrayList<TwitterUser> doInBackground(Object... param) {
 
 
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -92,14 +92,14 @@ public class Usuarios_Fragment extends Fragment {
                 String screename = twitter.getScreenName();
                 users = twitter.getFollowersList(screename,-1);
 
-                ProfileUser profileUser = new ProfileUser();
+                TwitterUser twitterUser = new TwitterUser();
                 for (twitter4j.User user : users) {
-                    profileUser = new ProfileUser();
-                    profileUser.setDescription(user.getDescription());
-                    profileUser.setName(user.getName());
-                    profileUser.setScreen_name(user.getScreenName());
-                    profileUser.setProfile_image_url(user.getProfileImageURL());
-                    followers.add(profileUser);
+                    twitterUser = new TwitterUser();
+                    twitterUser.setDescription(user.getDescription());
+                    twitterUser.setName(user.getName());
+                    twitterUser.setScreen_name(user.getScreenName());
+                    twitterUser.setProfile_image_url(user.getProfileImageURL());
+                    followers.add(twitterUser);
                     Log.v("Usuarios",user.getName() + " " + user.getScreenName());
                 }
            /* do {
@@ -119,7 +119,7 @@ public class Usuarios_Fragment extends Fragment {
         }
 
 
-        protected void onPostExecute(ArrayList<ProfileUser> followers){
+        protected void onPostExecute(ArrayList<TwitterUser> followers){
             progressDialog.dismiss();
             super.onPostExecute(followers);
 

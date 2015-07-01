@@ -33,7 +33,7 @@ android {
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
-        testApplicationId "com.tweetmiw.app.tweetmiw.test"
+        testApplicationId "com.tweetmiw.app.tweetmiw"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
     }
     testOptions {

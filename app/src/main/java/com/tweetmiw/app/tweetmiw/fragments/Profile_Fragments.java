@@ -13,9 +13,8 @@ import android.view.ViewGroup;
 
 import com.tweetmiw.app.tweetmiw.R;
 import com.tweetmiw.app.tweetmiw.adapters.Tweet_Adapter;
-import com.tweetmiw.app.tweetmiw.entities.ProfileUser;
+import com.tweetmiw.app.tweetmiw.entities.TwitterUser;
 import com.tweetmiw.app.tweetmiw.entities.Tweet;
-import com.tweetmiw.app.tweetmiw.entities.User;
 import com.tweetmiw.app.tweetmiw.utils.ConstantsUtils;
 
 import java.util.ArrayList;
@@ -81,29 +80,27 @@ public class Profile_Fragments extends Fragment {
             //  Log.e()
             Log.e("ss", e.getMessage());
         }
-        User usuario = new User();
-        ProfileUser profileUser = new ProfileUser();
+        TwitterUser twitterUser = new TwitterUser();
         if(user !=null) {
-            profileUser.setName(user.getName());
+            twitterUser.setName(user.getName());
         }
-        profileUser.setScreen_name("@screen_name");
-        usuario.setProfile(profileUser);
-        Tweet tweet = new Tweet("esto es un tweet", usuario);
+        twitterUser.setScreen_name("@screen_name");
+        Tweet tweet = new Tweet("esto es un tweet", twitterUser);
         tweetArrayList.add(tweet);
 
-        Tweet tweet2 = new Tweet("esto es otro tweet", usuario);
+        Tweet tweet2 = new Tweet("esto es otro tweet", twitterUser);
         tweetArrayList.add(tweet2);
 
-        Tweet tweet3 = new Tweet("esto es otro tweet", usuario);
+        Tweet tweet3 = new Tweet("esto es otro tweet", twitterUser);
         tweetArrayList.add(tweet3);
-        Tweet tweet4 = new Tweet("esto es otro tweet", usuario);
+        Tweet tweet4 = new Tweet("esto es otro tweet", twitterUser);
         tweetArrayList.add(tweet4);
-        Tweet tweet5 = new Tweet("esto es otro tweet", usuario);
+        Tweet tweet5 = new Tweet("esto es otro tweet", twitterUser);
         tweetArrayList.add(tweet5);
 
         RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.my_recycler_view_tweet);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(new Tweet_Adapter(R.layout.tweet_row, R.layout.header,tweetArrayList, usuario));
+        recyclerView.setAdapter(new Tweet_Adapter(R.layout.tweet_row, R.layout.header,tweetArrayList, twitterUser));
        // recyclerView.setAdapter(new Tweet_Adapter(tweetArrayList, R.layout.tweet_row));
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());

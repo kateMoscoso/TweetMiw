@@ -58,16 +58,16 @@ public class CustomAdapter extends ArrayAdapter<Tweet> {
         viewHolder= (ViewHolderTweet) convertView.getTag();
         URL url ;
         try {
-            Log.v("Customdapter",tweet.getUser().getProfile().getProfile_image_url() );
-            url = new URL(tweet.getUser().getProfile().getProfile_image_url());
+            Log.v("Customdapter", tweet.getTwitterUser().getProfile_image_url());
+            url = new URL(tweet.getTwitterUser().getProfile_image_url());
            // Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
             //viewHolder.avatar.setImageBitmap(bmp);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        viewHolder.nombreUsuario.setText(tweet.getUser().getProfile().getName());
-        viewHolder.screenName.setText(tweet.getUser().getProfile().getScreen_name());
+        viewHolder.nombreUsuario.setText(tweet.getTwitterUser().getName());
+        viewHolder.screenName.setText(tweet.getTwitterUser().getScreen_name());
         viewHolder.mensajeTweet.setText(tweet.getMessage());
         viewHolder.hora.setText(tweet.getCreated_at());
         return convertView;

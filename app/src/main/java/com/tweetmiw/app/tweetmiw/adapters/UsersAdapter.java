@@ -3,7 +3,6 @@ package com.tweetmiw.app.tweetmiw.adapters;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.StrictMode;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,24 +13,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tweetmiw.app.tweetmiw.R;
-import com.tweetmiw.app.tweetmiw.entities.ProfileUser;
-
-import com.tweetmiw.app.tweetmiw.holders.ViewHolderUser;
+import com.tweetmiw.app.tweetmiw.entities.TwitterUser;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class UsersAdapter extends ArrayAdapter<ProfileUser> {
+public class UsersAdapter extends ArrayAdapter<TwitterUser> {
     private Context context;
     private int itemLayout; // la vista, los row
 
     private boolean is_list;
-    private ArrayList<ProfileUser> users;
+    private ArrayList<TwitterUser> users;
     private LayoutInflater inflater;
 
-    public UsersAdapter(Context context, int viewResourceId, ArrayList<ProfileUser> users) {
+    public UsersAdapter(Context context, int viewResourceId, ArrayList<TwitterUser> users) {
         super(context, viewResourceId, users);
         this.context = context;
         this.users = users;
@@ -52,7 +49,7 @@ public class UsersAdapter extends ArrayAdapter<ProfileUser> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        ProfileUser user = users.get(position);
+        TwitterUser user = users.get(position);
 
 
         viewHolder.nombreUsuario.setText(user.getName());

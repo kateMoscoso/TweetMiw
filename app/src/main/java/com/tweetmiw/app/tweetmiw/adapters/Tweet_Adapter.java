@@ -3,13 +3,14 @@ package com.tweetmiw.app.tweetmiw.adapters;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.tweetmiw.app.tweetmiw.entities.TwitterUser;
 import com.tweetmiw.app.tweetmiw.entities.Tweet;
-import com.tweetmiw.app.tweetmiw.entities.User;
 import com.tweetmiw.app.tweetmiw.holders.ViewHolderTweet;
 import com.tweetmiw.app.tweetmiw.holders.ViewHolderUser;
 
@@ -23,9 +24,10 @@ public class Tweet_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private ArrayList<Tweet> tweets;// dataset
     private int itemLayout; // la vista, los row
     private int header; //usuario
-    private User user;
+    private TwitterUser user;
+    private static String TAG="Tweet_Aapter";
 
-    public Tweet_Adapter(int itemLayout, int header, ArrayList<Tweet> tweets, User user) {
+    public Tweet_Adapter(int itemLayout, int header, ArrayList<Tweet> tweets, TwitterUser user) {
         this.tweets = tweets;
         this.itemLayout = itemLayout;
         this.header = header;
@@ -54,16 +56,17 @@ public class Tweet_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         if (viewHolder instanceof ViewHolderTweet) {
             Tweet tweet = tweets.get(position-1);
 
-            try {
-                url = new URL(tweet.getUser().getProfile().getProfile_image_url());
+          /*  try {
+                url = new URL(tweet.getTwitterUser().getProfile_image_url());
+                Log.v("Tweet_Adapter", tweet.getTwitterUser().getProfile_image_url());
                 Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
                 ((ViewHolderTweet) viewHolder).avatar.setImageBitmap(bmp);
 
             } catch (IOException e) {
-                e.printStackTrace();
-            }
-            ((ViewHolderTweet) viewHolder).nombreUsuario.setText(tweet.getUser().getProfile().getName());
-            ((ViewHolderTweet) viewHolder).screenName.setText(tweet.getUser().getProfile().getScreen_name());
+                Log.e(tag, e.toString());
+            }*/
+            ((ViewHolderTweet) viewHolder).nombreUsuario.setText(tweet.getTwitterUser().getName());
+            ((ViewHolderTweet) viewHolder).screenName.setText(tweet.getTwitterUser().getScreen_name());
             ((ViewHolderTweet) viewHolder).mensajeTweet.setText(tweet.getMessage());
             ((ViewHolderTweet) viewHolder).hora.setText(tweet.getCreated_at());
 
@@ -71,19 +74,19 @@ public class Tweet_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         if (viewHolder instanceof ViewHolderUser) {
            // BitmapManager.getInstance().loadBitmap(user.getProfile().getProfile_image_url(), ((ViewHolderUser) viewHolder).avatar);
             try {
-                url = new URL(user.getProfile().getProfile_image_url());
+                url = new URL(user.getProfile_image_url());
                 Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
                 ((ViewHolderUser) viewHolder).avatar.setImageBitmap(bmp);
 
             } catch (IOException e) {
-                e.printStackTrace();
+                Log.e(TAG, e.toString());
             }
-            ((ViewHolderUser) viewHolder).nombreUsuario.setText(user.getProfile().getName());
-            ((ViewHolderUser) viewHolder).screenName.setText(user.getProfile().getScreen_name());
-            ((ViewHolderUser) viewHolder).descripcion.setText(user.getProfile().getDescription());
+            ((ViewHolderUser) viewHolder).nombreUsuario.setText(user.getName());
+            ((ViewHolderUser) viewHolder).screenName.setText(user.getScreen_name());
+            ((ViewHolderUser) viewHolder).descripcion.setText(user.getDescription());
 
-            ((ViewHolderUser) viewHolder).seguidores.setText(user.getProfile().getFollowers_count());
-            ((ViewHolderUser) viewHolder).siguiendo.setText(user.getProfile().getFriends_count());
+            ((ViewHolderUser) viewHolder).seguidores.setText(user.getFollowers_count());
+            ((ViewHolderUser) viewHolder).siguiendo.setText(user.getFriends_count());
         }
 
 

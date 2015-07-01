@@ -14,9 +14,8 @@ import android.view.ViewGroup;
 
 import com.tweetmiw.app.tweetmiw.R;
 import com.tweetmiw.app.tweetmiw.adapters.Tweet_Adapter;
-import com.tweetmiw.app.tweetmiw.entities.ProfileUser;
+import com.tweetmiw.app.tweetmiw.entities.TwitterUser;
 import com.tweetmiw.app.tweetmiw.entities.Tweet;
-import com.tweetmiw.app.tweetmiw.entities.User;
 import com.tweetmiw.app.tweetmiw.utils.SessionManager;
 
 import java.text.SimpleDateFormat;
@@ -30,6 +29,7 @@ import twitter4j.Status;
 public class Tweet_Fragments extends Fragment {
 
     String f;
+    private  static String TAG ="Tweet_Fragments";
     private SessionManager session;
     public Tweet_Fragments() {
         // Required empty public constructor
@@ -55,15 +55,13 @@ public class Tweet_Fragments extends Fragment {
 
             long userID = twitter.getId();
             user = twitter.showUser(userID);
-            User usuario = new User();
-            ProfileUser profileUser = new ProfileUser();
-            profileUser.setDescription(user.getDescription());
-            profileUser.setName(user.getName());
-            profileUser.setScreen_name(user.getScreenName());
-            profileUser.setProfile_image_url(user.getProfileImageURL());
-            profileUser.setFollowers_count( Integer.toString(user.getFollowersCount()));
-            profileUser.setFriends_count(Integer.toString(user.getFriendsCount()));
-            usuario.setProfile(profileUser);
+            TwitterUser twitterUser = new TwitterUser();
+            twitterUser.setDescription(user.getDescription());
+            twitterUser.setName(user.getName());
+            twitterUser.setScreen_name(user.getScreenName());
+            twitterUser.setProfile_image_url(user.getProfileImageURL());
+            twitterUser.setFollowers_count( Integer.toString(user.getFollowersCount()));
+            twitterUser.setFriends_count(Integer.toString(user.getFriendsCount()));
             //List< Status> favoritesResources = twitter.getFavorites();
             int pageno = 1;
             Paging page = new Paging(pageno++, 10);
@@ -71,32 +69,26 @@ public class Tweet_Fragments extends Fragment {
             List<Status> statuses = twitter.getUserTimeline(userID);
 
             //twitter.getHomeTimeline()
-            User usuarioAux;
-            ProfileUser profileUserAux = new ProfileUser();
+            TwitterUser twitterUserAux;
             Tweet tweet;
             for (Status status : statuses) {
-                usuarioAux = new User();
-                profileUserAux = new ProfileUser();
-                profileUserAux.setName(status.getUser().getName());
-                profileUserAux.setScreen_name(status.getUser().getScreenName());
-                profileUser.setProfile_image_url(status.getUser().getProfileImageURL());
-
-                usuarioAux.setProfile(profileUserAux);
-                tweet = new Tweet(status.getText(), usuarioAux);
+                twitterUserAux = new TwitterUser();
+                twitterUserAux.setName(status.getUser().getName());
+                twitterUserAux.setScreen_name(status.getUser().getScreenName());
+                //twitterUserAux.setProfile_image_url(status.getUser().getProfileImageURL());
+                tweet = new Tweet(status.getText(), twitterUserAux);
                 Date date = status.getCreatedAt();
                 tweet.setCreated_at(new SimpleDateFormat("dd/MM/yy - HH:mm").format(date));
                 tweetArrayList.add(tweet);
             }
             RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.my_recycler_view_tweet);
             recyclerView.setHasFixedSize(true);
-            recyclerView.setAdapter(new Tweet_Adapter(R.layout.tweet_row, R.layout.header,tweetArrayList, usuario));
+            recyclerView.setAdapter(new Tweet_Adapter(R.layout.tweet_row, R.layout.header,tweetArrayList, twitterUser));
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             recyclerView.setItemAnimator(new DefaultItemAnimator());
-           // recyclerView.notifySubtreeAccessibilityStateChanged();
-           // System.exit(0);
         } catch (twitter4j.TwitterException e) {
             //  Log.e()
-            Log.e("ss", e.getMessage());
+            Log.e(TAG, e.getMessage());
         }
 
     }

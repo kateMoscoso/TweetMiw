@@ -1,6 +1,6 @@
 package com.tweetmiw.app.tweetmiw.entities;
 
-public class ProfileUser {
+public class TwitterUser {
     private String id_user;
     private String screen_name;
     private String name;
@@ -13,7 +13,7 @@ public class ProfileUser {
     private String createdAt;
 
 
-    public ProfileUser(){
+    public TwitterUser(){
     }
 
     public String getId_user() {
