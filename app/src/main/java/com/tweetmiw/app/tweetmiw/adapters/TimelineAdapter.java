@@ -78,6 +78,7 @@ public class TimelineAdapter extends ArrayAdapter<Tweet> {
         viewHolder.mensajeTweet.setText(tweet.getMessage());
         viewHolder.hora.setText(tweet.getCreated_at());
         final ViewHolderTweet finalViewHolder = viewHolder;
+        final ViewHolderTweet finalViewHolder1 = viewHolder;
         viewHolder.retweet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,6 +86,7 @@ public class TimelineAdapter extends ArrayAdapter<Tweet> {
                     Log.v("",""+tweet.getId());
 
                     twitter.retweetStatus(tweet.getId());
+                    finalViewHolder1.retweet.setImageResource(R.mipmap.ic_swap_horiz_activo_24dp);
                   //  finalViewHolder.retweet.setColorFilter(R.color.accent_color);
                  //   Toast.makeText()
                 } catch (Exception e){
@@ -93,6 +95,7 @@ public class TimelineAdapter extends ArrayAdapter<Tweet> {
             }
 
         });
+        final ViewHolderTweet finalViewHolder2 = viewHolder;
         viewHolder.favorite.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -101,6 +104,7 @@ public class TimelineAdapter extends ArrayAdapter<Tweet> {
                             Log.v("",""+tweet.getId());
 
                             twitter.createFavorite(tweet.getId());
+                            finalViewHolder2.favorite.setImageResource(R.mipmap.ic_star_rate_activo_24dp);
                             //  finalViewHolder.retweet.setColorFilter(R.color.accent_color);
                             //   Toast.makeText()
                         } catch (Exception e){

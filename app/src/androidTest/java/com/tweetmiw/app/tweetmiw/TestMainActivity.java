@@ -5,9 +5,6 @@ import android.test.suitebuilder.annotation.SmallTest;
 
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
-/**
- * Created by katherin on 01/07/2015.
- */
 public class TestMainActivity  extends ActivityInstrumentationTestCase2<MainActivity>{
     MainActivity activity;
     public TestMainActivity() {

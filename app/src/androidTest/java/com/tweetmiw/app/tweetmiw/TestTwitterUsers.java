@@ -7,9 +7,6 @@ import com.tweetmiw.app.tweetmiw.entities.TwitterUser;
 
 import junit.framework.TestCase;
 
-/**
- * Created by katherin on 30/06/2015.
- */
 public class TestTwitterUsers extends TestCase {
     private TwitterUser usuario;
 
