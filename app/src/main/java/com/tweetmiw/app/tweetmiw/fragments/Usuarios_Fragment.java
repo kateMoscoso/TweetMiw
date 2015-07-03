@@ -100,9 +100,11 @@ public class Usuarios_Fragment extends Fragment {
                     twitterUser.setScreen_name(user.getScreenName());
                     twitterUser.setProfile_image_url(user.getProfileImageURL());
                     twitterUser.setIsFollower(true);
+                    
+
                     twitterUser.setId_user(user.getId());
                     followers.add(twitterUser);
-                    Log.v("Usuarios",user.getName() + " " + user.getScreenName());
+                    Log.v("Usuarios",user.getName() + " " + user.getScreenName() + " " + user.isFollowRequestSent());
                 }
            /* do {
                 followers = twitter.getFollowersList("screenName", cursor);

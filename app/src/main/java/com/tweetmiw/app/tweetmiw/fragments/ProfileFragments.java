@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tweetmiw.app.tweetmiw.R;
-import com.tweetmiw.app.tweetmiw.adapters.Tweet_Adapter;
+import com.tweetmiw.app.tweetmiw.adapters.ProfileAdapter;
 import com.tweetmiw.app.tweetmiw.entities.TwitterUser;
 import com.tweetmiw.app.tweetmiw.entities.Tweet;
 import com.tweetmiw.app.tweetmiw.utils.SessionManager;
@@ -26,12 +26,12 @@ import java.util.List;
 import twitter4j.Paging;
 import twitter4j.Status;
 
-public class Tweet_Fragments extends Fragment {
+public class ProfileFragments extends Fragment {
 
     String f;
     private  static String TAG ="Tweet_Fragments";
     private SessionManager session;
-    public Tweet_Fragments() {
+    public ProfileFragments() {
         // Required empty public constructor
     }
 
@@ -83,7 +83,7 @@ public class Tweet_Fragments extends Fragment {
             }
             RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.my_recycler_view_tweet);
             recyclerView.setHasFixedSize(true);
-            recyclerView.setAdapter(new Tweet_Adapter(R.layout.tweet_row, R.layout.header,tweetArrayList, twitterUser));
+            recyclerView.setAdapter(new ProfileAdapter(R.layout.tweet_row, R.layout.header,tweetArrayList, twitterUser));
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             recyclerView.setItemAnimator(new DefaultItemAnimator());
         } catch (twitter4j.TwitterException e) {

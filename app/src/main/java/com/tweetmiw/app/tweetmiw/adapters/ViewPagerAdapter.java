@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.tweetmiw.app.tweetmiw.fragments.TweetListFragment;
-import com.tweetmiw.app.tweetmiw.fragments.Tweet_Fragments;
+import com.tweetmiw.app.tweetmiw.fragments.ProfileFragments;
 import com.tweetmiw.app.tweetmiw.fragments.Usuarios_Fragment;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
@@ -43,7 +43,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         }
         else             // As we are having 2 tabs if the position is now 0 it must be 1 so we are returning second tab
         {
-            return new Tweet_Fragments();
+            return new ProfileFragments();
         }
 
     }

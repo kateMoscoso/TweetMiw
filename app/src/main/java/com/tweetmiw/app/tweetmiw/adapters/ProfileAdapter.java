@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class Tweet_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class ProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int HEADER = 0;
     private static final int OTHER = 1;
     private ArrayList<Tweet> tweets;// dataset
@@ -27,7 +27,7 @@ public class Tweet_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private TwitterUser user;
     private static String TAG="Tweet_Aapter";
 
-    public Tweet_Adapter(int itemLayout, int header, ArrayList<Tweet> tweets, TwitterUser user) {
+    public ProfileAdapter(int itemLayout, int header, ArrayList<Tweet> tweets, TwitterUser user) {
         this.tweets = tweets;
         this.itemLayout = itemLayout;
         this.header = header;
