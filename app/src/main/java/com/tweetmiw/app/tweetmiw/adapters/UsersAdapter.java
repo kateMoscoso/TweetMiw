@@ -82,7 +82,7 @@ public class UsersAdapter extends ArrayAdapter<TwitterUser> {
         public TextView screenName;
         public TextView descripcion;
         public ImageView avatar;
-        private AdapterView.OnItemClickListener onItemClickListener;
+        //private AdapterView.OnItemClickListener onItemClickListener;
 
         public ViewHolder(View itemView) {
             super(itemView);

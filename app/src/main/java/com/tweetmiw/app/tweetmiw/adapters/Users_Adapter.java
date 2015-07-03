@@ -24,12 +24,13 @@ import java.util.ArrayList;
 
 import twitter4j.Twitter;
 
-public class Users_Adapter extends RecyclerView.Adapter<Users_Adapter.ViewHolder>{
+public class Users_Adapter extends RecyclerView.Adapter<Users_Adapter.ViewHolder> {
 
     private ArrayList<TwitterUser> users;// dataset
-    private  int itemLayout; // la vista, los row
+    private int itemLayout; // la vista, los row
     private SessionManager sessionManager;
-    public  Users_Adapter( ArrayList<TwitterUser>  users, int itemLayout){
+
+    public Users_Adapter(ArrayList<TwitterUser> users, int itemLayout) {
         this.users = users;
         this.itemLayout = itemLayout;
 
@@ -46,7 +47,7 @@ public class Users_Adapter extends RecyclerView.Adapter<Users_Adapter.ViewHolder
 
     @Override
     public void onBindViewHolder(final ViewHolder viewHolder, int i) {
-    final TwitterUser user = users.get(i);
+        final TwitterUser user = users.get(i);
 
 
         viewHolder.screenName.setText(user.getScreen_name());
@@ -61,7 +62,7 @@ public class Users_Adapter extends RecyclerView.Adapter<Users_Adapter.ViewHolder
 
         } catch (IOException e) {
             Log.v("", "error cargando foto");
-           // e.printStackTrace();
+            // e.printStackTrace();
         }
         final Twitter twitter = sessionManager.getTwitter();
         viewHolder.follower.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +75,7 @@ public class Users_Adapter extends RecyclerView.Adapter<Users_Adapter.ViewHolder
                     viewHolder.follower.setImageResource(R.mipmap.ic_follow_activo_36dp);
                     //  finalViewHolder.retweet.setColorFilter(R.color.accent_color);
                     //   Toast.makeText()
-                } catch (Exception e){
+                } catch (Exception e) {
                     Log.v("Error", "e.getMessage");
                 }
             }
@@ -88,12 +89,10 @@ public class Users_Adapter extends RecyclerView.Adapter<Users_Adapter.ViewHolder
     }
 
 
-
-
     /**
      * Clase que define cada elemento
      */
-    public  class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
 
         public TextView nombreUsuario;
@@ -105,7 +104,7 @@ public class Users_Adapter extends RecyclerView.Adapter<Users_Adapter.ViewHolder
 
         public ViewHolder(View itemView) {
             super(itemView);
-            itemView.setOnClickListener(this);
+            //itemView.setOnClickListener(this);
 
             screenName = (TextView) itemView.findViewById(R.id.screenName);
             nombreUsuario = (TextView) itemView.findViewById(R.id.name);
@@ -114,9 +113,11 @@ public class Users_Adapter extends RecyclerView.Adapter<Users_Adapter.ViewHolder
             follower = (ImageView) itemView.findViewById(R.id.follow);
 
         }
+    }
+}
 
 
-        @Override
+        /*@Override
         public boolean onLongClick(View v) {
             //do something
 
@@ -131,5 +132,4 @@ public class Users_Adapter extends RecyclerView.Adapter<Users_Adapter.ViewHolder
             UserTimeline userTimeline = new UserTimeline.Builder().screenName(screename).build();
             Toast.makeText(view.getContext(), "Aqui definimos el onclick nuevo " + position, Toast.LENGTH_SHORT).show();
         }
-    }
-}
+    }*/

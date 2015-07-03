@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import com.tweetmiw.app.tweetmiw.R;
 
-public class ViewHolderUser extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class ViewHolderUser extends RecyclerView.ViewHolder {
 
     public TextView nombreUsuario;
     public TextView screenName;
@@ -35,13 +35,13 @@ public class ViewHolderUser extends RecyclerView.ViewHolder implements View.OnCl
 
     }
 
-    @Override
+    /*@Override
     public void onClick(View view) {
 
         int position = ViewHolderUser.super.getAdapterPosition();
 
 
         Toast.makeText(view.getContext(), "Aqui definimos el onclick nuevo " + position, Toast.LENGTH_SHORT).show();
-    }
+    }*/
 }
 

@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import com.tweetmiw.app.tweetmiw.R;
 
-public class ViewHolderTweet  extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class ViewHolderTweet  extends RecyclerView.ViewHolder {
 
     public TextView nombreUsuario;
     public TextView screenName;
@@ -28,13 +28,14 @@ public class ViewHolderTweet  extends RecyclerView.ViewHolder implements View.On
         mensajeTweet = (TextView) itemView.findViewById(R.id.tweets);
         hora = (TextView) itemView.findViewById(R.id.hora);
         avatar = (ImageView) itemView.findViewById(R.id.avatar_usuario);
-        retweet = (ImageView)itemView.findViewById(R.id.retweet);
-        favorite = (ImageView)itemView.findViewById(R.id.favorito);
+        retweet = (ImageView) itemView.findViewById(R.id.retweet);
+        favorite = (ImageView) itemView.findViewById(R.id.favorito);
 
 
     }
+}
 
-    @Override
+    /*@Override
     public void onClick(View view) {
 
         int position = ViewHolderTweet.super.getAdapterPosition();
@@ -42,4 +43,4 @@ public class ViewHolderTweet  extends RecyclerView.ViewHolder implements View.On
 
         Toast.makeText(view.getContext(), "Aqui definimos el onclick nuevo " + position, Toast.LENGTH_SHORT).show();
     }
-}
+}*/
